@@ -1,0 +1,19 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+linkcolor: blue
+ 
+mainfont: Linux Libertine O
+
+numbersections: true
+indent: true
+
+header-includes:
+- \usepackage{indentfirst}
+- \usepackage[russian, english]{babel}
+---
+\input{./files/title.tex}
+
+\tableofcontents
+\clearpage
