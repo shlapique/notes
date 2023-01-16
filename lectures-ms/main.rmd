@@ -2,18 +2,79 @@
 output:
   pdf_document:
     latex_engine: xelatex
+    number_sections: true
 linkcolor: blue
  
 mainfont: Linux Libertine O
-
+fontsize: 12pt
 numbersections: true
 indent: true
 
 header-includes:
 - \usepackage{indentfirst}
 - \usepackage[russian, english]{babel}
+
+- \newcommand{\R}{\mathbb{R}}
 ---
 \input{./files/title.tex}
 
 \tableofcontents
 \clearpage
+
+# Источники {-}
+
+* [Ивченко Г. И., Медведев Ю. И. "Математическая статистика", изд. "Высшая школа", 1984](https://www.hse.ru/pubs/share/direct/content_document/103185710)
+
+* [Кибзун А. И., Наумов А. В., Горяинова Е. Р. "Теория вероятностей и математическая статистика. Базовый курс с примерами и задачами", изд "ФИЗМАТЛИТ", 2013](https://ami.nstu.ru/~post/teaching/tv_ms/kibzun.pdf)
+
+* [Панков А. Р., Платонов Е. Н. "Практикум по математической статистике", изд. "МАИ", 2006](http://zyurvas.narod.ru/knyhy2/Pankov_matstat.pdf)
+
+\pagebreak
+
+# Многомерное нормальное распределение
+
+## Замечание
+
+Вектор $X = (X_{1}, \dots, X_{n})^{t}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ --- *случайные векторы* *(далее **с.в**)*, определенные на одном вероятностном пространстве.
+
+Через $M[X] = m_x$ обозначим вектор математического ожидания:
+
+\begin{align*}
+M[X] = m_x = 
+    \begin{pmatrix}
+    M[X_1] \\
+    \vdots \\
+    M[X_n]
+    \end{pmatrix}
+\end{align*}
+
+Через $K_x$ обозначим *ковариационную матрицу* с.в $X$:
+
+\begin{align*}
+K_x = 
+    \begin{pmatrix}
+    \mathrm{cov}(X_1, X_1) & \dots & \mathrm{cov}(X_1, X_n) \\
+    \vdots & \ddots & \vdots   \\ 
+    \mathrm{cov}(X_n, X_1) & \dots & \mathrm{cov}(X_n, X_n) \\
+    \end{pmatrix}
+\end{align*}
+
+## Лемма 1
+
+Пусть $K_x \in \R^{n \times n}$ --- ковариационная матрица с.в $X$. Тогда:
+
+1. $K_x \geqslant 0$, т.е. $\forall x \in \R^{n} \backslash \{0\}, x^{T}K_{x}x \geqslant 0$;
+
+2. $K_{x}^{T} = K_x$
+
+## Определение 1
+
+Случайный вектор $X = (X_1, \dots, X_n)^{T}$ называется ***невырожденным нормальным вектором***:
+
+$$X \sim N(m_x, K_x)$$
+
+если совместная плотность вероятности имеет вид:
+
+$$f_{x}(x) = ((2\pi)^{n} \det K_x)^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{k})^{T}K_x^{-1}(x - m_x)\}$$
+
+где $m_x \in \R^{n}, K_x \in \R^{n \times n}, K_x > 0, K_{x}^{T} = K_x$
