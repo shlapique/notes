@@ -13,7 +13,9 @@ indent: true
 header-includes:
 - \usepackage{indentfirst}
 - \usepackage[russian, english]{babel}
+- \usepackage{fancyhdr}
 
+- \pagestyle{fancy}
 - \newcommand{\R}{\mathbb{R}}
 ---
 \input{./files/title.tex}
@@ -78,3 +80,36 @@ $$X \sim N(m_x, K_x)$$
 $$f_{x}(x) = ((2\pi)^{n} \det K_x)^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{k})^{T}K_x^{-1}(x - m_x)\}$$
 
 где $m_x \in \R^{n}, K_x \in \R^{n \times n}, K_x > 0, K_{x}^{T} = K_x$
+
+## Лемма 2
+
+Пусть $X$ --- невырожденный нормальный вектор с параметрами $m_x$ и $K_x$.
+
+Тогда $M[X] = m_x$, а $K_x$ --- корвариационная матрица $X$.
+
+Рассмотрим основные свойства многомерного нормального распределения.
+
+\pagebreak
+
+## Лемма 3
+
+Пусть $X \sim N(m_x, K_x), A \in \R^{m \times n}, b \in \R^{m}$.
+
+Тогда:
+
+\begin{align*}
+Y = AX + b \sim N(m_y, K_y), \\
+m_y = Am_x + b, \\
+K_y = AK_xA^{T}.
+\end{align*}
+
+## Лемма 4
+
+Пусть $X \sim N(m_x, K_x)$.
+
+Тогда компоненты вектора $X$ *независимы* тогда и только тогда, когда они *некоррелированы*.
+
+### note {-}
+
+Доказательство данных утверждений при помощи аппарата функций распределения и плотности довольно сложно.
+Поэтому рассмотрим аппарат характеристических функций.
