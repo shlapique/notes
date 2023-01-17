@@ -35,9 +35,9 @@ header-includes:
 
 # Многомерное нормальное распределение
 
-## Замечание
+## Замечание {-}
 
-Вектор $X = (X_{1}, \dots, X_{n})^{t}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ --- *случайные векторы* *(далее **с.в**)*, определенные на одном вероятностном пространстве.
+Вектор $X = (X_{1}, \dots, X_{n})^{T}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ --- *случайные величины* *(далее **с.в**)*, определенные на одном вероятностном пространстве.
 
 Через $M[X] = m_x$ обозначим вектор математического ожидания:
 
@@ -107,7 +107,7 @@ K_y = AK_xA^{T}.
 
 Пусть $X \sim N(m_x, K_x)$.
 
-Тогда компоненты вектора $X$ *независимы* тогда и только тогда, когда они *некоррелированы*.
+Тогда компоненты вектора $X$ ***независимы*** тогда и только тогда, когда они *некоррелированы*.
 
 ### note {-}
 
@@ -123,15 +123,21 @@ K_y = AK_xA^{T}.
 <!-- $$\psi(\lambda) = M[e^{i\lambda^{T}X] = \int_\R^{n}e^{i\lambda^{T}X}dF_X(x)$$ -->
 $$\psi_{X}(\lambda) = M[e^{i\lambda^{T}X}] = \int\limits_{\R^{n}}e^{i\lambda^{T}X}dF_X(x)$$
 
-## Замечание
+## Замечание {-}
 
 *Характеристическая функция* определена для любого случайного вектора или с.в.
 
 Если с.в **дискретная**, то:
 
+$$\psi_{X}(\lambda) = \sum\limits_{k = 1}^{\infty}e^{i\lambda X_{k}}p_{k}$$
+
+Если с.в **абсолютно непрерывная**, то
+
 $$\psi_{X}(\lambda) = \int\limits_{\R}e^{i\lambda X}f_{X}(x)dx$$
 
 В этом случае $\psi_{X}(\lambda)$ является ***преобразованием Фурье $f_X$***.
+
+\pagebreak
 
 Поскольку преобразование Фурье взаимно однозначно, а $f_X$ однозначно определяет распределение, то характеристическая функция
 характеристическая функция $\psi_{X}(x)$ также однозначно определяет распределение с.в $X$.
@@ -140,4 +146,116 @@ $$\psi_{X}(\lambda) = \int\limits_{\R}e^{i\lambda X}f_{X}(x)dx$$
 
 $$f_{X}(x) = \frac{1}{(2\pi)^{n}} \int\limits_{\R}e^{-i\lambda^{T} X}\psi_{X}(x)d\lambda$$
 
+
+## Лемма 5
+
+Пусть $X$ --- случайный вектор, $A \in \R^{n \times n}, b \in \R^{n}$.
+
+Тогда:
+
+1. для $Y = AX + b$
+$$\psi_{Y}(\lambda) = e^{i\lambda^{T}b} \psi_{X}(A^{T}\lambda)$$
+
+2. компоненты вектора $X$ ***независимы*** тогда и только тогда, когда
+$$\psi_{Y}(\lambda) = \prod_{k = 1}^{n} \psi_{X_k}(\lambda_k)$$
+
+### Доказательство {-}
+
+1. $\psi_{Y}(\lambda) = M[e^{i\lambda^{T}Y}] = M[e^{i\lambda^{T} AX} e^{i\lambda^{T} b}] 
+= e^{i\lambda{T} b} M[e^{i(A^{T}\lambda)^{T} X}] = e^{i\lambda^{T} b} \psi_{X}(A^{T}\lambda)$
+
+2. $\psi_{X}(\lambda) = \int\limits_{\R} \dots \int\limits_{\R} e^{i(\lambda_{1} x_{1} + \dots + \lambda_{n} x_{n})} f_{X}(x_1, \dots, x_n)dx_1 \cdot \dots \cdot dx_n =$
+{н/з} $= \int\limits_{\R} e^{i\lambda_{1} x_{1}} \cdot \dots \cdot e^{\lambda_{n}
+x_{n}} \cdot f_{X_{1}}(x) \cdot \dots \cdot f_{X_{n}}dx_1 \cdot \dots \cdot dx_n =
+\int\limits_{\R} e^{i\lambda_{1} x_{1}} f_{x_1}(x_1)dx_1 \cdot \dots \cdot \int\limits_{\R} e^{i\lambda_{n} x_{n}} f_{x_n}(x_n)dx_n=
+\prod_{k = 1}^{n} \psi_{X_k})(\lambda_{k})$
+
+$\blacksquare$
+<!-- mb make a bit pretty later -->
+
+## Замечание {-}
+
+При помощи характеристической функции можно дать другое определение нормального распределения. В том числе для вырожденного $K_{X}$.
+
+## Определение 3
+
+Случайный вектор $X$ называется ***нормальным***: $X \sim N(m_{X}, K_{X})$, если:
+
+$$\psi_{X}(\lambda) = \exp\{i\lambda^{T} m_{X} - \frac{1}{2} \lambda^{T} K_{X}\lambda \}$$
+
+### Доказательство леммы 3
+
+В силу  [Лемма 5] *(пункт 1)*
+
 \pagebreak
+
+\begin{align*}
+\psi_{Y}(\lambda) = e^{i\lambda^{T}b} \psi_{X}(A^{T}\lambda) = e^{i\lambda^{T}b} \exp\{i\lambda^{T} Am_x - \frac{1}{2} \lambda^{T}
+AK_{X}A^{T}\lambda\} = \\
+= \exp\{i\lambda^{T} (Am_x + b) - \frac{1}{2}\lambda^{T} (AK_xA^{T})\lambda\} \\
+\blacksquare
+\end{align*}
+
+### Доказательство леммы 4
+
+Пусть $X_{i}, \dots, X_{n}$ *попарно некоррелированы*. Тогда $cov(X_{i}, X_{j}) = 0$, $i \ne 0$, т.е. :
+
+\begin{align*}
+K_x = diag(\sigma_{X_1}^{2}, \dots, \sigma_{X_n}^{2}) = \\
+    =  
+    \begin{pmatrix}
+    \sigma_{X_1}^{2} & \dots & 0 \\
+    \vdots & \ddots & \vdots   \\ 
+    0 & \dots & \sigma_{X_n}^{2} \\
+    \end{pmatrix}
+\end{align*} 
+
+$\psi_{X}(\lambda) = \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} - \frac{1}{2} \lambda^{T} K_{X} \lambda \} =
+\exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} - \frac{1}{2}(\lambda_{1}^{2} \sigma_{X_1}^{2} + \dots + 
+\lambda_{n}^{2} \sigma_{X_n}^{2})\} = \prod\limits_{k = 1}^{n} \exp\{i\lambda_{n} m_{X_n} - \frac{1}{2} \lambda_{k}^{2} \sigma_{K_n}^{2}\} = \prod\limits_{k = 1}^{n} \psi_{X_k} (\lambda_{k})$.
+
+Откуда с учетом [Лемма 5] *(пункт 2)* $X_1, \dots, X_n$ --- н/з.
+
+Пусть $X_1, \dots, X_n$ --- н/з. Тогда $X_1, \dots, X_n$ *попарно некоррелированы*. $\blacksquare$
+
+## Замечание {-}
+
+Поскольку $K_x$ --- невырожденная, симметричная и положительноопределенная, то существует $S \in \R^{n \times n}$ --- *ортогональная*
+(т. е. $S^{T} = S^{-1}) такая, что:
+
+$$S^{T}K_{X}S = \Lambda = diag(\lambda_1, \dots, \lambda_n)$$
+
+где $\lambda_{i} > 0, i = \overline{1, n}$
+
+Определим матрицу $\Lambda^{- \frac{1}{2}} = diag(\lambda_{1}^{- \frac{1}{2}}, \dots, \lambda_{n}^{- \frac{1}{2}})$.
+
+Рассмотрим вектор
+
+$$Y = \Lambda^{- \frac{1}{2}} S^{T}(X - m_{X})$$
+
+Тогда $A = \Lambda^{- \frac{1}{2}}S^{T}, b = - \Lambda^{- \frac{1}{2}}S^{T}m_{X}$.
+
+В силу [Лемма 3]:
+
+$$m_{Y} = Am_{X} + b = \Lambda^{- \frac{1}{2}}S^{T} - \Lambda^{- \frac{1}{2}}S^{T}m_{X} = 0,$$
+$$K_{Y} = AK_{X}A^{T} = \Lambda^{- \frac{1}{2}}S^{T}K_{X}S\Lambda^{- \frac{1}{2}} = I,$$
+
+т. е. $Y \sim N(0, I)$.
+
+\pagebreak
+
+При помощи невырожденного линейного преобразования с.в. $X$ может быть преобразован в стандартный нормальный вектор. 
+
+Верно и обратное:
+
+$$X = m_{X} + S\Lambda^{\frac{1}{2}} Y,$$
+
+откуда следует [Лемма 2].
+
+\pagebreak
+
+# Теорема о нормальной корреляции
+
+## Определение 1
+
+***Условным математическим ожиданием абсолютно непрерывного случайного вектора*** $X$ относительно абсолютно непрерывного случайного вектора $Y$ называется:
