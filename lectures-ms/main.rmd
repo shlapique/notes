@@ -17,6 +17,9 @@ header-includes:
 
 - \pagestyle{fancy}
 - \newcommand{\R}{\mathbb{R}}
+- \newcommand{\Ll}{\mathbb{L}}
+
+- \setlength{\headheight}{15pt}
 ---
 \input{./files/title.tex}
 
@@ -89,8 +92,6 @@ $$f_{x}(x) = ((2\pi)^{n} \det K_x)^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{k})^
 
 Рассмотрим основные свойства многомерного нормального распределения.
 
-\pagebreak
-
 ## Лемма 3
 
 Пусть $X \sim N(m_x, K_x), A \in \R^{m \times n}, b \in \R^{m}$.
@@ -136,8 +137,6 @@ $$\psi_{X}(\lambda) = \sum\limits_{k = 1}^{\infty}e^{i\lambda X_{k}}p_{k}$$
 $$\psi_{X}(\lambda) = \int\limits_{\R}e^{i\lambda X}f_{X}(x)dx$$
 
 В этом случае $\psi_{X}(\lambda)$ является ***преобразованием Фурье $f_X$***.
-
-\pagebreak
 
 Поскольку преобразование Фурье взаимно однозначно, а $f_X$ однозначно определяет распределение, то характеристическая функция
 характеристическая функция $\psi_{X}(x)$ также однозначно определяет распределение с.в $X$.
@@ -187,8 +186,6 @@ $$\psi_{X}(\lambda) = \exp\{i\lambda^{T} m_{X} - \frac{1}{2} \lambda^{T} K_{X}\l
 
 В силу  [Лемма 5] *(пункт 1)*
 
-\pagebreak
-
 \begin{align*}
 \psi_{Y}(\lambda) = e^{i\lambda^{T}b} \psi_{X}(A^{T}\lambda) = e^{i\lambda^{T}b} \exp\{i\lambda^{T} Am_x - \frac{1}{2} \lambda^{T}
 AK_{X}A^{T}\lambda\} = \\
@@ -221,7 +218,7 @@ $\psi_{X}(\lambda) = \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} -
 ## Замечание {-}
 
 Поскольку $K_x$ --- невырожденная, симметричная и положительноопределенная, то существует $S \in \R^{n \times n}$ --- *ортогональная*
-(т. е. $S^{T} = S^{-1}) такая, что:
+(т. е. $S^{T} = S^{-1}$) такая, что:
 
 $$S^{T}K_{X}S = \Lambda = diag(\lambda_1, \dots, \lambda_n)$$
 
@@ -242,8 +239,6 @@ $$K_{Y} = AK_{X}A^{T} = \Lambda^{- \frac{1}{2}}S^{T}K_{X}S\Lambda^{- \frac{1}{2}
 
 т. е. $Y \sim N(0, I)$.
 
-\pagebreak
-
 При помощи невырожденного линейного преобразования с.в. $X$ может быть преобразован в стандартный нормальный вектор. 
 
 Верно и обратное:
@@ -259,3 +254,128 @@ $$X = m_{X} + S\Lambda^{\frac{1}{2}} Y,$$
 ## Определение 1
 
 ***Условным математическим ожиданием абсолютно непрерывного случайного вектора*** $X$ относительно абсолютно непрерывного случайного вектора $Y$ называется:
+
+$$M[X] = \int\limits_{- \infty}^{+ \infty} xf_{X | Y} (x \mid Y)dx,$$
+
+где $f_{X \mid Y} (x \mid Y) = \frac{f_{z}(x, Y)}{f_{y}(Y)}, z = 
+\begin{pmatrix}
+    X \\
+    Y \\
+\end{pmatrix}$
+
+## Основные свойства условного М. О.:
+
+### Свойство 1
+
+\fbox{$M[C \mid Y] = C$}
+
+**\underline{Доказательство}**
+
+$M[C \mid Y] = \int\limits_{- \infty}^{+ \infty} Cf_{X \mid Y} (x \mid Y)dx = \frac{C \int\limits_{- \infty}^{+ \infty} f_{z}(x, Y)dx}
+{f_{Y}(Y)} = C \frac{f_{Y}(Y)}{f_{Y}(Y)} = C$. $\blacksquare$
+
+### Свойство 2 
+
+\fbox{$M[X \phi(Y) | Y] = \phi(Y)M[X \mid Y]$}
+
+**\underline{Доказательство}**
+
+$M[\phi(Y) X \mid Y] = \int\limits_{- \infty}^{+ \infty} \phi(Y)X f_{X \mid Y}(x \mid Y)dx = \phi(Y) \int\limits_{- \infty}^{+ \infty} x
+f_{X \mid Y} (x \mid Y)dx =$
+
+$= \phi(Y) M[X \mid Y]$. $\blacksquare$
+
+### Свойство 3 
+
+\fbox{$M[\alpha X_{1} + \beta X_{2} \mid Y] = \alpha M[X_{1} \mid Y] + \beta M[X_{2} \mid Y]$}
+
+### Свойство 4 
+
+Пусть $X, Y$ --- *независимые*. Тогда \fbox{$M[X \mid Y] = M[X]$}
+
+**\underline{Доказательство}**
+
+$M[X \mid Y] = \int\limits_{- \infty}^{+ \infty} xf_{X \mid Y} (x \mid Y)dx = \int\limits_{- \infty}^{+ \infty} x \frac{f_{z}(x, Y)}
+{f_{Y}(Y)}dx = \int\limits_{- \infty}{+ \infty}x \frac{f_{X}(x) f_{Y}(Y)}{f_{Y}(Y)} dx = M[X]$. $\blacksquare$
+
+### Свойство 5 
+
+\fbox{$M[M[X \mid Y]] = M[X]$} ***(формула повторного М. О.)***
+
+\pagebreak
+
+**\underline{Доказательство}**
+
+$M[M[X \mid Y]]= \int\limits_{- \infty}^{+ \infty} M[X \mid Y] f_{Y} (y)dy = \int\limits_{- \infty}^{+ \infty} f_{Y}(y) 
+\int\limits_{- \infty}^{+ \infty} x f_{X \mid Y} (x \mid y)dxdy = \int\limits_{- \infty}^{+ \infty}
+\int\limits_{- \infty}^{+ \infty} x \frac{f_{Y}(y) f_{z}(x, y)}{f_{Y}(y)} dydx = \int\limits_{- \infty}^{+ \infty} x
+\int\limits_{- \infty}^{+ \infty} f_{z} (x, y)dydx = \int\limits_{- \infty}^{+ \infty} x f_{X}(x)dx = M[X]$. $\blacksquare$
+
+## Лемма 1
+
+Пусть $X, Y$ --- случайные векторы с конечными вторыми моментами. Тогда:
+
+<!-- check to power of 'phi(Y)..' -->
+$M[(X - \hat{X})\phi(Y)] = 0$
+
+где $\hat{X} = M[X \mid Y]$
+
+### Доказательство {-}
+
+$M[(X - \hat{X})\phi(Y)^{T}] = M[X \phi(Y)^{T}] - M[M[X \mid Y] \phi(Y)^{T}] =$
+
+= по [Свойство 2] $= M[X \phi(Y)^{T}] - M[M[X \phi(Y)^{T} \mid Y]] =$ по [Свойство 5] $= M[X \phi(Y)^{T}] - M[X \phi(Y)^{T}]
+= 0$. $\blacksquare$
+
+
+## Замечание {-}
+
+Если рассмотреть евклидово пространство $\Ll_{2}(\Omega)$ со скалярным произведением:
+
+$$(X, Y) = M[X \cdot Y]$$
+
+то *условное* М. О. --- ***оператор ортогонального проектирования*** $X$ на подпространство, порождаемое $Y$.
+
+## Определение 2
+
+***Оценкой $X$ по наблюдениям $Y$*** называется любая измеримая функция $\phi(Y)$.
+
+## Определение 3
+
+***Оценка $\hat{X}$ называется с.к.-оптимальной оценкой $X$***, если для любой другой оценки $\tilde{X}$ верно
+
+$$M[| \tilde{X} - \hat{X}|^{2}] \leqslant M[| X - \tilde{X} |^{2}]$$ 
+
+## Теорема 1
+
+$M[X \mid Y]$ --- ***с.к.-оптимальная оценка $X$ по наблюдениям $Y$***.
+
+### Доказательство {-}
+
+$M[|X - \tilde{X}|^{2}] = M[|X - \hat{X} + \hat{X} - \tilde{X}|^{2}] = M[|X - \hat{X}|^{2}] + 2M[(X - \hat{X})^{T} (\hat{X} -
+\tilde{X})] + M[|\hat{X} - \tilde{X}|^{2}] \overset{*}{=}$
+
+Поскольку по определению $\tilde{X} - \hat{X} = \phi(Y)$, то в силу [Лемма 1] $M[(X - \hat{X})^{T}(\tilde{X} - \hat{X})] = 0$.
+
+$\overset{*}{=} M[|X - \hat{X}|^{2}] + M[|\hat{X} - \tilde{X}|^{2}] \geqslant M[|X - \hat{X}|^{2}]$. $\blacksquare$
+
+## Теорема 2 (О нормальной корреляции)
+
+Пусть 
+\begin{align*}
+    \begin{pmatrix}
+        X \\
+        Y \\
+    \end{pmatrix}
+    \sim N
+    \begin{pmatrix}
+        \begin{pmatrix}
+        m_{X} \\
+        m_{Y} \\
+        \end{pmatrix},
+        \begin{pmatrix}
+        K_{X} & K_{XY} \\
+        K_{XY}^{T} & K_{Y} \\
+        \end{pmatrix}
+    \end{pmatrix}
+\end{align*}
