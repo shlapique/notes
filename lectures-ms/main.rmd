@@ -14,10 +14,12 @@ header-includes:
 - \usepackage{indentfirst}
 - \usepackage[russian, english]{babel}
 - \usepackage{fancyhdr}
+- \usepackage{cancel}
 
 - \pagestyle{fancy}
 - \newcommand{\R}{\mathbb{R}}
 - \newcommand{\Ll}{\mathbb{L}}
+- \newcommand{\N}{\mathbb{N}}
 
 - \setlength{\headheight}{15pt}
 ---
@@ -263,7 +265,7 @@ $$M[X] = \int\limits_{- \infty}^{+ \infty} xf_{X | Y} (x \mid Y)dx,$$
     Y \\
 \end{pmatrix}$
 
-## Основные свойства условного М. О.:
+## Основные свойства условного М. О.
 
 ### Свойство 1
 
@@ -379,3 +381,126 @@ $\overset{*}{=} M[|X - \hat{X}|^{2}] + M[|\hat{X} - \tilde{X}|^{2}] \geqslant M[
         \end{pmatrix}
     \end{pmatrix}
 \end{align*}
+
+Тогда 
+
+1. $Law(X \mid Y) = N(\mu(Y), \Delta)$,
+
+где 
+
+$$\mu(Y) = M[X \mid Y] = m_{X} + K_{XY}K_{Y}^{-1}(Y - m_{Y})$$
+
+$$\Delta = K_{X} - K_{XY}K_{Y}^{-1}K_{YX}$$
+
+2. $M[|X - \mu(Y)|^{2}] = tr(K_{X} - K_{XY}K_{Y}^{-1}K_{YX})$
+
+### Доказательство {-}
+
+Рассмотрим линейное преобразование $Y$:
+
+$$\mu(Y) = m_{X} + K_{XY}K_{Y}^{-1}(Y - m_{Y})$$
+
+В силу [Лемма 1] *(пункт 3)*
+
+$X - \mu(Y) = (I - K_{XY}K_{Y}^{-1})
+\begin{pmatrix}
+    X \\
+    Y \\
+\end{pmatrix} -
+m_{X} + K_{XY}K_{Y}^{-1}m_{Y} \sim N(\mu, K)$
+
+$\mu = (I - K_{XY}K_{Y}^{-1})
+\begin{pmatrix}
+    m_{X} \\
+    m_{Y} \\
+\end{pmatrix} -
+m_{X} + K_{XY}K_{Y}^{-1}m_{Y} = 0$
+
+$K = (I - K_{XY}K_{Y}^{-1})
+\begin{pmatrix}
+    K_{X} & K_{XY} \\
+    K_{XY}^{T} & K_{Y} \\
+\end{pmatrix}
+\begin{pmatrix}
+    I \\ 
+    -(K_{XY}K_{Y}^{-1})^{T} \\
+\end{pmatrix} =$
+
+$= \begin{pmatrix}
+    K_{X} - K_{XY}K_{Y}^{-1}K_{XY}^{T} & K_{XY} - K_{XY}K_{Y}^{-1}K_{Y} \\
+\end{pmatrix}
+\begin{pmatrix}
+    I \\
+    K_{Y}^{-1}K_{XY}^{T} \\
+\end{pmatrix} =$
+
+$= K_{X} - K_{XY}K_{Y}^{-1}K_{XY}^{-1} = \Delta$
+
+$cov(X - \mu(Y), Y) = cov(X, Y) - cov(\mu(Y), Y) = cov(X, Y) - cov(K_{XY}K_{Y}^{-1}Y + m_{X} - K_{XY}K_{Y}^{-1}m_{Y}, Y) =
+cov(X, Y) - K_{XY}K_{Y}^{-1}cov(Y, Y) = K_{XY} - K_{XY}K_{Y}^{-2}K_{Y} = 0$
+
+т.е. $X - \mu(Y)$ и $Y$ **некорреливаны**.
+
+Тогда в силу [Лемма 1] *(пункт 2)* $X - \mu(Y)$ и $Y$ **независимы**. Построим характеристическую функцию условного распределения $X$
+относительно $Y$:
+
+$\psi_{X \mid Y}(\lambda \mid Y) = \int\limits_{\R^{n}} e^{i\lambda^{T} X} f_{X \mid Y}(x \mid Y)dx = M[e^{i\lambda^{T}X} \mid Y] =
+M[e^{i\lambda^{T}(X - \mu(Y))} e^{i\lambda^{T} \mu(Y)} \mid Y] \overset{*}{=}$
+
+в силу [Лемма 2] и *независимости* $X - \mu(Y)$ и $Y$
+
+$\overset{*}{=} M[e^{i\lambda^{T}(X - \mu(Y))} \mid Y] \cdot M[e^{i\lambda^{T}\mu(Y)} \mid Y] = M[e^{i\lambda^{T}(X - \mu(Y))}]
+e^{i\lambda^{T} \mu(Y)} = \psi_{X - \mu(Y)}(\lambda) e^{i\lambda^{T} \mu(Y)} = \exp\{- \frac{1}{2} \lambda^{T} \Delta \lambda \}
+\cdot \exp\{i\lambda^{T} \mu(Y) - \frac{1}{2} \lambda^{T} \Delta \lambda\}$
+
+т.е. Условное распределение ***нормальное***:
+
+$$X(Y \sim N(\mu(Y), \Delta)$$
+
+Вычислим с.к. ошибку:
+
+$M[|X - \mu(Y)|^{2}] = M[\Delta X_{1}^{2} + \Delta X_{2}^{2} + \dots + \Delta X_{n}^{2}] = \sum\limits_{k = 1}^{n}M[\Delta X_{k}^{2}] = 
+\sum\limits_{k = 1}^{n} D[\Delta X_{k}] = \sum\limits_{k = 1}^{n} \Delta_{kk} = tr\Delta$. $\blacksquare$
+
+## Замечание {-}
+
+1. Из [Теорема 2 (О нормальной корреляции)] следует, что в *гауссовском* случае с.к.-оптимальная оценка является ***линейной***.
+
+2. Если $X$ и $Y$ --- *независимы*, то с.к.-оптимальная оценка --- $m_{X}$.
+
+3. С.к.-оптимальная оценка ***несмещенная***, т.к. $M[X - \mu(Y)] = 0$. 
+
+\pagebreak
+
+# Виды сходимости последовательностей случайных величин
+
+## Определение 1
+
+Говорят, что $\{X_{n}\}_{n = 1}^{\infty}$ образует ***последовательность случайных величин***, если $\forall N \in \N$ $X_{n}$
+определены на одном вероятностном пространстве.
+
+## Определение 2
+
+Говорят, что последовательность с.в. $\{X_{n}\}_{n \in \N}$ ***сходится по вероятности*** к с.в. $X$, если $\forall \varepsilon > 0$:
+
+$$\lim\limits_{n \to \infty} P(|X_{n} - X| \leqslant \varepsilon) = 1$$
+
+ИЛИ
+
+$$\lim\limits_{n \to \infty} P(|X_{n} - X| > \varepsilon) = 0$$
+
+## Определение 3
+
+Говорят, что последовательность с.в. $\{X_{n}\}_{n \in \N}$ ***сходится почти наверное*** к с.в. $X$, если
+
+$$P(\{\omega :X_{n}(\omega) \cancel{\overset{n \to \infty}{\longrightarrow}} X(\omega)\}) = 0$$
+
+ИЛИ
+
+$$P(\{\omega :X_{n}(\omega) \overset{n \to \infty}{\longrightarrow} X(\omega)\}) = 1$$
+
+## Определение 4
+
+Говорят, что последовательность с.в. $\{X\}_{n \in \N}$ ***сходится в среднем квадратическом*** к с.в. $X$, если
+
+$$M[|X_{n} - X|^{2}] \overset{n \to \infty}{\longrightarrow} 0$$
