@@ -504,3 +504,19 @@ $$P(\{\omega :X_{n}(\omega) \overset{n \to \infty}{\longrightarrow} X(\omega)\})
 Говорят, что последовательность с.в. $\{X\}_{n \in \N}$ ***сходится в среднем квадратическом*** к с.в. $X$, если
 
 $$M[|X_{n} - X|^{2}] \overset{n \to \infty}{\longrightarrow} 0$$
+
+## Пример 1
+
+Пусть $\{X_{n}\}_{n \in \N}$ --- случайная последовательность.
+
+$$X \sim 
+\begin{pmatrix}
+    0 & n \\
+    1 - \frac{1}{n^{2}} & \frac{1}{n^{2}} \\
+\end{pmatrix}
+$$
+
+$P(\{ \omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq 0 \}) = P(\{ \omega : \forall N \in \N \exists n \geqslant N: X_{n}(\omega)
+= n \}) = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) =n \}) \overset{*}{=}$
+
+1. $\sum\limits_{n = N + 1}^{\infty}\{\omega : X_{n}(\omega) = n\} \subset \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\}$
