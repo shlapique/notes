@@ -44,10 +44,10 @@ header-includes:
 
 Вектор $X = (X_{1}, \dots, X_{n})^{T}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ --- *случайные величины* *(далее **с.в**)*, определенные на одном вероятностном пространстве.
 
-Через $M[X] = m_x$ обозначим вектор математического ожидания:
+Через $M[X] = m_{X}$ обозначим ***вектор математического ожидания***:
 
 \begin{align*}
-M[X] = m_x = 
+M[X] = m_{X} = 
     \begin{pmatrix}
     M[X_1] \\
     \vdots \\
@@ -58,7 +58,7 @@ M[X] = m_x =
 Через $K_x$ обозначим *ковариационную матрицу* с.в $X$:
 
 \begin{align*}
-K_x = 
+K_{X} = 
     \begin{pmatrix}
     \mathrm{cov}(X_1, X_1) & \dots & \mathrm{cov}(X_1, X_n) \\
     \vdots & \ddots & \vdots   \\ 
@@ -68,47 +68,47 @@ K_x =
 
 ## Лемма 1
 
-Пусть $K_x \in \R^{n \times n}$ --- ковариационная матрица с.в $X$. Тогда:
+Пусть $K_{X} \in \R^{n \times n}$ --- ковариационная матрица с.в $X$. Тогда:
 
-1. $K_x \geqslant 0$, т.е. $\forall x \in \R^{n} \backslash \{0\}, x^{T}K_{x}x \geqslant 0$;
+1. $K_{X} \geqslant 0$, т.е. $\forall x \in \R^{n} \backslash \{0\}, x^{T}K_{X}x \geqslant 0$;
 
-2. $K_{x}^{T} = K_x$
+2. $K_{X}^{T} = K_{X}$
 
 ## Определение 1
 
 Случайный вектор $X = (X_1, \dots, X_n)^{T}$ называется ***невырожденным нормальным вектором***:
 
-$$X \sim N(m_x, K_x)$$
+$$X \sim N(m_{X}, K_{X})$$
 
 если совместная плотность вероятности имеет вид:
 
-$$f_{x}(x) = ((2\pi)^{n} \det K_x)^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{k})^{T}K_x^{-1}(x - m_x)\}$$
+$$f_{X}(x) = ((2\pi)^{n} \det K_{X})^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{X})^{T}K_{X}^{-1}(x - m_{X})\}$$
 
-где $m_x \in \R^{n}, K_x \in \R^{n \times n}, K_x > 0, K_{x}^{T} = K_x$
+где $m_{X} \in \R^{n}, K_{X} \in \R^{n \times n}, K_{X} > 0, K_{x}^{T} = K_{X}$
 
 ## Лемма 2
 
-Пусть $X$ --- невырожденный нормальный вектор с параметрами $m_x$ и $K_x$.
+Пусть $X$ --- невырожденный нормальный вектор с параметрами $m_{X}$ и $K_{X}$.
 
-Тогда $M[X] = m_x$, а $K_x$ --- корвариационная матрица $X$.
+Тогда $M[X] = m_{X}$, а $K_{X}$ --- корвариационная матрица $X$.
 
 Рассмотрим основные свойства многомерного нормального распределения.
 
 ## Лемма 3
 
-Пусть $X \sim N(m_x, K_x), A \in \R^{m \times n}, b \in \R^{m}$.
+Пусть $X \sim N(m_{X}, K_{X}), A \in \R^{m \times n}, b \in \R^{m}$.
 
 Тогда:
 
 \begin{align*}
-Y = AX + b \sim N(m_y, K_y), \\
-m_y = Am_x + b, \\
-K_y = AK_xA^{T}.
+Y = AX + b \sim N(m_Y, K_Y), \\
+m_Y = Am_X + b, \\
+K_Y = AK_XA^{T}.
 \end{align*}
 
 ## Лемма 4
 
-Пусть $X \sim N(m_x, K_x)$.
+Пусть $X \sim N(m_{X}, K_{X})$.
 
 Тогда компоненты вектора $X$ ***независимы*** тогда и только тогда, когда они *некоррелированы*.
 
@@ -140,8 +140,7 @@ $$\psi_{X}(\lambda) = \int\limits_{\R}e^{i\lambda X}f_{X}(x)dx$$
 
 В этом случае $\psi_{X}(\lambda)$ является ***преобразованием Фурье $f_X$***.
 
-Поскольку преобразование Фурье взаимно однозначно, а $f_X$ однозначно определяет распределение, то характеристическая функция
-характеристическая функция $\psi_{X}(x)$ также однозначно определяет распределение с.в $X$.
+Поскольку преобразование Фурье взаимно однозначно, а $f_X$ однозначно определяет распределение, то характеристическая функция $\psi_{X}(x)$ также однозначно определяет распределение с.в $X$.
 
 Причем:
 
@@ -158,18 +157,18 @@ $$f_{X}(x) = \frac{1}{(2\pi)^{n}} \int\limits_{\R}e^{-i\lambda^{T} X}\psi_{X}(x)
 $$\psi_{Y}(\lambda) = e^{i\lambda^{T}b} \psi_{X}(A^{T}\lambda)$$
 
 2. компоненты вектора $X$ ***независимы*** тогда и только тогда, когда
-$$\psi_{Y}(\lambda) = \prod_{k = 1}^{n} \psi_{X_k}(\lambda_k)$$
+$$\psi_{Y}(\lambda) = \prod\limits_{k = 1}^{n} \psi_{X_k}(\lambda_k)$$
 
 ### Доказательство {-}
 
 1. $\psi_{Y}(\lambda) = M[e^{i\lambda^{T}Y}] = M[e^{i\lambda^{T} AX} e^{i\lambda^{T} b}] 
-= e^{i\lambda{T} b} M[e^{i(A^{T}\lambda)^{T} X}] = e^{i\lambda^{T} b} \psi_{X}(A^{T}\lambda)$
+= e^{i\lambda^{T} b} M[e^{i(A^{T}\lambda)^{T} X}] = e^{i\lambda^{T} b} \psi_{X}(A^{T}\lambda)$
 
 2. $\psi_{X}(\lambda) = \int\limits_{\R} \dots \int\limits_{\R} e^{i(\lambda_{1} x_{1} + \dots + \lambda_{n} x_{n})} f_{X}(x_1, \dots, x_n)dx_1 \cdot \dots \cdot dx_n =$
 {н/з} $= \int\limits_{\R} e^{i\lambda_{1} x_{1}} \cdot \dots \cdot e^{\lambda_{n}
 x_{n}} \cdot f_{X_{1}}(x) \cdot \dots \cdot f_{X_{n}}dx_1 \cdot \dots \cdot dx_n =
 \int\limits_{\R} e^{i\lambda_{1} x_{1}} f_{x_1}(x_1)dx_1 \cdot \dots \cdot \int\limits_{\R} e^{i\lambda_{n} x_{n}} f_{x_n}(x_n)dx_n=
-\prod_{k = 1}^{n} \psi_{X_k})(\lambda_{k})$
+\prod\limits_{k = 1}^{n} \psi_{X_k}(\lambda_{k})$
 
 $\blacksquare$
 <!-- mb make a bit pretty later -->
@@ -219,7 +218,7 @@ $\psi_{X}(\lambda) = \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} -
 
 ## Замечание {-}
 
-Поскольку $K_x$ --- невырожденная, симметричная и положительноопределенная, то существует $S \in \R^{n \times n}$ --- *ортогональная*
+Поскольку $K_{X}$ --- невырожденная, симметричная и положительноопределенная, то существует $S \in \R^{n \times n}$ --- *ортогональная*
 (т. е. $S^{T} = S^{-1}$) такая, что:
 
 $$S^{T}K_{X}S = \Lambda = diag(\lambda_1, \dots, \lambda_n)$$
@@ -257,7 +256,7 @@ $$X = m_{X} + S\Lambda^{\frac{1}{2}} Y,$$
 
 ***Условным математическим ожиданием абсолютно непрерывного случайного вектора*** $X$ относительно абсолютно непрерывного случайного вектора $Y$ называется:
 
-$$M[X] = \int\limits_{- \infty}^{+ \infty} xf_{X | Y} (x \mid Y)dx,$$
+$$M[X \mid Y] = \int\limits_{- \infty}^{+ \infty} xf_{X | Y} (x \mid Y)dx,$$
 
 где $f_{X \mid Y} (x \mid Y) = \frac{f_{z}(x, Y)}{f_{y}(Y)}, z = 
 \begin{pmatrix}
@@ -317,8 +316,8 @@ $M[M[X \mid Y]]= \int\limits_{- \infty}^{+ \infty} M[X \mid Y] f_{Y} (y)dy = \in
 
 Пусть $X, Y$ --- случайные векторы с конечными вторыми моментами. Тогда:
 
-<!-- check to power of 'phi(Y)..' -->
-$M[(X - \hat{X})\phi(Y)] = 0$
+<!-- check power of 'phi(Y)..' -->
+$M[(X - \hat{X})\phi(Y)^{T}] = 0$
 
 где $\hat{X} = M[X \mid Y]$
 
@@ -520,3 +519,245 @@ $P(\{ \omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq 0 \}) = P(\{ \omega
 = n \}) = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) =n \}) \overset{*}{=}$
 
 1. $\sum\limits_{n = N + 1}^{\infty}\{\omega : X_{n}(\omega) = n\} \subset \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\}$
+
+2. $P(\sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\} \leqslant \sum\limits_{n = N}^{\infty}
+P(\{\omega : X_{n}(\omega) = n \}) = \sum\limits_{n = N}^{\infty} \frac{1}{n^2}
+\overset{n \to \infty}{\longrightarrow} 0$, т.к. $\sum\limits_{n = 1}^{\infty} \frac{1}{n^2} < \infty$
+
+Тогда в силу *аксиомы непрерывности* $\overset{*}{=} 0$, т.е.
+$X_{n} \overset{\text{п.н.}}{\longrightarrow} 0$
+
+## Пример 2
+
+Рассмотрим ту же последовательность. Выберем $\varepsilon > 0$
+
+$$P(|X_{n} - 0| \leqslant \varepsilon) =
+\begin{cases}
+    1, & \varepsilon \geqslant n \\
+    1 - \frac{1}{n^2}, & \varepsilon \in (0; n) \\
+\end{cases}$$
+
+Тогда $X_{n} \overset{P}{\longrightarrow} 0$
+
+## Пример 3
+
+Рассмотрим ту же последовательность:
+
+$M[|X_{n} - 0|^{2}] = M[X_{n}^2] = 0^{2}(1 - \frac{1}{n^2}) + n^{2} \frac{1}{n^2} = 1 
+\cancel{\overset{n \to \infty}{\longrightarrow}} 0$
+
+Тогда $X_{n} \cancel{\overset{\text{с.к.}}{\longrightarrow}} 0$
+
+## Пример 4
+
+Пусть $f_{nk}:[0;1] \longrightarrow \{0; 1\}, n \in \N, k = \overline{1, n}$,
+
+$$f_{n, k} =
+\begin{cases}
+    0, & t \notin [\frac{k - 1}{n}; \frac{k}{n}], \\
+    1, & t \in [\frac{k - 1}{n}; \frac{k}{n}]. \\
+\end{cases}$$
+
+Пусть $X \sim R(0; 1)$. Рассмотрим последовательность с.в. $X_{nk} = f_{nk}(X)$. $\forall \omega \in
+\Omega X(\omega) \in [0;1]$. Тогда $\forall n \in \N \exists k = \overline{1, n}$ такое, что
+$X(\omega) \in [\frac{k - 1}{n}; \frac{k}{n}]$. Т.е. если $\varepsilon = \frac{1}{2}$, то $\forall n
+\in \N$ найдется $k = \overline{1, n}$ такой, что
+
+$$|f_{nk}(X(\omega)) - 0| > \varepsilon$$
+
+Тогда $X_{nk}(\omega) \cancel{\overset{n \to \infty}{\longrightarrow}} 0$, т.е.
+
+$$ \{\omega : \lim\limits_{n,k \to \infty} X_{nk}(\omega) = 0\} = \varnothing$$
+
+$$X_{nk} \cancel{\overset{\text{п. н.}}{\longrightarrow}} 0$$
+
+При этом $\forall \varepsilon > 0$
+
+$$R(|X_{nk} - 0| > \varepsilon) =
+\begin{cases}
+    0, & \varepsilon \geqslant 1, \\
+    P(X \in [\frac{k - 1}{n}, & \frac{k}{n}]), \varepsilon \in (0; 1) \\
+\end{cases} =
+\begin{cases}
+    0, & \varepsilon \geqslant 1, \\
+    \frac{1}{n}, & \varepsilon \in (0; 1) \\
+\end{cases} \overset{n \to \infty}{\longrightarrow} 0$$
+
+$$X_{nk} \overset{P}{\longrightarrow} 0$$
+
+$M[|X_{nk} - 0|^{2}] = M[X_{nk}] = M[f_{nk}(X)] = \int\limits_{0}^{1}f_{nk}(x) f_{x}(x)dx = \int\limits_{0}^
+{1} f_{nk}(x)dx = \int\limits_{\frac{k -1}{n}}^{\frac{k}{n}} 1 dx = \frac{1}{n} \overset{n \to \infty}
+{\longrightarrow} 0$
+
+$$X_{nk} \overset{\text{с.к}}{\longrightarrow} 0$$
+
+## Пример 5
+
+Рассмотрим последовательность с.в. $Y_{n_{1}k} = nK_{n_{1}k}$ Тогда $Y_{n_{1}k} \overset{\text{п.н.}}
+{\longrightarrow} 0$. $\forall \varepsilon > 0$.
+
+$P(|Y_{n_{1}k} - 0| > \varepsilon) =
+\begin{cases}
+    0, & \varepsilon \geqslant n, \\
+    P(X \in [\frac{k -1}{n}; \frac{k}{n}]), & \varepsilon \in (0; n) \\
+\end{cases} =
+\begin{cases}
+    0, & \varepsilon \geqslant n, \\
+    \frac{1}{n}, & \varepsilon \in (0; n) \\
+\end{cases}
+\overset{n to \infty}{\longrightarrow} 0$
+
+$$Y_{n_{1}k} \overset{P}{\longrightarrow} 0$$
+
+$M[|Y_{n_{1}k} - 0|^{2}] = M[n^{2} X_{nk}^{2}] = n^{2}M[X_{nk}] = n \overset{P}{\longrightarrow} \infty$
+
+$$Y_{n_{1}k} \cancel{\overset{\text{с.к}}{\longrightarrow}} 0$$
+
+## Замечание {-}
+
+Согласно определению для исследования на сходимость нужно знать совместное распределение с.в. $X_{n}$ и $X$,
+ а для случая *сходимости почти наверное* совместное распределение всей последовательности
+$\{X_{n}\}_{n \in \N}$ и $X$. Поэтому исследование на сходимость иначе, чем к детерминированной константе, довольно проблематично.
+
+## Лемма 1
+
+Пусть $X_{n} \overset{\text{п.н.}}{\longrightarrow} X$. Тогда $X_{n} \overset{P}{\longrightarrow} X$.
+
+### Доказательство {-}
+
+$0 = P(\{\omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq X(\omega)\}) = P(\{\omega : \exists 
+\varepsilon > 0 \forall N \in \N \exists n \geqslant N : |X_{n}(\omega) - X(\omega) > \varepsilon\}) = 
+P(\sum\limits_{\varepsilon > 0)} \prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty}
+\{ \omega : |X_{n}(\omega) - X(\omega)| > \varepsilon \}) \geqslant
+P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| >
+\varepsilon '\})$, $\forall \varepsilon ' > 0$
+
+Тогда $0 = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - 
+X(\omega)| > \varepsilon\})$,
+
+$$\sum\limits_{n = N + 1}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| > \varepsilon\}) \subset
+\sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| > \varepsilon\}$$
+
+В силу *аксиомы непрерывности*:
+
+$0 = \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| >
+\varepsilon\}) \geqslant \lim\limits_{N \to \infty} P(\{\omega : |X_{N}(\omega) - X(\omega)| > 
+\varepsilon\})$
+
+$$X_{N} \overset{P}{\longrightarrow} X$$ 
+\hfill $\blacksquare$
+
+## Лемма 2 (Неравенство Маркова)
+
+Пусть $P(X \geqslant 0) = 1$, M[X] < \infty$. Тогда $\forall \varepsilon > 0$
+
+$$P(X > \varepsilon) = \frac{M[X]}{\varepsilon}$$
+
+### Доказательство {-}
+
+$M[X] = \int\limits_{0}^{+ \infty} xdF_{X}(x) \geqslant \int\limits_{\varepsilon}^{+ \infty} xdF_{X}(x)
+\geqslant \varepsilon \int\limits_{\varepsilon}^{+ \infty} dF_{X}(X) = \varepsilon P(X > \varepsilon)$.
+$\blacksquare$
+
+## Следствие 1
+
+Пусть $M[X^{-k}] < \infty$. Тогда $\forall \varepsilon > 0$:
+
+$$P(|X| > \varepsilon) \leqslant \frac{M[|X|^{k}|]}{\varepsilon^{k}}$$
+
+### Доказательство {-}
+
+$P(|X| > \varepsilon) = P(|X|^{k} > \varepsilon^{k}) \leqslant \frac{M[|X|^{k}]}{\varepsilon^{k}}$.
+$\blacksquare$
+
+## Следствие 2 (Неравенство Чебышёва)
+
+Пусть $M[X^{2}] < \infty$. Тогда
+
+$$P(|X - M[X]| > \varepsilon) \leqslant \frac{D[X]}{\varepsilon^{2}}$$
+
+### Доказательство {-}
+
+$P(|X - M[X]| > \varepsilon) \leqslant \frac{M[|X - M[X]|^{2}]}{\varepsilon^{2}} = \frac{D[X]}
+{\varepsilon^{2}}$. $\blacksquare$
+
+## Лемма 3
+
+Пусть $X_{n} \overset{\text{с.к.}}{\longrightarrow} X$. Тогда $X_{n} \overset{P}{\longrightarrow} X$.
+
+### Доказательство {-}
+
+$P(|X_{n} - X| > \varepsilon) \leqslant \frac{M[|X_{n} - X|^{2}]}{\varepsilon^{2}} 
+\overset{n \to \infty}{\longrightarrow} 0$. $\blacksquare$
+
+## Теорема 1 (Бореля --- Кантелли)
+
+Пусть $A_{1}, \dots, A_{n} \subset \Omega, B = \prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty}
+A_{n}$. Тогда
+
+1. Если $\sum\limits_{n = 1}^{\infty} P(A_{n}) < \infty$, то $P(B) = 0$;
+
+2. Если $A_{1}, \dots, A_{n}$ **независимы в совокупности** и $\sum\limits_{n = 1}^{\infty} P(A_{n}) = \infty$
+, то $P(B) = 1$.
+
+### Доказательство {-}
+
+1. $P(B) = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} A_{n}) \overset{*}{=}$
+
+т.к. $\sum\limits_{n = N + 1}^{\infty} A_{n} \subset \sum\limits_{n = N}^{\infty} A_{n}$, то *по
+аксиоме непрерывности* $\overset{*}{=} \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} A_{n})
+\leqslant \lim\limits_{N \to \infty} \sum\limits_{n = N}^{\infty} P(A_{n})
+\overset{N \to \infty}{\longrightarrow} 0$, т.к. $\sum\limits_{n = 1}^{\infty} P(A_{n}) < \infty$
+
+2. $P(B) = \dots = \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} A_{n}) = 
+\lim\limits_{N \to \infty} (1 - P(\prod\limits_{n = N}^{\infty} \overline{A_{n}})) = 
+1 - \lim\limits_{N \to \infty} P(\prod\limits_{M = N}^{\infty} \prod\limits_{n = N}^{M} \overline{A_{n}})
+\overset{*}{=}$
+
+т.к. $\prod\limits_{n = N}^{M + 1} \overline{A_{n}} \subset \prod\limits_{n = N}^{M} \overline{A_{n}}$, то
+по *аксиоме непрерывности*
+
+$\overset{*}{=} 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} P(\prod\limits_{n = N}^{M}
+\overline{A_{n}}) = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} \prod\limits_{n = N}^{M}
+(1 - P(A_{n})) = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} \prod\limits_{n = N}^{M} 
+e^{\ln(1 - P(A_{n}))} = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty}
+e^{\sum\limits{n = N}^{M} \ln(1 - P(A_{n}))} \overset{*}{\geqslant}$
+
+т.к. $\ln(1 - t) = -t - \frac{t^{2}}{2} - \frac{t^{3}}{3} - \frac{t^{4}}{4} - \dots < -t$, то
+
+$\overset{*}{\geqslant} 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty}
+e^{- \sum\limits_{n = N}^{M} P(A_{n})} = 1 - \lim\limits_{n \to \infty} 0 = 1$. $\blacksquare$
+
+## Лемма 3
+
+Пусть $X_{n} \overset{P}{\longrightarrow} X$,
+
+$$\sum\limits_{n = 1}^{\infty} P(|X_{n} - X| > \varepsilon) < \infty$$ 
+Тогда $X_{n} \overset{\text{п.н.}}{\longrightarrow} X$
+
+### Доказательство {-}
+
+В силу [Теорема 1] $\forall \varepsilon > 0$
+
+$$P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n} - X| > \varepsilon \}) = 0$$
+
+Тогда
+
+$P(\{\omega : \lim\limits_{n \to \infty} X_{n} X_{n}(\omega) \neq X(\omega)\}) =
+P(\{\omega : \exists \varepsilon > 0, \forall N \in \N \exists n \geqslant N : |X_{n}(\omega) - X(\omega)|> 
+\varepsilon \}) = 
+P(\{\omega : \exists M \in \N, \forall N \in \N \exists n \geqslant N : |X_{n}(\omega) - X(\omega)|>
+\frac{1}{M}\}) = P(\sum\limits_{M = 1}^{\infty} \prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} 
+\{ \omega : |X_{n} - X| > \frac{1}{M} \}) \leqslant 
+\sum\limits_{M = 1}^{\infty} P(\prod\limits_{N = 1}^{\infty} \sum\limits{n = N}^{\infty} 
+\{ \omega : |X_{n} - X| > \frac{1}{M} \}) = 0$. $\blacksquare$
+
+## Замечание {-}
+
+1.
+
+$X_{n} \overset{\text{с.к.}}{\longrightarrow} X \implies X_{n} \overset{P}{\longrightarrow} X$
+
+ИЛИ
+
+$X_{n} \overset{\text{п.н.}}{\longrightarrow} X \implies X_{n} \overset{P}{\longrightarrow} X$
