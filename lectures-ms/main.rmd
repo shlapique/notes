@@ -28,7 +28,7 @@ header-includes:
 \tableofcontents
 \clearpage
 
-Источники {-}
+# Источники {-}
 
 * [Ивченко Г. И., Медведев Ю. И. "Математическая статистика", изд. "Высшая школа", 1984](https://www.hse.ru/pubs/share/direct/content_document/103185710)
 
@@ -1409,3 +1409,608 @@ $$\frac{\sum\limits_{k = 1}^{n} X_{k} - n m_{X}}{\sigma_{X} \sqrt{n}} =
 
 7. \fbox{$\frac{\hat{d_{X}}(n) - \sigma_{X}^{2}}{\sqrt{\mu_{4} - \mu_{2}}} \sqrt{n}
 \overset{d}{\longrightarrow} N(0; 1)$}
+
+\pagebreak
+
+# Основные распределения в статистике
+
+## \underline{Точечные оценки} {-}
+
+## Опредление 1
+
+Пусть $X_{1}, \dots, X_{n}$ --- *независимые* с.в.
+
+Тогда
+
+$$Y = \sum\limits_{k = 1}^{n} X_{k}^{2} \sim \chi^{2}(n)$$
+
+имеет ***распределение хи-квадрат*** с $n$ степенями свободы.
+
+## Свойства распределения $\chi^{2}(n)$
+
+1. Y имеет плотность вероятности
+
+$$f_{Y}(x; n) = 
+\begin{cases}
+    \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} \chi^{\frac{n}{2} - 1} e^{- \frac{x}{2}}, & x > 0 \\
+    0, & x \leqslant 0 \\
+\end{cases}$$
+
+где $\Gamma(z) = \int\limits_{0}^{+ \infty} y^{z - 1} e^{-y} dy$ --- гамма-функция.
+
+<!-- add PICTURE OF DISTRIBUTION
+
+-->
+
+2. $Y$ имеет характеристическую функцию
+
+$$\psi_{Y}(\lambda) = (1 - 2\lambda i)^{\frac{n}{2}}$$
+
+3. $Y \sim \chi^{2}(n), M[Y] = n, D[Y] = 2n.
+
+4. Пусть *н / з* $Y_{1} \sim \chi^{2}(n_{1}), \dots, Y_{k} \sim \chi^{2}(n_{k})$. Тогда
+
+$$\sum\limits_{k = 1}^{n} Y_{i} \sim \chi^{2}(\sum\limits_{k = 1}^{n} n_{i})$$
+
+5. $$\frac{Y - n}{\sqrt{2n}} \overset{d}{\longrightarrow} N(0; 1)$$
+
+6. Пусть $Z_{n}$ *порожденная распределением $N(m_{X}, \sigma_{X}^{2})$. Тогда если 
+
+$\hat{d_{X}} = \frac{1}{n} \sum\limits_{k = 1}^{n}(X_{k} - \overline{X_{n}})^{2}$, 
+
+то $\frac{n \hat{d_{X}}}{\sigma_{X}^{2}} \sim \chi^{2}(n - 1)$.
+
+***(Доказательство приведено далее в теореме Фишера)***
+
+## Определение 2
+
+Пусть $X_{0}, X_{1}, \dots, X_{n} \sim N(0; 1)$ --- *независимые с.в.. Тогда с.в.
+
+$$Y = \frac{X_{0}}{\sqrt{\frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}^{2}}} \sim t(n)$$
+
+имеем ***распределение Стьюдента*** с $n$ степенями свободы.
+
+## Свойства распределения $t(n)$
+
+1. $Y$ имеет плотность вероятности
+
+$$f_{x; n} = \frac{\Gamma(\frac{n + 1}{2})}{\sqrt{\pi n} \Gamma(\frac{n}{2})} (1 + \frac{x^{2}}{n})^
+{- \frac{n + 1}{2}}$$
+
+<!-- add PICTURE OF DISTRIBUTION
+
+-->
+
+2. $Y \sim t(n), M[Y] = 0, n \geqslant 2$
+
+$$D[Y] = \frac{n}{n - 2}, n > 2$$
+
+3. $t(1) = C$ --- *распределение Коши*
+
+4. $Y \sim t(n), Y \overset{d}{\longrightarrow} N(0; 1)$
+
+5. Пусть $Z_{n}$ порождена распределением $N(m_{X}; \sigma_{X}^{2})$. Тогда
+
+$$\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}}}} \cdot \sqrt{n - 1} \sim t(n - 1)$$
+
+***(Доказательство приведено далее в теореме Фишера)***
+
+## Определение 3
+
+Пусть $X \sim \chi^{2}(n), Y \sim \chi^{2}(m)$ --- *независимые* с.в. Тогда с.в. $V = \frac{X m}{Y n} \sim
+F(n; m)$ имеет ***Распределение Фишера*** с $n$ и $m$ степенями свободы.
+
+## Свойства распределения $F(n; m)$
+
+1. $V$ имеет плотность вероятности 
+
+$$f_{V}(x, n, m) = 
+\begin{cases}
+    \frac{\Gamma(\frac{n + m}{2})}{\Gamma(\frac{n}{2}) \cdot \Gamma(\frac{m}{2})} n^{\frac{n}{2}}
+m^{\frac{n}{2}} \frac{x^{\frac{n}{2} - 1}}{(m + nx)^{\frac{n + m}{2}}}, & x > 0 \\
+    0, & x \leqslant 0 \\
+\end{cases}$$
+
+<!-- add PICTURE OF DISTRIBUTION
+
+-->
+
+2. $V \sim F(n; m), M[V] = \frac{m}{m - 2}, m > 2$, 
+
+$$D[V] = \frac{2m^{2}(m + n - 2)}{n(m - 2)^{2}(m - 4)}, m > 4$$
+
+3. Пусть $Z_{n} = (X_{1}, \dots, X_{n})^{T}$ и $W_{m} = (Y_{1}, \dots, Y_{m})^{T}$ --- 
+*однородные* выборки, порожденные распределениями $N(m_{X}; \sigma^{2})$ и $N(m_{Y}; \sigma^{2})$.
+
+Тогда если $Z_{n}$ и $W_{n}$ **независимы**,
+
+$$V = \frac{\frac{1}{n - 1} \sum\limits_{k = 1}{n}(X_{k} - \overline{X_{n}})^{2}}
+{\frac{1}{m - 1} \sum\limits_{k = 1}{n}(Y_{k} - \overline{Y_{m}})^{2}} \sim F(n - 1; m - 1)$$
+
+***(Данный факт следует из свойства **6** распределения $\chi^{2}(n)$)***
+
+## Определение 4
+
+***Параметром $\theta \in \R^{n}$ распределения*** с.в. $X$ называется любая числовая характеристика,
+входящая в $F_{x}(x, \theta)$ явно.
+
+## Определение 5
+
+***Точечной оценкой*** неизвестного параметра $\theta$ называется произвольная стастистика
+$\hat{\theta}(Z_{n})$.
+
+## Замечание {-}
+
+Оценка $\hat{\theta}(Z_{n})$ является с.в.
+
+\underline{На практике используется ее реализация}.
+
+## Определение 6
+
+***Оценка*** $\hat{\theta}(Z_{n})$ называется ***несмещенной***, если
+$$M[\hat{\theta}] = \theta$$
+
+## Определение 7
+
+Оценка $\hat{\theta}(Z_{n})$ называется ***состоятельной***, если
+$$\hat{\theta} \overset{P}{\longrightarrow} \theta$$
+
+## Определение 8
+
+Оценка $\hat{\theta}(Z_{n})$ называется ***сильно состоятельной***, если
+$$\hat{\theta} \overset{\text{п.н.}}{\longrightarrow} \theta$$
+
+## Определение 9
+
+Оценка $\hat{\theta}(Z_{n})$ называется ***с.к. состоятельной***, если
+$$\hat{\theta} \overset{\text{с.к.}}{\longrightarrow} \theta$$
+
+## Замечание {-}
+
+1. Из свойств $\overline{X_{n}}$ следует, что $\overline{X_{n}}$ --- **несмещенная** и
+**сильносостоятельная** оценка $m_{X}$.
+
+2. Из свойств $\hat{d_{X}}$ следует, что $\hat{d_{X}}$ --- **смещенная** и **сильносостоятельная** 
+оценка $m_{X}$.
+
+## Определение 10
+
+*Несмещнная* оценка $\hat{\theta}^{*}(Z_{n})$ называется **эффективной**, если $\forall \hat{\theta}(Z_{n})$
+--- *несмещенной* оценки верно, что
+
+$$D[\hat{\theta}^{*}(Z_{n})] \leqslant D[\hat{\theta}(Z_{n})]$$
+
+## Пример 
+
+Пусть $M[\overline{X}] < \infty$. Тогда $\overline{X}$ --- *сильно состоятельная* оценка $m_{X}$. Если
+$D[\overline{X}] < \infty$, то $\overline{X}$ --- *с.к.-состоятельная* оценка $m_{X}$
+
+***(Доказательство следует из ЗБЧ)***
+
+## Теорема 1 {#theorem-7-1}
+
+Пусть $\hat{\theta_{1}}, \hat{\theta_{2}}$, --- *с.к.-оптимальные* оценки параметра $\theta$. Тогда 
+
+$$\hat{\theta_{1}} = \hat{\theta_{2}}$$
+
+### Доказательство {-}
+
+Т.к. $\hat{\theta_{1}}$ и $\hat{\theta_{2}}$ **оптимальны**, то $D[\hat{theta_{1}}] = D[\hat{theta_{2}}] =
+d$. 
+
+Пусть $\hat{\theta_{3}} = \frac{1}{2} (\hat{\theta_{1}} + \hat{\theta_{2}})$. Тогда
+
+$D[\hat{\theta_{3}}] = \frac{1}{4} D[\hat{\theta_{1}} + \hat{\theta_{2}}] = \frac{1}{4}
+(D[\hat{\theta_{1}}] + [D\hat{\theta_{2}}] + 2cov(\hat{\theta_{1}}, \hat{\theta_{2}})) =
+\frac{1}{2}(d + cov(\hat{\theta_{1}}, \hat{\theta_{2}})) \leqslant 
+\frac{1}{2}(d + |cov(\hat{\theta_{1}}, \hat{\theta_{2}})|)
+\leqslant \frac{1}{2}(d + \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}) = d$
+
+Тогда *в силу оптимальности* $\hat{\theta_{1}}$ и $\hat{\theta_{2}}$ 
+
+$$D[\hat{\theta_{3}}] = d$$
+
+$d = D[\hat{\theta_{3}}] = \frac{1}{2}(d + cov(\hat{\theta_{1}}, \hat{\theta_{2}}))$, 
+$cov(\hat{\theta_{1}}, \hat{\theta_{2}}) = d = \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}$,
+
+т.е. в *нераввенстве Коши-Буняковского* достигается *равенство*. Следовательно,
+
+$$\hat{theta_{1}} = \alpha \hat{theta_{2}} + \beta, \alpha > 0$$
+
+$$\begin{cases}
+    M[\hat{\theta_{1}}] = \alpha M[\hat{\theta_{2}}] + \beta \\
+    D[\hat{\theta_{1}}] = \alpha^{2} D[\hat{\theta_{2}}] \\
+\end{cases} \implies
+\begin{cases}
+    \theta = \alpha \theta + \beta \\
+    d = \alpha^{2} d \\
+\end{cases} \implies
+\begin{cases}
+    \beta = 0 \\
+    \alpha = 1 \\
+\end{cases}$$ 
+
+Окончательно, $\hat{\theta_{1}} = \hat{\theta_{2}}$. $\blacksquare$
+
+\pagebreak
+
+# Эффективные оценки
+
+Обозначим через $f(x; \theta)$ плотность вероятности с.в. $X$, порождающей **выборку** в *абсолютно
+неперывном случае* или **функцию** в *дискретном случае*. В силу *критерия независимости* функция
+
+$$L(z_{n}; \theta) = \prod\limits_{k = 1}^{n} f(x_{k}; \theta)$$
+
+является *плотностью вероятности* с.в. $Z_{n}$.
+
+## Определение 1
+
+$L(z_{n}; \theta)$ при фиксированном $z_{n} \in S$ и переменной $\theta$ называется ***функцией 
+правдоподбия***.
+
+## Замечание {-}
+
+Далее будем полагать, что $\theta \in \R^{1}$. 
+
+## Определение 2
+
+Распределение с.в. $X$ называется ***регулярным***, если
+
+1. $\sqrt{f(x;\theta)}$ --- **дифференцируема** по $\theta$ *почти для всех* $x$.
+
+2. $i(\theta) = \int\limits_{- \infty}^{+ \infty}(\frac{\partial \ln f(x; \theta)}{\partial \theta})^{2}
+f(x; \theta) dx$
+**конечна**, **непрерывна** по $\theta$ и **положительна**.
+
+## Замечание {-}
+
+Далее будем предполагать, что выборка $Z_{n}$ порождена *регулярным распределением*.
+
+## Определение 3
+
+Случайная величина
+
+$$U(Z_{n}; \theta) = \frac{\partial \ln L(Z_{n}; \theta)}{\partial \theta} = 
+\sum\limits_{k = 1}^{n} \frac{\partial \ln f(x; \theta)}{\partial \theta}$$
+
+называется ***вкладом выборки $Z_{n}$***
+
+## Лемма 1 {#lemma-8-1}
+
+Пусть распределение *регулярное*. Тогда 
+
+$$M[U(Z_{n}; \theta)] = 0$$
+
+### Доказательство {-}
+
+В силу *условия нормировки*
+
+$$\int\limits_{\R^{n}} L(z_{n}; \theta)d_{X_{1}}, \dots, d_{X_{n}} = 1$$
+
+С учетом *условий регулярности*
+
+$0 = \frac{\partial}{\partial \theta} \int\limits_{\R^{n}} L(z_{n}; \theta)d_{X_{1}}, \dots, d_{X_{n}} =
+\int\limits_{\R^{n}} \frac{\partial L(z_{n}; \theta)}{\partial \theta}d_{X_{1}}, \dots, d_{X_{n}} =
+\int\limits_{\R^{n}} \frac{\partial \ln L(z_{n}; \theta)}{\partial \theta}
+L(z_{n}; \theta)d_{X_{1}}, \dots, d_{X_{n}} = M[U(Z_{n}; \theta)]$. $\blacksquare$
+
+## Определение 4
+
+***Информацией Фишера*** о параметре $\theta$, ***содержащейся в выбрке $Z_{n}$***, называют
+
+$$I_{n}(\theta) = D[U(Z_{n}; \theta)] \overset{\text{регул.}}{=} M[U^{2}(Z_{n}; \theta)]$$
+
+$i(\theta) = M[(\frac{\partial \ln f(x; \theta)}{\partial \theta})^{2}]$ называется ***количеством
+информации Фишера, содержащимся в одном наблюдении***.
+
+## Замечание {-}
+
+Из определения $U(Z_{n}; \theta)$ и *независимости* элементов выборки следует, что
+$I_{n}(\theta) = n \cdot i(\theta)$, т.е. количество информации **выростает пропорционально объему
+выборки**.
+
+## Лемма 2 {#lemma-8-2}
+
+Пусть $f(x; \theta)$ *дважды непрерывно дифференцируема* по $\theta$. Тогда
+
+$$i(\theta) = - M[\frac{\partial^{2} \ln f(X_{1}; \theta)}{\partial \theta^{2}}]$$
+
+### Доказательство {-}
+
+$U(X_{1}; \theta) = \frac{\partial \ln f(X_{1}; \theta)}{\partial \theta}$. С учетом [Леммы 1](#lemma-8-1)
+
+$0 = \frac{\partial}{\partial \theta} M[U(X_{1}; \theta)] = \frac{\partial}{\partial \theta}
+\int\limits_{- \infty}^{+ \infty} \frac{\partial \ln f(x; \theta)}{\partial \theta} f(x; \theta) dx =
+\int\limits_{- \infty}^{+ \infty} \frac{\partial^{2} \ln f(x; \theta)}{\partial \theta^{2}} f(x; \theta)dx +
+\int\limits_{- \infty}^{+ \infty} \frac{\partial \ln f(x; \theta)}{\partial \theta} \cdot
+\frac{\partial f(x; \theta)}{\partial \theta} dx = 
+\int\limits_{- \infty}^{+ \infty} \frac{\partial^{2} \ln f(x; \theta)}{\partial \theta^{2}} f(x; \theta)dx +
+\int\limits_{- \infty}^{+ \infty} (\frac{\partial \ln f(x; \theta)}{\partial \theta})^{2} f(x; \theta)dx =
+M[\frac{\partial^{2} \ln f(x; \theta)}{\partial \theta^{2}}] + i(\theta)$. $\blacksquare$
+
+## Пример 1
+
+Пусть $X \sim N(\theta; \sigma^{2})$.
+
+$$f(x; \theta) = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp\{- \frac{(x - \theta)^{2}}{2 \sigma^{2}}\}$$
+
+$$U(X_{1}; \theta) = \frac{\partial}{\partial \theta}(- \frac{1}{2} \ln(2\pi \sigma^{2}) - 
+\frac{(x - \theta)^{2}}{2 \sigma^{2}}) = \frac{X_{T} \theta}{\sigma^{2}}$$
+
+$$\frac{\partial^{2} \ln f(x; \theta)}{\partial \theta^{2}} = - \frac{1}{\sigma^{2}}$$
+
+С учетом [Леммы 2](#lemma-8-2)
+
+$$i(\theta) = -M[- \frac{1}{\sigma^{2}}] = \frac{1}{\sigma^{2}}$$
+
+## Пример 2
+
+Рассмотрим нерегулярную модель.
+
+$$X \sim R(0; \theta)$$
+
+Здесь из множества $\int\limits_{0}^{\theta} \frac{1}{\theta} dx = 1$ не следует, что
+$\int\limits_{0}^{\theta} \frac{\partial}{\partial \theta}(\frac{1}{\theta}) dx = 0$, т.к. при
+диффференцировании по $\theta$ появляется еще одно слагаемое:
+
+$\frac{\partial}{\partial \theta} \int\limits_{0}^{\theta}\frac{1}{\theta} dx = 
+\frac{1}{\theta} + \int\limits_{0}^{\theta} \frac{\partial}{\partial \theta}(\frac{1}{\theta})dx$
+
+## Теорема 1 (Неравенство Рао-Крамера) {#theorem-8-1} 
+ Пусть распределение $F(x; \theta)$, порождающее выборку $Z_{n}$ *регулярно*. Тогда для любой
+ несмещенной оценки $\hat{\theta}$ верно неравенство:
+
+$$D[\hat{\theta}(Z_{n})] \geqslant \frac{1}{I_{n}(\theta)} = \frac{1}{n i(\theta)}$$
+
+При этом равенство достигается лишь в том случае, если 
+
+$\hat{\theta}(Z_{n}) - \theta = a(\theta) \cdot U(Z_{n}; \theta)$, где
+
+$a(\theta)$ --- некоторая функция от $\theta$
+
+### Доказательство {-}
+
+В силу *несмещенности* $\hat{\theta}$
+
+$$M[\hat{\theta}] = \int\limits_{\R^{n}} (z_{n})L(z_{n}; \theta)dx_{1}, \dots, dx_{n} = \theta$$
+
+В силу *регулярности* и [Леммы 1](#lemma-8-1)
+
+$1 = \frac{\partial}{\partial \theta} (\theta) = \frac{\partial}{\partial \theta} M[\hat{\theta}] = 
+\int\limits_{\R^{n}} \hat{\theta}(z_{n}) \frac{\partial L(z_{n}; \theta)}{\partial \theta}
+dx_{1}, \dots, dx_{n} = 
+\int\limits_{\R^{n}} \hat{\theta}(z_{n}) \frac{\partial \ln L(z_{n}; \theta)}{\partial \theta} \cdot
+L(z_{n}; \theta) dx_{1}, \dots, dx_{n} = M[\hat{\theta} U(Z_{n}; \theta)] = 
+M[(\hat{\theta} - \theta)(U(Z_{n}; \theta) - \theta)] + \theta \cdot M[U(Z_{n}; \theta)] =
+cov(\hat{\theta}, U(Z_{n}; \theta))$
+
+Откуда с учетом *неравенства Коши-Буняковского* 
+
+$$1^{2} \leqslant D[\hat{\theta}] \cdot D[U(Z_{n}; \theta)] = D[\hat{\theta}] \cdot I_{n}(\theta)$$
+
+Причем *равенство достигается* в том и только том случае, когда $\hat{\theta} = a(\theta)U(Z_{n}; \theta) +
+b(\theta)$
+
+Но с учетом [Леммы 1](#lemma-8-1) $b(\theta) = 0$.
+
+## Определение 5
+
+Оценка $\hat{\theta}^{*}(Z_{n})$, *для которой достигается равенство в неравенстве Рао-Крамера* называется
+***эффективной***
+
+## Замечание {-}
+
+В силу [Теоремы 1](#theorem-8-1) эффективная оценка является *оптимальной*. А с учетом 
+[Теоремы 7.1](#theorem-7-1) эффективная оценка **единственна**
+
+## Пример 3
+
+Пусть $X \sim N(\theta; \sigma^{2})$
+
+$U(Z_{n}; \theta) = \sum\limits_{k = 1}^{n} \frac{\partial \ln f(X_{k}; \theta)}{\partial \theta} = 
+\sum\limits_{k = 1}^{n} \frac{X_{k} - \theta}{\sigma^{2}} = \frac{n}{\sigma^{2}} (\overline{X_{n}} -
+\theta)$
+
+Т.о. $a(\theta) = \frac{\sigma^{2}}{n}$. Тогда $a(\theta) U(Z_{n}; \theta) = \overline{X_{n}} - \theta$, 
+откуда следует, что $\overline{X_{n}}$ --- *эффективная оценка*.
+
+\pagebreak
+
+# Методы построения точеченых оценок
+
+## \underline{Метод максимального правдоподобия} {-}
+
+## Определение 1
+
+***Оценкой максимального правдоподобия*** $\theta$ называют 
+
+$$\hat{\theta} = \underset{\theta}{argmax} L(Z_{n};\theta)$$
+
+## Замечание {-}
+
+1. В силу *монотонности* функции $\ln x$ справедливо представление:
+
+$$\hat{\theta} = \underset{\theta}{argmax} L(Z_{n}; \theta) = \underset{\theta}{argmax} 
+\ln L(Z_{n}; \theta)$$
+
+2. Если $L(Z_{n}; \theta)$  --- **гладкая** и **максимум** по $\theta$ достигается **внутри
+множества** возможных значений $\theta$, то $\theta$ можно вычислить из *уравнения правдоподбия*
+
+$$U(Z_{n}; \theta) = \frac{\partial \ln L(z_{n}; \theta)}{\partial \theta} = 0$$
+
+3. Из [Теоремы 8.1](#theorem-8-1) следует, что $\hat{\theta}$ **будет также эффективной оценкой**.
+
+## Пример 1
+
+Рассмотрим случайную величину $X \sim N(m; \sigma^{2})$ с неизвестными $m$ и $\sigma^{2}$:
+
+$$\theta = (m; \sigma^{2})^{T}$$
+
+$$L(Z_{n}; \theta) = \prod\limits_{k = 1}^{n} \frac{1}{\sqrt{2\pi \theta_{2}}} 
+e^{- \frac{(X_{k} - \theta_{1})^{2}}{2 \theta_{2}}}$$
+
+$$\ln L(Z_{k}; \theta) = \sum\limits_{k = 1}{n}(- \frac{1}{2} \ln(2\pi) - \frac{1}{2} \ln \theta_{2} - 
+\frac{(X_{k} - \theta_{1})^{2}}{2 \theta_{2}})$$
+
+$\begin{cases}
+    \frac{\partial \ln L(Z_{n}; \theta)}{\partial \theta_{1}} = \sum\limits_{k = 1}^{n}
+\frac{(X_{k} - \theta_{1})}{\theta_{2}} = \frac{1}{\theta_{2}}(n \overline{X_{n}} - n \theta_{1}) = 0 \\
+    \frac{\partial \ln L(Z_{n}; \theta)}{\partial \theta_{2}} = \sum\limits_{k = 1}^{n}
+(\frac{(X_{k} - \theta_{1})^{2}}{2 \theta_{2}^{2}} - \frac{1}{2 \theta_{2}})
+= \frac{1}{2 \theta_{2}}(n \hat{d_{X}}(n) - n \theta_{2}) = 0 \\
+\end{cases}$
+
+$\begin{cases}
+    \hat{\theta_{1}} = \overline{X_{n}} \\
+    \hat{\theta_{2}} = \hat{d_{X}}(n) \\
+\end{cases}$
+
+## Пример 2
+
+Пусть $X \sim R(\theta_{1}; \theta_{2})$. В этом случае $L(Z_{n}; \theta)$ **не является** непрерывной:
+
+$$L(Z_{n}; \theta) = \prod\limits_{k = 1}^{n} f_{X} (X_{k}; \theta) =
+\begin{cases}
+    0, & \exists k = \overline{1, n} : X_{k} \notin [\theta_{1}; \theta_{2}] \\
+    \frac{1}{(\theta_{2} - \theta_{1})^{n}}, & \forall k = \overline{1, n} : X_{k} \in [\theta_{1}; 
+\theta_{2}] \\
+\end{cases}$$
+
+Тогда оценка максимального правдоподобия **не может быть вычислена из уравнений правдаподобия**. Хотя
+$\hat{\theta}$ существует:
+
+$$L(Z_{n}; \theta) = 
+\begin{cases}
+    0, & \min_{k = \overline{1, n}} X_{k} < \theta_{1} || \max_{k = \overline{1, n}} X_{k} > \theta_{2} \\
+    \frac{1}{(\theta_{2} - \theta_{1})^{n}}, & \theta_{1} \leqslant \min_{k = \overline{1, n}} X_{k} 
+\leqslant \max_{k = \overline{1, n}} X_{k} \leqslant \theta_{2} \\
+\end{cases}$$
+
+Откуда $L(Z_{n}; \theta)$ *возрастает* по $\theta_{1}$ и *убывает* по $\theta_{2}$
+
+Тогда $\hat{\theta_{1}} = \min_{k = \overline{1, n}} X_{k} = X^{(1)}, 
+\hat{\theta_{1}} = \max_{k = \overline{1, n}} X_{k} = X^{(n)}$
+
+## Замечание {-}
+
+Для МП-оценок выполняется **принцип инвариантности**:
+
+Пусть $g(\theta)$ --- *биективное* отображение.
+
+Тогда МП-оценка $\hat{g}(Z_{n}) = g(\hat{\theta}(Z_{n}))$.
+
+Действительно, 
+
+$\sup\limits_{\theta} L(Z_{n}; \theta) = \sup\limits_{g} L(Z_{n}; g^{-1}(g))$
+
+Тогда $g^{-1}(\hat{g}) = \hat{\theta}$, т.е. $\hat{g} = g(\hat{\theta})$
+
+## Пример 3
+
+Пусть $X \sim N(\theta_{1}; \theta_{2})$. Требуется оценить $F_{X}(x_{0}) = \frac{1}{2} + 
+\Phi_{0}(\frac{x_{0} - \theta_{1}}{\theta_{2}})$. Рассмотрим *биективное отображение*
+
+$$g(\theta_{1}; \theta_{2}) = 
+\begin{pmatrix}
+    \frac{1}{2} + \Phi_{0}(\frac{x_{0} - \theta_{1}}{\theta_{2}}) \\
+    \theta_{2} \\
+\end{pmatrix}$$
+
+Тогда 
+
+$$\hat{g}(Z_{n}) = 
+\begin{pmatrix}
+    \frac{1}{2} + \Phi_{0}(\frac{x_{0} - \overline{X_{n}}}{\sqrt{\hat{d_{X}(n)}}}) \\
+    \sqrt{\hat{d_{X}(n)}} \\
+\end{pmatrix}$$
+
+$X_{0} \in \R$
+
+## Замечание {-}
+
+Для решения уравнений правдоподобия часто используются *численные методы*
+
+## Теорема 1 {#theorem-9-1}
+
+Пусть распределение с.в. $X$, порождающей выборку $Z_{n}$, *регулярно*.
+
+Функция правдоподобия $L(z_{n}; \theta)$ *имеет единственный достижимый максимум* по $\theta \forall z_{n}
+\in S, n \in \N$. Тогда
+
+1. МП-оценка $\hat{\theta}$ ***состоятельна***;
+
+2. Если $|\frac{\partial^{k} f(x; \theta)}{\partial \theta^{k}}| \leqslant g_{k}(x), \forall \theta$, где
+
+$\int\limits_{\R} g_{1}(x)dx < \infty, \int\limits_{\R} g_{2}(x)dx \leqslant \infty, 
+\int\limits_{\R} g_{3}(x)f(x; \theta)dx \leqslant C \leqslant \infty$, а
+функция $i(\theta) = \int\limits_{\R}
+(\frac{\partial \ln f(x; \theta)}{\partial \theta})^{2} f(x; \theta)dx$ *конечна* и *положительна*
+$\forall \theta$, то 
+
+2.1 $M[\hat{\theta}] \to \theta$ ***(асимптотически несмещенность)***
+
+2.2 $\hat{\theta}$ ***сильно состоятельна***;
+
+2.3 $\sqrt{n i (\theta)}(\hat{\theta} - \theta) \overset{d}{\longrightarrow} N(0; 1)$
+
+***Асимптотическая нормальная***
+
+## \underline{Метод моментов} {-}
+
+## Определение 2
+
+Пусть $\theta = (\theta_{1}, \dots, \theta_{r})^{T}$, а для распределения $F_{X}(x; \theta)$, порождающего
+выборку $Z_{n}, M[X^{r}] < \infty$
+
+Тогда 
+
+$$\begin{cases}
+    \nu_{1}(\theta) = & \hat{\nu_{1}}(n) \\
+    \vdots & \vdots \\
+    \nu_{r}(\theta) = & \hat{\nu_{r}}(n) \\
+\end{cases}$$
+
+называется ***системой метода моментов***.
+
+## Определение 3
+
+Решение системы метода моментов 
+
+$$\hat{\theta_{i}} = \phi_{i}(\hat{\nu_{1}}(n), \dots, \hat{\nu_{r}}(n)), i = \overline{1, r}$$
+
+называется ***оценкой метода моментов***.
+
+## Теорема 2 {#theorem-9-2}
+
+Пусть функции $\phi_{1}, \dots, \phi_{r}$, определяющие оценку метода моментов *непрерывные* и 
+*биективные*. Тогда оценка метода моментов ***состоятельна***.
+
+### Доказательство {-}
+
+Доказательство следует из **состоятельности** статистик $\hat{\nu_{i}}(n)$.
+
+## Пример 1
+
+$X \sim N(\theta_{1}; \theta_{2})$. Тогда $\hat{\theta_{1}} = \overline{X_{n}}, 
+\hat{\theta_{2}} = \hat{d_{X}}(n)$
+
+## Пример 2
+
+$X \sim R(\theta_{1}; \theta_{2})$. Тогда
+
+$$\begin{cases}
+    \overline{X_{n}} = \frac{\theta_{1} + \theta_{2}}{2} \\
+    \hat{\d_{X}}(n) = \frac{(\theta_{2} - \theta_{1})^{2}}{12} \\
+\end{cases}
+\begin{cases}
+    \theta_{1} + \theta_{2} = 2 \overline{X_{n}} \\
+    \theta_{2} - \theta_{1} = 2 \sqrt{\hat{d_{X}}(n)}\sqrt{3} \\
+\end{cases}
+\begin{cases}
+    \theta_{1} = \overline{X_{n}} - \sqrt{3 \hat{d_{X}}(n)} \\
+    \theta_{2} = \overline{X_{n}} + \sqrt{3 \hat{d_{X}}(n)} \\
+\end{cases}$$
+
+## Замечание {-}
+
+Метод моментов **трудноприменим**, если *теоретические моменты не удается вычислить явно*.
