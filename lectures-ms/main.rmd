@@ -4,7 +4,7 @@ output:
     latex_engine: xelatex
     number_sections: true
 linkcolor: blue
- 
+
 mainfont: Linux Libertine O
 fontsize: 12pt
 numbersections: true
@@ -21,14 +21,14 @@ header-includes:
 - \newcommand{\Ll}{\mathbb{L}}
 - \newcommand{\N}{\mathbb{N}}
 
-- \setlength{\headheight}{15pt}
+- \setlength{\headheight}{15pt} 
 ---
 \input{./files/title.tex}
 
 \tableofcontents
 \clearpage
 
-# Источники {-}
+Источники {-}
 
 * [Ивченко Г. И., Медведев Ю. И. "Математическая статистика", изд. "Высшая школа", 1984](https://www.hse.ru/pubs/share/direct/content_document/103185710)
 
@@ -649,7 +649,7 @@ $$X_{N} \overset{P}{\longrightarrow} X$$
 
 ## Лемма 2 (Неравенство Маркова)
 
-Пусть $P(X \geqslant 0) = 1$, M[X] < \infty$. Тогда $\forall \varepsilon > 0$
+Пусть $P(X \geqslant 0) = 1$, $M[X] < \infty$. Тогда $\forall \varepsilon > 0$
 
 $$P(X > \varepsilon) = \frac{M[X]}{\varepsilon}$$
 
@@ -808,7 +808,7 @@ D[\overline{X_{n}}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] =
 
 С учетом [Леммы 3.3](#lemma-3-3) $\overline{X_{n}} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
 
-## Теорема 2 (Закон Больших Чисел Колмогорова)
+## Теорема 2 (Закон Больших Чисел Колмогорова) {#theorem-4-2}
 
 Пусть $Z_{n}$ --- *однородная* выборка, $M[X_{k}] = m_{X} < \infty$.
 
@@ -932,6 +932,480 @@ $F_{X}(x)$.
 
 Пусть $C = 0$, $x_{0}$ --- точка **непрерывности** $F_{X}(x)$. Тогда $\forall \varepsilon > 0$
 
-$F_{X_{n} + Y_{n}}(x_{0}) = P(X_{n} + Y_{n} \leqslant x_{0}) = P(\{X_{n} + Y_{n} \leqslant x_{0}\}
-\{|Y_{n}| > \varepsilon\}) =$
+$F_{X_{n} + Y_{n}}(x_{0}) = P(X_{n} + Y_{n} \leqslant x_{0}) = \underbrace{P(\{X_{n} + Y_{n} \leqslant x_{0}\}
+\{|Y_{n}| > \varepsilon\})}_{p_{1}} + 
+\underbrace{P(\{X_{n} + Y_{n} \leqslant x_{0}\} \{|Y_{n}| \leqslant \varepsilon\})}_{p_{2}}$
 
+$$0 \leqslant p_{1} \leqslant P(|Y_{n} > \varepsilon) \overset{n \to \infty}{\longrightarrow} 0$$
+
+$p_{2} = P(\{X_{n} + Y_{n} \leqslant x_{0}\} \{- \varepsilon \leqslant Y_{n} \leqslant \varepsilon\})
+\overset{*}{\leqslant}$
+
+$$\begin{cases}
+    X_{n} + Y_{n} \leqslant x_{0} \\
+    - \varepsilon \leqslant Y_{n} \leqslant \varepsilon \\
+\end{cases} \implies
+\begin{cases}
+    X_{n} + Y_{n} \leqslant x_{0} \\
+    - \varepsilon \leqslant - Y_{n} \leqslant \varepsilon \\
+\end{cases} \implies X_{n} \leqslant x_{0} + \varepsilon$$
+
+$\overset{*}{\leqslant} P(X_{n} \leqslant x_{0} + \varepsilon) = F_{X_{n}} (x_{0} + \varepsilon)$
+
+$p_{2} \geqslant P(\{\varepsilon + X_{n} \leqslant x_{0}\} \{- \varepsilon \leqslant Y_{n} \leqslant 
+\varepsilon \}) \overset{*}{\geqslant}$
+
+$$P(AB) = P(A) - P(A \backslash B) \geqslant P(A) - P(\overline{B})$$
+
+$\overset{*}{\geqslant} P(\varepsilon + X_{n} \leqslant x_{0}) - P(|Y_{n} > \varepsilon) = 
+F_{X_{n}}(x_{0} - \varepsilon) - P(|Y_{n}| > \varepsilon)$
+
+Т.о. $F_{X_{n}}(x_{0} - \varepsilon) - P(|Y_{n}| > \varepsilon) \leqslant 
+F_{X_{n} + Y_{n}} (x_{0}) \leqslant F_{X_{n}} (x_{0} + \varepsilon) + p_{1}$
+
+Выберем $\varepsilon > 0$ так, чтобы $(x_{0} - \varepsilon; x_{0} + \varepsilon)$ было областью
+непрерывности  $F_{X}(x)$
+
+Тогда $\lim\limits_{n \to \infty} F_{X_{n}} (x_{0} \pm \varepsilon) = F_{X}(x_{0} \pm \varepsilon)$
+
+$$F_{X_{n}} (x_{0} - \varepsilon) \leqslant \lim\limits_{\overline{n \to \infty}} F_{X_{n} + Y_{n}}
+(x_{0}) \leqslant \overline{\lim\limits_{n \to \infty}} F_{X_{n} + Y_{n}} (x_{0}) \leqslant
+F_{X}(x_{0} + \varepsilon)$$
+
+Возьмем предел по $\varepsilon \to 0$. В силу непрерывности $F_{X}(x)$ в $x_{0}$ 
+$\lim\limits_{\varepsilon \to 0} F_{X}(x_{0} \pm \varepsilon) = F_{X}(x_{0})$
+
+Откуда $F_{X}(x_{0}) = \lim\limits_{\varepsilon \to 0} F_{X_{n} + Y_{n}}(x_{0})$, т.е.
+
+$$X_{n} + Y_{n} \overset{d}{\longrightarrow} X$$
+
+Пусть $C \neq 0$. Тогда $Y_{n} - C = \tilde{Y} \overset{P}{\longrightarrow} 0$,
+
+$X_{n} + C = \tilde{X_{n}} \overset{d}{\longrightarrow} X + C = \tilde{X}$
+
+Получаем $X_{n} + Y_{n} = \tilde{X_{n}} + \tilde{Y_{n}} \overset{d}{\longrightarrow} \tilde{X} = X + C$.
+$\blacksquare$
+
+## Доказательство леммы 5.1
+
+$X_{n} = (X_{n} - X) + X$, где $X \overset{d}{\longrightarrow} X, X_{n} - X \overset{P}{\longrightarrow}
+0$. В силу [Леммы 5.2](#lemma-5-2) $X_{n} = (X_{n} - X) + X \overset{d}{\longrightarrow} X + 0 = X$.
+$\blacksquare$
+
+## Замечание {-}
+
+Из *теории преобразования Фурье* следует, что $X_{n} \overset{d}{\longrightarrow} X$ тогда и только тогда, 
+когда $\psi_{X_{n}}(\lambda) \overset{n \to \infty}{\longrightarrow} \psi_{X}(\lambda), \lambda \in \R$
+
+## Определение 2
+
+Последовательность с.в. $\{X_{n}\}_{n \in \N}$ называется ***асимптотически нормальной***, если
+
+$X_{n} \overset{d}{\longrightarrow} X$, где $X \sim N(m; \sigma^{2})$
+
+## Теорема 1 (Центральная предельная) {#theorem-5-1}
+
+Пусть $\{X_{n}\}_{n \in \N}$ --- последовательность *независимых* и *одинаково распределенных* с.в.,
+причем 
+
+$$M[X_{1}] = m_{X}, D[X_{1}] = \sigma_{X}^{2}$$
+
+Тогда 
+
+$$S_{n} \frac{\sum\limits_{k = 1}^{n} X_{n} - nm_{X}}{\sigma_{X} \sqrt{n}} \overset{d}{\longrightarrow}
+N(0; 1)$$
+
+### Доказательство {-}
+
+Обозначим через $Y_{k} = \frac{X_{k} - m_{X}}{\sigma_{X} \sqrt{n}}$
+
+Тогда $\sum\limits_{k = 1}^{n} Y_{k}$, где $Y_{1}, \dots, Y_{n}$ --- *независимые* с.в.
+
+В силу [Леммы 1.5](#lemma-1-5)
+
+$$\psi_{S_{n}} (\lambda) = \psi_{Y} (\lambda, \lambda, \dots, \lambda) =
+\prod\limits_{k = 1}^{n} \psi_{Y_{k}}(\lambda) = \psi_{Y_{1}}^{n}(\lambda) = \psi^{n}
+(\frac{\lambda}{\sigma_{X} \sqrt{n}})$$ где
+$\psi(\lambda)$ --- **характеристическая функция** $X_{k} - m_{X}$.
+
+$\psi(0) = M[e^{i0(X_{k} - m_{X})}] = M[1] = 1$
+
+$\psi'(0) = M[i(X_{k} - m_{X})e^{i0(X_{k} - m_{X})}] = M[X_{k} - m_{X}] i = 0$
+
+$\psi''(0) = - M[(X_{k} - m_{X})^{2} e^{i0(X_{k} - m_{X})}] = - M[(X_{k} - m_{X})^{2}] = - \sigma_{X}^{2}$
+
+Тогда согласно *формуле Тейлора*
+
+$\psi(\lambda) = \psi(0) + \psi'(0) \lambda + \psi''(0) \frac{\lambda^{2}}{2} + 0(\lambda^{2}) = 
+1 - \frac{\sigma_{X}^{2}}{2} \lambda^{2} + 0(\lambda^{2})$
+
+Рассмотрим $\ln\psi_{S_{n}}(\lambda) = n \ln\psi(\frac{\lambda}{\sigma_{X} \sqrt{n}}) =
+n \ln(1 - \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})) = 
+n(- \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n}) + 0(-
+\frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n}))) = 
+n(- \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})) = - \frac{\lambda^{2}}{2n} +
+\frac{0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})}{\frac{\lambda^{2}}{\sigma_{X}^{2}n}} \cdot
+\frac{\lambda^{2}}{2} \overset{n \to \infty}{\longrightarrow} - \frac{\lambda^{2}}{2}$,
+
+$$\psi_{S_{n}}(\lambda) \overset{n \to \infty}{\longrightarrow} e^{- \frac{\lambda^{2}}{2}}$$
+
+где $\psi_{Y}(\lambda) = e^{- \frac{\lambda^{2}}{2}}$ по определению является *характеристической функцией 
+$Y \sim N(0; 1)$
+
+Тогда $S_{n} \overset{d}{\longrightarrow} Y \sim N(0; 1)$. $\blacksquare$
+
+## Следствие 1 (Теорема Муавра - Лапласа) {#cons-5-1}
+
+Пусть $X_{n} \sim Bi(n; p)$
+
+Тогда 
+
+$$\frac{X_{n} - np}{\sqrt{np(1 - p)}} \overset{d}{\longrightarrow} N(0; 1)$$
+
+### Доказательство {-}
+
+Т.к. $X_{n} \sim Bi(n; p)$, то существуют **независимые** $\tilde{X_{1}}, \dots, \tilde{X_{n}} \sim
+Be(p)$ такие, что
+
+$$X_{n} = \sum\limits_{k = 1}^{n} \tilde{X_{k}}, M[\tilde{X_{k}}] = p = m_{X}, D[\tilde{X_{k}}] =
+p(1 - p) = \sigma_{X}^{2}$$
+
+Тогда  в силу [Теоремы 1](#theorem-5-1):
+
+$\frac{\sum\limits_{k = 1}^{n} \tilde{X_{k}} - nm_{X}}{\sigma_{X}\sqrt{n}} \overset{d}{\longrightarrow}
+N(0; 1)$. $\blacksquare$
+
+## Пример 1
+
+Вычислить вероятность того, что при $n = 1000$  подбрасываниях монета упадет *"орлом"* от $400$ до $600$
+раз.
+
+Пусть $X$ --- число выпавших *"орлов"*. Тогда $X \sim Bi(1000; \frac{1}{2})$. По *формуле Бернулли*Ж
+
+$$P(X \in [400; 600]) = \sum\limits_{k = 400}^{600} C_{1000}^{k} \frac{1}{2^{1000}}$$
+
+Оценим данную величину с помощью *ЦПТ*.
+
+В силу [Теоремы 1](#theorem-5-1) и [Следствия](#cons-5-1)
+
+<!-- тут может быть ошибка: сходимость не по 'n -> \infty', а по 'd' -->
+$$\frac{X - n \frac{1}{2}}{\sqrt{n \frac{1}{2}(1 - \frac{1}{2})}} \overset{n \to \infty}{\longrightarrow} 
+N(0; 1)$$
+
+Тогда 
+
+$P(400 \leqslant X \leqslant 600) = P(\frac{400 - 500}{\sqrt{250}} \leqslant 
+\frac{X - nm_{X}}{\sigma_{X}\sqrt{n}} \leqslant \frac{600 - 500}{\sqrt{250}}) \approx
+\Phi_{0}(\frac{100}{5\sqrt{10}}) - \Phi_{0}(- \frac{100}{5\sqrt{10}}) = 2 \Phi_{0}(2\sqrt{10}) \approx 1$.
+
+## Теорема 2 (Ляпунова) {#theorem-5-2}
+
+Пусть $\{X_{n}\}_{n \in \N}$ --- последовательность *независимых* с.в., $M[X_{n}] = m_{X_{n}}, 
+D[X_{n}] = \sigma_{X_{n}}^{2}, M[|X_{n} - m_{X_{n}}|^{3}] = C_{n}^{3} < \infty$
+
+При этом $\frac{(\sum\limits_{k = 1}^{n} C_{k}^{3})^{\frac{1}{3}}}{
+(\sum\limits_{k = 1}^{n} \sigma_{X_{n}}^{2})^{\frac{1}{2}}} \overset{n \to \infty}{\longrightarrow} 0$ 
+***(Условие Ляпунова)***
+
+Тогда $\frac{(\sum\limits_{k = 1}^{n} X_{k} - M[\sum\limits_{k = 1}^{n} X_{k}]}{
+\sqrt{D[\sum\limits_{k = 1}^{n} X_{k}]}} \underset{n \to \infty}{\overset{d}{\longrightarrow}}
+\sim N(0; 1)$
+
+## Замечание {-}
+
+Для *аппроксимации* точности использования ЦПТ используется **неравенство Берри-Эссеена**
+
+## Теорема 3 (Неравенство Берри-Эссеена) {#theorem-5-3}
+
+Пусть $\{X_{n}\}_{n \in \N}$ --- последовательность *независимых* и *одинаково распределенных* с.в.
+
+$$M[X_{n}] = m_{X}, D[X_{n}] = \sigma_{X}^{2}, M[|X_{n} - m_{X}|^{3}] = \rho < \infty$$
+
+Тогда $\forall x \in \R$ и $n \in \N$
+
+$$|P(\frac{\sum\limits_{k = 1}^{n} X_{k} - n m_{X}}{\sigma_{X}\sqrt{n}}) -
+(\frac{1}{2} + \Phi_{0}(x))| \leqslant \frac{C_{0}\rho}{\sigma_{X}^{3}\sqrt{n}}$$
+
+## Замечание {-}
+
+Точное значение константы $C$ **неизвестно**.
+
+По текущим данным *(2010 г.)* $C_{0} \leqslant 0.4784$
+
+## Пример 
+
+Оценим точность решения в предыдущем примере: 
+$\sigma_{X}^{2} = \frac{1}{4}, n = 1000, m_{X} = \frac{1}{2}, X_{n} \sim 
+\begin{pmatrix}
+    0 & 1 \\
+    \frac{1}{2} & \frac{1}{2} \\
+\end{pmatrix}$
+
+$\rho = M[|X_{n} - m_{X}|^{3}] = |0 - \frac{1}{2}|^{3} \cdot \frac{1}{2} + |1 - \frac{1}{2}|^{3} \cdot
+\frac{1}{2} = \frac{1}{8}$
+
+Тогда погрешность составит для двухстороннего нер-ва:
+
+$\frac{2C_{0}\rho}{\sigma_{X}^{3}\sqrt{n}} = \frac{2 \cdot 0.4784 \cdot \frac{1}{8}}
+{\frac{1}{64} \cdot \sqrt{1000}} \approx 0.03$
+
+\pagebreak
+
+# Выборка и ее характеристики 
+
+## Определение 1 
+
+***Выборкой*** называется $Z_{n} = (X_{1}, \dots, X_{n})^{T}$ *независимый вектор*
+с.в. Если все $X_{1}, \dots, X_{n}$ --- *одинаково распределены*, а $F(x)$ --- *функция
+распределения*, то говорят, что $Z_{n}$ --- ***однородная*** выбрка, порожденная распределением $F(x)$
+
+## Определение 2
+
+***Реализацией выборки*** $Z_{n} \in \R^{n}$ называется *неслучайный* вектор $z_{n} = Z_{n}(\omega)$,
+состоящий из реализаций элементов выборки $X_{k}, k = \overline{1, n}$.
+
+## Определение 3
+
+Множество $S$ всех возможных реализаций выборки $Z_{n}$ называют ***выборочным пространством***
+
+## Замечание {-}
+
+Обычно распределение, порождающее выбрку, известно неточно.
+
+$$F_{X} = F_{X}(x; \theta)$$
+
+Задача состоит в построении оценки $\theta$ по элементам выборки.
+
+## Определение 4
+
+С.в. $\phi(Z_{n})$, где $\phi : S \to \R$ --- *измерима*, называется ***статистикой***.
+
+## Определение 5
+
+***k-ой порядковой статистикой*** называется k-е по величине значение элемента выборки 
+$Z_{n} = (X_{1}, \dots, X_{n})^{T}$ и обозначается $X^{(k)}$
+
+## Замечание {-}
+
+$X^{(k)}$ является функцией от всей выборки, т.к. при различных $\omega \in \Omega X^{(k)}$ будет 
+совпадать по значению с разными $X_{i}$.
+
+## Определение 6
+
+Набор порядковых статистик $X^{(1)}, \dots, X^{(n)}$ называется ***вариационным рядом***.
+
+## Определение 7
+
+$X^{(1)} = \min_{k = \overline{1, n}} X_{k}, X^{(n)} = \max_{k = \overline{1, n}} X_{k}$.
+
+## Лемма 1 {#lemma-6-1}
+
+Пусть однородная выборка $Z_{n}$ порождена распределением $F(x)$. Тогда функция распределения
+$X^{(k)}$ имеет вид:
+
+$$F_{(k)}(x) = P(X^{(k)} \leqslant x) = \sum\limits_{i = k}^{n} C_{n}^{i} (F(x))^{i}(1 - F(x))^{n - i}$$
+
+### Доказательство {-}
+
+Рассмотрим с.в. $Y$, равную числу элементов выборки, не превоскходящих $x$. Тогда $Y \sim Bi(n; F(x))$.
+
+$F_{(k)}(x) = P(X^{(k)} \leqslant x) = P(Y \geqslant k) = 
+\sum\limits_{i = k}^{n} C_{n}^{i} (F(x))^{i}(1 - F(x))^{n - i}$. $\blacksquare$
+
+## Следствие 1
+
+$F_{(1)}(x) = 1 - (1 - F(x))^{n}$,
+
+$F_{(n)}(x) = (F_{(x)})^{n}$.
+
+## Определение 8
+
+***Выборочной квантилью*** уровня $\alpha \in (0; 1)$ называется *порядковая статистика* 
+$X^{([nd] + 1)}$
+
+## Теорема 1 (Мостеллера) {#theorem-6-1}
+
+Пусть $X$ --- *абсолютно непрерывная* с.в., $x_{\alpha}$ --- *точка гладкости* $f_{X}(x), 
+f_{X}(x_{\alpha}) > 0$
+
+Тогда $(X^{([nd] + 1)} - x_{\alpha}) \sqrt{\frac{n f_{X}^{2} (x_{\alpha})}{p(1 - p)}}
+\overset{d}{\longrightarrow} N(0; 1)$
+
+## Определение 9
+
+***Выборочной функцией распределения*** называется статистика $\hat{F_{n}}(x)$:
+
+$$\hat{F_{n}}(x) =
+\begin{cases}
+    \frac{1}{n} \max\{k = \overline{1, n} : X^{(k)} \leqslant x\}, & x \geqslant X^{(1)}, \\
+    0, & x < X^{(1)} \\
+\end{cases}$$
+
+## Замечание {-}
+
+Фактически $\hat{F_{n}}(x)$ --- **частота события** $\{X \leqslant x\}$, которая исользуется 
+для оценки вероятности $F(x) = P(X \leqslant x)$.
+
+<!-- mb change to real plot in R later -->
+
+![](./files/freq-prob.png)
+
+## Свойства $\hat{F_{n}}(x)$ 
+
+1. \fbox{$n \cdot \hat{F_{n}}(x) \sim Bi(n; F(x))$}
+
+2. \fbox{$M[\hat{F_{n}}(x)] = F(x)$}
+
+3. \fbox{$\sup_{x \in \R}|\hat{F_{n}}(x) - F(x)| \overset{\text{п.н.}}{\longrightarrow} 0$}
+***(Теорема Гливенко - Кантелли)***
+
+4. \fbox{$[(\hat{F_{n}}(x) - F(x))^{2}] = \frac{F(x)(1 - F(x))} 
+{n} \leqslant \frac{1}{4n}$}
+
+5. \fbox{$|\hat{F_{n}}(x) - F(x)| \overset{\text{с.к.}}{\longrightarrow} 0$}
+
+6. \fbox{$\frac{\hat{F_{n}}(x) - F(x)}{\sqrt{F(x)(1 - F(x))}} \sqrt{n}
+\overset{d}{\longrightarrow} N(0; 1)$}
+(Следует из теоремы [Муавра - Лапласа](#cons-5-1))
+
+## Замечание {-}
+
+$\hat{F_{n}}(x)$ При увеличении $n$ *равномерно приблежается* к $F(x)$, при этом точность приближения можно
+оценить при помощи свойств **4** и **6**.
+
+\underline{Гистрограмма}. На основе реализации вариационного ряда построим разбиение $\R$
+$- \infty = t_{0} < t_{1} < t_{2} < \dots < t_{l} < t_{l + 1} = + \infty$,
+
+$t_{1} \leqslant x^{(1)}, t_{l} > x{(n)}$.
+
+Как правило, длина интервалов разбиения выбирается *одинаковой*:
+
+$$h_{k} = t_{k + 1} - t_{k} = \frac{t_{l} - t_{1}}{l - 1}, k = \overline{1, l - 1}$$
+
+Вычислим частоту попадания элементов выборки в k-й интервал:
+
+$\hat{p_{k}} = \frac{n_{k}}{n}$, где $n_{k}$ --- число элементов выборки, попавших в 
+$[t_{k};  t_{k + 1}), k = \overline{0, l}$
+
+Заметим, что $\hat{p_{0}} = \hat{p_{l}} = 0$.
+
+## Определние 10
+
+***Гистограммой*** называется функция:
+
+$$\hat{f_{n}}(x) =
+\begin{cases}
+    0, & x \in (t_{0}; t_{1}) \cup [t_{l}; t_{l + 1}), \\
+    \hat{p_{k}}, & x \in (t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
+\end{cases}$$
+
+<!-- add PICTURE OF HISTOGRAM 
+
+
+
+-->
+
+## Замечание {-}
+
+Если плотность вероятности $f_{X}(x)$ *непрерывна* и *ограничена*, а число разрядо гистограммы
+$l_{n}$ *удовлетворяет условию*: $l_{n} \longrightarrow + \infty, \frac{n}{l_{n}} \longrightarrow +
+\infty$,
+
+то
+
+$$\hat{f_{n}}(x) \overset{P}{\longrightarrow} f_{X}(x)$$
+
+Т.е. гистограмма является статистической аппроксимацией функции плотности вероятности.
+
+## \underline{Выборочные моменты} {-}
+
+## Определние 1
+
+***Выборочным начальным*** и ***центральным моментами*** называется соответственно статистики:
+
+$\hat{\nu_{r}(n)} = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}^{r}$ 
+
+И
+
+$\hat{\mu_{r}}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \hat\nu_{1}(n))^{r}$
+
+## Определение 2
+
+***Выборочным средним*** и ***выборочой дисперсией*** называются соответственно статистики:
+
+$\overline{X_{n}} = \hat{\nu_{1}(n)} = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}$ 
+
+И
+
+$\hat{d_{X}}(n) = \hat{S}^{2}(n) = \hat{\mu_{2}}(n) = 
+\frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X})^{2}$
+
+## Определение 3
+
+Пусть $Z_{n} = (X_{1}, \dots, X_{n})^{T}$ и $V_{n} = (Y_{1}, \dots, Y_{n})^{T}$ ---
+выборки, порожденные распределениями $F_{X}$ и $F_{Y}$ соответственно. Тогда
+***выборочным коэффициентом корреляции*** называется:
+
+$$\hat{r_{XY}} = \frac{\sum\limits_{k = 1}^{n} (X_{k} - \overline{X_{n}})(Y_{k} - \overline{Y_{k}})}
+{n\sqrt{\hat{d_{X}} \cdot \hat{d_{Y}}}}$$
+
+## Свойства выборочных моментов 
+
+1. \fbox{$M[\hat{\nu_{r}}(n)] = \nu_{r}, r \in \N$}
+
+**\underline{Доказательство}**
+
+$M[\hat{\nu_{r}}(n)] = \frac{1}{n} \sum\limits_{k = 1}^{n} M[X_{k}^{r}] = \frac{1}{n} n \nu_{r}$.
+$\blacksquare$
+
+2. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\nu_{r}}(n) \overset{\text{п.н.}}{\longrightarrow} \nu_{r}$}
+
+**\underline{Доказательство}**
+
+3. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\mu_{r}}(n) \overset{\text{п.н.}}{\longrightarrow} \mu_{r}$}
+
+**\underline{Доказательство}**
+
+$\hat{\mu_{r}}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X_{n}})^{r} = 
+\frac{1}{n} \sum\limits_{k = 1}^{n} \sum\limits_{i = 0}^{r} C_{r}^{i} X_{k}^{i}( - \hat{X_{n}})^{r - i}=
+\sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X_{n}})^{r - i} (\frac{1}{n} \sum\limits_{k = 1}^{n}
+X_{k}^{i}) = \sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X_{n}})^{r - i} \hat{\nu_{i}}(n)
+\underset{\text{св-во (2)}}{\overset{\text{п.н.}}{\longrightarrow}}
+\sum\limits_{i = 0}^{r} C_{r}^{i} (- \nu_{1})^{r - i} \hat{\nu_{i}} = 
+\dots = \mu_{i}$. $\blacksquare$
+
+4. \fbox{$D[\overline{X_{n}}] = \frac{1}{n}D[X]$}
+
+**\underline{Доказательство}**
+
+С учетом *независимости* $X_{1}, \dots, X_{n}$
+
+$D[X\overline{X_{n}}] = D[\frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}] = \frac{1}{n^{2}}
+\sum\limits_{k = 1}^{n} D[X_{k}] = \frac{n D[X]}{n^{2}}$. $\blacksquare$
+
+5. \fbox{$M[\hat{d_{X}}(n)] = \frac{n - 1}{n}D[X]$}
+
+**\underline{Доказательство}**
+
+$M[\hat{d_{X}}(n)] = \frac{1}{n} \sum\limits_{k = 1}{n} M[(X_{k} - \overline{X_{n}})^{2}] =
+M[(X_{1} - \overline{X_{n}})^{2}] = D[X_{1} - \overline{X_{n}})^{2}] = 
+D[\frac{n - 1}{n} X_{1} - \sum\limits_{k = 2}{n} \frac{1}{n}\overline{X_{k}}] 
+\overset{\text{н / з}}{=} 
+\frac{n - 1}{n}D[X_{1}] + \frac{1}{n^{2}} \sum\limits_{k = 2}^{n} D[X_{k}] =
+D[X] \frac{n^{2} -2n + 1 + n - 1}{n^{2}} = D[X] \cdot \frac{n - 1}{n}$. $\blacksquare$
+
+6. \fbox{$\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \overset{d}{\longrightarrow} 
+N(0; 1)$}
+
+**\underline{Доказательство}**
+
+Т.к. $X_{1}, \dots, X_{n}$ *независимые*, $M[X_{k}] = m_{k}, D[X_{k}] = \sigma_{X}^{2}, k \in \N$, то
+в силу [Теоремы 5.1](#theorem-5-1):
+
+$$\frac{\sum\limits_{k = 1}^{n} X_{k} - n m_{X}}{\sigma_{X} \sqrt{n}} = 
+\frac{\frac{1}{n} \sum\limits_{k = 1}^{n} X_{k} - m_{X}}{\frac{\sigma_{X}}{\sqrt{n}}}
+\overset{d}{\longrightarrow} N(0; 1)$$
+\hfill $\blacksquare$
+
+7. \fbox{$\frac{\hat{d_{X}}(n) - \sigma_{X}^{2}}{\sqrt{\mu_{4} - \mu_{2}}} \sqrt{n}
+\overset{d}{\longrightarrow} N(0; 1)$}
