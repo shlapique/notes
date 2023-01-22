@@ -85,13 +85,13 @@ $$X \sim N(m_{X}, K_{X})$$
 
 $$f_{X}(x) = ((2\pi)^{n} \det K_{X})^{\frac{-1}{2}} \exp\{\frac{-1}{2}(x - m_{X})^{T}K_{X}^{-1}(x - m_{X})\}$$
 
-где $m_{X} \in \R^{n}, K_{X} \in \R^{n \times n}, K_{X} > 0, K_{x}^{T} = K_{X}$
+где $m_{X} \in \R^{n}, K_{X} \in \R^{n \times n}, K_{X} > 0, K_{X}^{T} = K_{X}$
 
 ## Лемма 2 {#lemma-1-2}
 
-Пусть $X$ --- невырожденный нормальный вектор с параметрами $m_{X}$ и $K_{X}$.
+Пусть $X$ --- *невырожденный нормальный вектор* с параметрами $m_{X}$ и $K_{X}$.
 
-Тогда $M[X] = m_{X}$, а $K_{X}$ --- корвариационная матрица $X$.
+Тогда $M[X] = m_{X}$, а $K_{X}$ --- ковариационная матрица $X$.
 
 Рассмотрим основные свойства многомерного нормального распределения.
 
@@ -124,7 +124,6 @@ K_Y = AK_XA^{T}.
 
 Тогда ***характеристической функцией*** называется:
 
-<!-- $$\psi(\lambda) = M[e^{i\lambda^{T}X] = \int_\R^{n}e^{i\lambda^{T}X}dF_X(x)$$ -->
 $$\psi_{X}(\lambda) = M[e^{i\lambda^{T}X}] = \int\limits_{\R^{n}}e^{i\lambda^{T}X}dF_X(x)$$
 
 ## Замечание {-}
@@ -165,14 +164,14 @@ $$\psi_{Y}(\lambda) = \prod\limits_{k = 1}^{n} \psi_{X_k}(\lambda_k)$$
 1. $\psi_{Y}(\lambda) = M[e^{i\lambda^{T}Y}] = M[e^{i\lambda^{T} AX} e^{i\lambda^{T} b}] 
 = e^{i\lambda^{T} b} M[e^{i(A^{T}\lambda)^{T} X}] = e^{i\lambda^{T} b} \psi_{X}(A^{T}\lambda)$
 
-2. $\psi_{X}(\lambda) = \int\limits_{\R} \dots \int\limits_{\R} e^{i(\lambda_{1} x_{1} + \dots + \lambda_{n} x_{n})} f_{X}(x_1, \dots, x_n)dx_1 \cdot \dots \cdot dx_n =$
-{н/з} $= \int\limits_{\R} e^{i\lambda_{1} x_{1}} \cdot \dots \cdot e^{\lambda_{n}
+2. $\psi_{X}(\lambda) = \int\limits_{\R} \dots \int\limits_{\R} e^{i(\lambda_{1} x_{1} + \dots + \lambda_{n} x_{n})} 
+f_{X}(x_1, \dots, x_n)dx_1 \cdot \dots \cdot dx_n \overset{\text{н/з}}{=}
+\int\limits_{\R} e^{i\lambda_{1} x_{1}} \cdot \dots \cdot e^{i\lambda_{n}
 x_{n}} \cdot f_{X_{1}}(x) \cdot \dots \cdot f_{X_{n}}dx_1 \cdot \dots \cdot dx_n =
 \int\limits_{\R} e^{i\lambda_{1} x_{1}} f_{x_1}(x_1)dx_1 \cdot \dots \cdot \int\limits_{\R} e^{i\lambda_{n} x_{n}} f_{x_n}(x_n)dx_n=
 \prod\limits_{k = 1}^{n} \psi_{X_k}(\lambda_{k})$
 
-$\blacksquare$
-<!-- mb make a bit pretty later -->
+\hfill $\blacksquare$
 
 ## Замечание {-}
 
@@ -191,7 +190,7 @@ $$\psi_{X}(\lambda) = \exp\{i\lambda^{T} m_{X} - \frac{1}{2} \lambda^{T} K_{X}\l
 \begin{align*}
 \psi_{Y}(\lambda) = e^{i\lambda^{T}b} \psi_{X}(A^{T}\lambda) = e^{i\lambda^{T}b} \exp\{i\lambda^{T} Am_x - \frac{1}{2} \lambda^{T}
 AK_{X}A^{T}\lambda\} = \\
-= \exp\{i\lambda^{T} (Am_x + b) - \frac{1}{2}\lambda^{T} (AK_xA^{T})\lambda\} \\
+= \exp\{i\lambda^{T} \underbrace{(Am_x + b)}_{m_{Y}} - \frac{1}{2}\lambda^{T} \underbrace{(AK_xA^{T})}_{K_{Y}}\lambda\} \\
 \blacksquare
 \end{align*}
 
@@ -214,13 +213,14 @@ $\psi_{X}(\lambda) = \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} -
 \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} - \frac{1}{2}(\lambda_{1}^{2} \sigma_{X_1}^{2} + \dots + 
 \lambda_{n}^{2} \sigma_{X_n}^{2})\} = \prod\limits_{k = 1}^{n} \exp\{i\lambda_{n} m_{X_n} - \frac{1}{2} \lambda_{k}^{2} \sigma_{K_n}^{2}\} = \prod\limits_{k = 1}^{n} \psi_{X_k} (\lambda_{k})$.
 
-Откуда с учетом [Леммы 5, п.1](#lemma-1-5) $X_1, \dots, X_n$ --- н/з.
+Откуда с учетом [Леммы 5, п.1](#lemma-1-5) $X_1, \dots, X_n$ --- **н/з**.
 
 Пусть $X_1, \dots, X_n$ --- н/з. Тогда $X_1, \dots, X_n$ *попарно некоррелированы*. $\blacksquare$
 
 ## Замечание {-}
 
-Поскольку $K_{X}$ --- невырожденная, симметричная и положительноопределенная, то существует $S \in \R^{n \times n}$ --- *ортогональная*
+Поскольку $K_{X}$ --- невырожденная, симметрическая и положительноопределенная, то существует $S \in \R^{n \times n}$
+--- *ортогональная*
 (т. е. $S^{T} = S^{-1}$) такая, что:
 
 $$S^{T}K_{X}S = \Lambda = diag(\lambda_1, \dots, \lambda_n)$$
