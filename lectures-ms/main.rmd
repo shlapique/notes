@@ -20,6 +20,7 @@ header-includes:
 - \newcommand{\R}{\mathbb{R}}
 - \newcommand{\Ll}{\mathbb{L}}
 - \newcommand{\N}{\mathbb{N}}
+- \newcommand{\F}{\mathbb{F}}
 
 - \setlength{\headheight}{15pt} 
 ---
@@ -196,7 +197,8 @@ AK_{X}A^{T}\lambda\} = \\
 
 ### Доказательство леммы 4
 
-Пусть $X_{i}, \dots, X_{n}$ *попарно некоррелированы*. Тогда $cov(X_{i}, X_{j}) = 0$, $i \ne 0$, т.е. :
+Пусть $X_{i}, \dots, X_{n}$ *попарно некоррелированы*. Тогда $\mathrm{cov}(X_{i}, X_{j}) = 0$, 
+$i \ne 0$, т.е. :
 
 \begin{align*}
 K_x = diag(\sigma_{X_1}^{2}, \dots, \sigma_{X_n}^{2}) = \\
@@ -435,8 +437,8 @@ $= \begin{pmatrix}
 
 $= K_{X} - K_{XY}K_{Y}^{-1}K_{XY}^{-1} = \Delta$
 
-$cov(X - \mu(Y), Y) = cov(X, Y) - cov(\mu(Y), Y) = cov(X, Y) - cov(K_{XY}K_{Y}^{-1}Y + m_{X} - K_{XY}K_{Y}^{-1}m_{Y}, Y) =
-cov(X, Y) - K_{XY}K_{Y}^{-1}cov(Y, Y) = K_{XY} - K_{XY}K_{Y}^{-2}K_{Y} = 0$
+$\mathrm{cov}(X - \mu(Y), Y) = \mathrm{cov}(X, Y) - \mathrm{cov}(\mu(Y), Y) = \mathrm{cov}(X, Y) - \mathrm{cov}(K_{XY}K_{Y}^{-1}Y + m_{X} - K_{XY}K_{Y}^{-1}m_{Y}, Y) =
+\mathrm{cov}(X, Y) - K_{XY}K_{Y}^{-1}\mathrm{cov}(Y, Y) = K_{XY} - K_{XY}K_{Y}^{-2}K_{Y} = 0$
 
 т.е. $X - \mu(Y)$ и $Y$ **некорреливаны**.
 
@@ -1212,7 +1214,7 @@ $$F_{(k)}(x) = P(X^{(k)} \leqslant x) = \sum\limits_{i = k}^{n} C_{n}^{i} (F(x))
 $F_{(k)}(x) = P(X^{(k)} \leqslant x) = P(Y \geqslant k) = 
 \sum\limits_{i = k}^{n} C_{n}^{i} (F(x))^{i}(1 - F(x))^{n - i}$. $\blacksquare$
 
-## Следствие 1
+## Следствие 1 {#cons-6-1}
 
 $F_{(1)}(x) = 1 - (1 - F(x))^{n}$,
 
@@ -1462,7 +1464,7 @@ $\hat{d_{X}} = \frac{1}{n} \sum\limits_{k = 1}^{n}(X_{k} - \overline{X_{n}})^{2}
 
 ***(Доказательство приведено далее в теореме Фишера)***
 
-## Определение 2
+## Определение 2 {#def-7-2}
 
 Пусть $X_{0}, X_{1}, \dots, X_{n} \sim N(0; 1)$ --- *независимые с.в.. Тогда с.в.
 
@@ -1601,17 +1603,17 @@ d$.
 Пусть $\hat{\theta_{3}} = \frac{1}{2} (\hat{\theta_{1}} + \hat{\theta_{2}})$. Тогда
 
 $D[\hat{\theta_{3}}] = \frac{1}{4} D[\hat{\theta_{1}} + \hat{\theta_{2}}] = \frac{1}{4}
-(D[\hat{\theta_{1}}] + [D\hat{\theta_{2}}] + 2cov(\hat{\theta_{1}}, \hat{\theta_{2}})) =
-\frac{1}{2}(d + cov(\hat{\theta_{1}}, \hat{\theta_{2}})) \leqslant 
-\frac{1}{2}(d + |cov(\hat{\theta_{1}}, \hat{\theta_{2}})|)
+(D[\hat{\theta_{1}}] + [D\hat{\theta_{2}}] + 2\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})) =
+\frac{1}{2}(d + \mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})) \leqslant 
+\frac{1}{2}(d + |\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})|)
 \leqslant \frac{1}{2}(d + \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}) = d$
 
 Тогда *в силу оптимальности* $\hat{\theta_{1}}$ и $\hat{\theta_{2}}$ 
 
 $$D[\hat{\theta_{3}}] = d$$
 
-$d = D[\hat{\theta_{3}}] = \frac{1}{2}(d + cov(\hat{\theta_{1}}, \hat{\theta_{2}}))$, 
-$cov(\hat{\theta_{1}}, \hat{\theta_{2}}) = d = \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}$,
+$d = D[\hat{\theta_{3}}] = \frac{1}{2}(d + \mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}}))$, 
+$\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}}) = d = \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}$,
 
 т.е. в *нераввенстве Коши-Буняковского* достигается *равенство*. Следовательно,
 
@@ -1782,7 +1784,7 @@ dx_{1}, \dots, dx_{n} =
 \int\limits_{\R^{n}} \hat{\theta}(z_{n}) \frac{\partial \ln L(z_{n}; \theta)}{\partial \theta} \cdot
 L(z_{n}; \theta) dx_{1}, \dots, dx_{n} = M[\hat{\theta} U(Z_{n}; \theta)] = 
 M[(\hat{\theta} - \theta)(U(Z_{n}; \theta) - \theta)] + \theta \cdot M[U(Z_{n}; \theta)] =
-cov(\hat{\theta}, U(Z_{n}; \theta))$
+\mathrm{cov}(\hat{\theta}, U(Z_{n}; \theta))$
 
 Откуда с учетом *неравенства Коши-Буняковского* 
 
@@ -2014,3 +2016,885 @@ $$\begin{cases}
 ## Замечание {-}
 
 Метод моментов **трудноприменим**, если *теоретические моменты не удается вычислить явно*.
+
+\pagebreak
+
+# Интервальные оценки
+
+## Определение 1
+
+Пусть выполнен условие:
+
+$$P(\hat{\theta_{1}}(Z_{n}) \leqslant \theta \leqslant \hat{\theta_{2}}(Z_{n})) = 1 - \alpha$$
+
+для некоторого распределения параметром $F_{x}(x; \theta)$. Тогда интервал $[\hat{\theta_{1}}(Z_{n}); 
+\hat{\theta_{2}}(Z_{n})]$ --- называется ***дорверительным интервалом*** или ***интервальной оценкой***
+параметра $\theta$ уровня надежности $1 - \alpha$.
+
+## Определение 2
+
+Доверительный интервал называется ***центральным***, если верно условие:
+
+$$P(\theta \leqslant \hat{\theta_{1}}(Z_{n})) = P(\theta \geqslant \hat{\theta_{2}}(Z_{n})) = 
+\frac{\alpha}{2}$$
+
+## Определение 3
+
+Доверительный интервал называется ***правосторонним*** или ***левосторонним***, если выполнено условие:
+
+
+<!-- тут может быть ошибка: не было после "или" альфа справа -->
+$P(\theta \geqslant \hat{\theta_{2}}(Z_{n})) = \alpha$ или 
+$P(\theta \leqslant \hat{\theta_{1}}(Z_{n})) = \alpha$
+
+## Замечание {-}
+
+1. Можно визуализировать интервальную оценку следующим образом:
+
+<!-- add PICTURE -->
+
+2. Интервальную оценку можно рассматривать в качестве оценки погрешности точеченой оценки 
+$\hat{\theta}(Z_{n})$, если строить доверительный интервал в форме:
+
+$$[\hat{\theta}(Z_{n}) - \varepsilon_{1}; \hat{\theta}(Z_{n}) + \varepsilon_{2}]$$
+
+где $\varepsilon_{1}, \varepsilon_{2} > 0$.
+
+## \underline{Построение доверительного интервала на основе центральной статитиски} {-}
+
+## Определение 4
+
+Статистика $G(Z_{n}; \theta)$ называется ***центральной***, если $G$ *непрерывна и *строго монотонна* по 
+$\theta, \forall z_{n} \in S$, а ее распределение **не зависит** от $\theta$.
+
+Если распределение $F_{G}(Z_{n}; \theta)$ известно, то можно подобрать числа $g_{1}, g_{2}$ такие, что 
+$P(g_{1} \leqslant G(Z_{n}; \theta) \leqslant g_{2}) = 1 - \alpha$.
+
+Например, для центрального доверительного интервала $g_{1} = G_{\frac{\alpha}{2}}, 
+g_{2} = G_{1 - \frac{\alpha}{2}}$ --- квантили уровней $\frac{\alpha}{2}$ и $1 - \frac{\alpha}{2}$.
+
+Если $G(Z_{n}; \theta)$ *монотонно возрастает* по $\theta$, то можно перейти к эквивалентному 
+неравенству:
+
+$$P(G^{-1}(Z_{n}; g_{1}) \leqslant G^{-1}(Z_{n}; g_{2}) = 1 - \alpha$$
+
+Тогда границы интервальной оценки имеют вид:
+
+$$\hat{\theta_{1}}(Z_{n}) = G^{-1}(Z_{n}; g_{1}), \hat{\theta_{2}}(Z_{n}) = G^{-1}(Z_{n}; g_{2})$$
+
+## Замечание {-}
+
+Построение центральных статистик **довольно сложно**. В связи с чем зачастую использюут **
+асимптотические распределения**, которые в силу ЦПТ тесно связаны с нормальным распределением.
+
+## Определение 5
+
+Матрица $C \in \R^{n \times n}$ называется ***ортоногональной***, если $C^{T} = C^{-1}$.
+
+## Лемма 1 {#lemma-10-1}
+
+Пусть $C \in \R^{n \times n}$ --- *ортогональная матрица*, $C_{1j} = \frac{1}{\sqrt{n}}, j = \overline
+{1, n}$. Тогда
+
+1. $\sum\limits_{k = 1}^{n} C_{jk} \cdot C_{ik} = 0, j \neq i; i,j = \overline{1, n}$
+
+2. $\sum\limits_{k = 1}^{n} C_{ik}^{2} = 1, i = \overline{1, n}$
+
+3. Если $y = Cx$, то $\lVert y \rVert = \lVert x \rVert$
+
+4. $\sum\limits_{k = 1}^{n} C_{ik} = 0, i= \overline{2, n}$
+
+### Доказательство {-}
+
+Пункты *1* и *2* следуют из тождества
+
+$$C^{T} \cdot C = I$$
+
+3. $\lVert y \rVert^{2} = (y, y) = (Cx, Cx) = (x, C^{T}Cx) = (x, x) = \lVert x \rVert^{2}$
+
+4. Рассмотрим свойство *1* для $i = 1$. Тогда 
+
+$$0 = \sum\limits_{k = 1}^{n} C_{1k} \cdot C_{ik} = \sum\limits_{k = 1}^{n} \frac{1}{\sqrt{n}} C_{ik} =
+\frac{1}{\sqrt{n}} \sum\limits_{k = 1}^{n} C_{ik}$$
+
+\hfill $\blacksquare$
+
+## Теорема 1 (ФИШЕРА) {#theorem-10-1}
+
+Пусть $Z_{n}$ --- *однородная выборка, порожденная распределением $N(m_{X}; \sigma_{X}^{2})$. Тогда
+
+1. $\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(0; 1)$
+
+2. $\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} \sim \chi(n - 1)$
+
+3. $\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1} \sim t(n - 1)$
+
+4. $\overline{X_{n}}$ и $\hat{d_{X}(n)}$ **независимы**
+
+### Доказательство {-}
+
+<!-- check here for sign in brackets i \ sigma sqrt n ... "_" -->
+.1) $\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} = \sum\limits_{k = 1}^{n} \frac{1}{\sigma_{X}
+\sqrt{n}} X_{k} - \frac{m_{X}\sqrt{n}}{\sigma_{X}} = 
+(\frac{1}{\sigma_{X} \sqrt{n}} + \frac{1}{\sigma_{X} \sqrt{n}} + \dots + \frac{1}{\sigma_{X} \sqrt{n}})
+\cdot Z_{n} - \frac{m_{X}\sqrt{n}}{\sigma_{X}}$.
+
+Т.к. $Z_{n} \sim N(
+\begin{pmatrix}
+    m_{X} \\
+    \vdots \\
+    m_{X} \\
+\end{pmatrix};
+\sigma_{X}^{2} I)$, то в силу [Леммы 1.3](#lemma-1-3)
+
+$\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(m; \sigma^{2})$, где $m = 
+(\frac{1}{\sigma_{X} \sqrt{n}} \dots \frac{1}{\sigma_{X} \sqrt{n}})
+\begin{pmatrix}
+    m_{X} \\
+    \vdots \\
+    m_{X} \\
+\end{pmatrix} - 
+\frac{m_{X}\sqrt{n}}{\sigma_{X}} = 0$
+
+$$\sigma^{2} = (\frac{1}{\sigma_{X} \sqrt{n}} \dots \frac{1}{\sigma_{X} \sqrt{n}}) \sigma^{2} I \cdot
+\begin{pmatrix}
+    \frac{1}{\sigma_{X} \sqrt{n}} \\
+    \vdots \\
+    \frac{1}{\sigma_{X} \sqrt{n}} \\
+\end{pmatrix} = 1$$
+
+.2) Построим матрицу $C \in \R^{n \times n}$ так, чтобы $C_{1j} = \frac{1}{\sqrt{n}}, j = \overline{1,n}$;
+остальные строки выберем так, чтобы векторы 
+$\begin{pmatrix}
+    C_{11} \\
+    \vdots \\
+    C_{1n} \\
+\end{pmatrix},
+\begin{pmatrix}
+    C_{21} \\
+    \vdots \\
+    C_{2n} \\
+\end{pmatrix}, \dots,
+\begin{pmatrix}
+    C_{n1} \\
+    \vdots \\
+    C_{nn} \\
+\end{pmatrix} \in \R^{n}$
+
+образовывали *ортонормированный* базис, что возможно, т.к. вектор 
+$\begin{pmatrix}
+    C_{11} \\
+    \vdots \\
+    C_{1n} \\
+\end{pmatrix} = 
+\begin{pmatrix}
+    \frac{1}{\sqrt{n}} \\
+    \vdots \\
+    \frac{1}{\sqrt{n}} \\
+\end{pmatrix}$ 
+всегда можно дополнить до *ортонормированного* базиса.
+
+Тогда $C$ удовлетворяет условиям [Леммы 1](#lemma-10-1).
+
+Рассмотрим $Y = \frac{1}{\sigma_{X}} C Z_{n}$. Тогда $Y \sim N(m_{Y}; K_{Y})$, где в силу 
+[Леммы 1.3](#lemma-1-3) и [Леммы 1, п.4](#lemma-10-1):
+
+$$m_{Y} = \frac{1}{\sigma_{X}} C(\sigma_{X}^{2} I) \frac{1}{\sigma_{X}} C^{T} = CIC^{T} = CC^{T} = I$$
+
+Т.о. $Y_{1}, \dots, Y_{n}$ --- **некоррелированные** нормальные с.в.
+
+Тогда в силу [Леммы 1.4](#lemma-1-4) $Y_{1}, \dots, Y_{n}$ *независимы*
+
+$\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k} - 
+\overline{X_{n}})^{2} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k}^{2} - 
+2 X_{k}\overline{X_{n}} + \overline{X_{n}}^{2}) = \frac{1}{\sigma_{X}^{2}}
+(\sum\limits_{k = 1}^{n} X_{k}^{2} - 2n \overline{X_{n}}(\frac{1}{n}  \sum\limits_{k = 1}^{n} X_{k}) +
+n \overline{X_{n}}^{2}) = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n} X_{k}^{2} - 
+\frac{n}{\sigma_{X}^{2}} \overline{X_{n}}^{2} \overset{*}{=}$
+
+$Y_{1} = \frac{1}{\sigma_{X} \sqrt{n}}(X_{1} + \dots + X_{n}) = \frac{\sqrt{n}}{\sigma_{X}} 
+\overline{X_{n}}$. Тогда с учетом [Леммы 1](#lemma-10-1)
+
+$\overset{*}{=} \frac{1}{\sigma_{X}^{2}} \lVert Z_{n} \rVert^{2} - Y_{1}^{2} = 
+\frac{1}{\sigma_{X}^{2}} \lVert C Z_{n} \rVert^{2} - Y_{1}^{2} = \lVert \frac{1}{\sigma_{X}}Z_{n} 
+\rVert^{2} - Y_{1}^{2} = \lVert Y \rVert^{2} - Y_{1}^{2} = \sum\limits_{k = 1}^{n} Y_{k}^{2} - 
+Y_{1}^{2} = \sum\limits_{k = 2}^{n} Y_{k}^{2}$, где 
+
+$Y_{k} \sim N(0; 1), k = \overline{2, n}$. Тогда по определению 
+
+$$\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} = \sum\limits_{k = 2}^{n} Y_{k}^{2} \sim \chi^{2}(n - 1)$$
+
+.4) Заметим, что $\overline{X_{n}} = \frac{\sigma_{X}}{\sqrt{n}} Y_{1} = \phi(Y_{1})$, где 
+$Y_{1}$ и $(Y_{2}, \dots, Y_{n})^{T}$ **независимы**. Тогда **независимы** также $\phi(Y_{1})$ и
+$\psi(Y_{2}, \dots, Y_{n})$, т.е. $\overline{X_{n}}$ и $\hat{d_{X}}(n)$
+
+.3) $\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1} = 
+\frac{\frac{\sigma_{X}}{\sqrt{n}} Y_{1} - m_{X}}{\sqrt{\frac{\sigma_{X}^{2}}{n}
+\sum\limits_{k = 2}^{n} Y_{k}^{2}}}\sqrt{n - 1} = 
+\frac{Y_{1} - \frac{m_{X} \sqrt{n}}{\sigma_{X}}}{\sqrt{\frac{1}{n - 1}
+\sum\limits_{k = 2}^{n} Y_{k}^{2}}} \sim t(n - 1)$, т.к.
+
+$Y_{1} - \frac{m_{X}\sqrt{n}}{\sigma_{X}} \sim N(0; 1)$ и $Y_{1}, (Y_{2}, \dots, Y_{n})^{T}$ 
+**независимы**. $\blacksquare$
+
+## Пример 3
+
+Построить интервальную оценку $\theta$ по однородной выборке $Z_{n}$, порожденной распределением
+$N(\theta; \sigma_{X}^{2})$, если $\sigma_{X}^{2}$ *неизвестна*, уровня надежности $1 - \alpha$
+
+В силу [Теоремы Фишера](#theorem-10-1)
+
+$$G(Z_{n}; \theta) = \frac{\overline{X_{n}} - \theta}{\sqrt{\hat{d_{X}}(n)}} \sqrt{n - 1} \sim (n - 1)$$
+
+Тогда 
+
+$1 - \alpha = P(t_{\frac{\alpha}{2}}(n - 1) \leqslant \frac{\overline{X_{n}} - \theta}
+{sqrt{\hat{d_{X}}(n)}}\sqrt(n - 1) \leqslant t_{1 - \frac{\alpha}{2}}(n - 1)) = 
+P(\overline{X_{n}} - \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1) \leqslant \theta 
+\leqslant \overline{X_{n}} + \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1))$
+
+Тогда интервальная оценка имеет вид:
+
+$$[\overline{X_{n}} - \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1); 
+\overline{X_{n}} + \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)]$$
+
+Заметим, что $\overline{X_{n}}$ --- *точечная оценка* $\theta$ --- лежит в середине интервала. При этом
+длина интервала $2 \sqrt{frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)$ **возрастает** по 
+$\sigma_{X}^{2}$ и **убывает** по $\alpha$ и $n$.
+
+## Пример 4
+
+Пусть выборка $Z_{n}$ порождена распределением $R(0; \theta)$. Пусть
+
+$$G(Z_{n}; \theta) = (\frac{X^{(n)}}{\theta})^{n}$$
+
+$F_{G}(x) = P((\frac{X^{(n)}}{\theta})^{n} \leqslant x) = P(X^{(n)} \leqslant \theta \sqrt[n]{x}) =
+F_{(n)}(\theta \sqrt[n]{x}) \overset{*}{=}$
+
+в силу [Следствия 6.1](#cons-6-1) 
+
+$\overset{*}{=} (F_{X}(\theta \sqrt[n]{x}))^{n} = 
+\begin{cases}
+    1^{n}, & \theta \sqrt[n]{x} \geqslant \theta, \\
+    0^{n}, & 0 \leqslant 0, \\
+    -(\frac{\theta \sqrt[n]{x} - 0}{\theta - 0})^{n}, & \theta \sqrt[n]{x} \leqslant (0; \theta) \\
+\end{cases} = 
+\begin{cases}
+    1, & x \geqslant 1, \\
+    0, & x \leqslant 0, \\
+    x, & 0 < x < 1 \\
+\end{cases} \implies G(Z_{n}; \theta) \sim R(0; 1)$
+
+Тогда $G_{\frac{\alpha}{2}} = \frac{\alpha}{2}, G_{1 - \frac{\alpha}{2}} = 1 - \frac{\alpha}{2}$,
+
+$$1 - \alpha = P(\frac{\alpha}{2} \leqslant (\frac{X^{(n)}}{\theta})^{n} \leqslant 1 - \frac{\alpha}{2}) =
+P(X^{(n)}(1 - \frac{\alpha}{2})^{- \frac{1}{2}} \leqslant \theta \leqslant X^{(n)}(\frac{\alpha}{2})^{-
+\frac{1}{n}})$$
+
+Интервальная оценка имеет вид:
+
+$$[X^{(n)}(1 - \frac{\alpha}{2})^{- \frac{1}{n}}; X^{(n)}(\frac{\alpha}{2})^{- \frac{1}{n}}]$$
+
+Заметим, что точечная МП-оценка $\hat{\theta}(Z_{n}) = X^{(n)}$ **не лежит внутри** интервала.
+
+\pagebreak
+
+# Проверка статистических гепотез
+
+<!-- check in this chapter z's or Z's in formulas -->
+
+## Определение 1
+
+***Ститистической гипотезой*** $H$ называется любое предположение относительно закона распределения с.в.
+$X$, порождающей выборку $Z_{n}$. 
+
+## Определение 2
+
+Проверяемая гипотеза $H_{0}$ называется ***основной***. Конкурирующая с $H_{0}$ гипотеза $H_{1}$ называется
+***альтернативой***.
+
+## Определение 3
+
+***Статистическим критерием*** или ***критерием согласия*** назыается правло, в соответствии с которым
+по реализации выборки $z_{n} = Z_{n}(\omega)$ принимается или отвергается гипотеза $H_{0}$.
+
+## Примеры
+
+**\underline{Гипотеза о виде распределения}**
+
+Пусть $F_{X}$ --- распределение, порождающее выборку $Z_{n}$, $F$ --- некоторая заданная функция
+распределения, $\F$ --- некоторый заданный класс функций распределения.
+
+Например, $F(x) = \frac{1}{2} + \Phi(x - 1), \F = \{F(x) = \frac{1}{2} + \Phi(\frac{x - m}{\sigma}):
+m \in \R, \sigma > 0\}$
+
+Тогда можно рассмотреть
+
+$H_{0}: F_{X}(x) = F(x), x \in \R$ или $H_{0}:F_{X} \in \F$
+
+**\underline{Гипотеза однородности}**
+
+Пусть задано $k$ выборок $Z_{n_{1}}^{1}, \dots, Z_{n_{k}}^{k}$.
+
+Требуется определить, образуют ли они единую однородную выборку. 
+
+Если $F_{i}(x)$ --- функция распределения, порождающая выборку $Z_{n_{i}}^{i}$, то 
+
+$$H_{0} : F_{1}(x) = \dots = F_{k}(x)$$
+
+**\underline{Гипотеза независимости}**
+
+Пусть $Z_{n}^{1}, Z_{n}^{2}$ --- *однородные* выборки, порождаемые с.в. $X$ и $Y$ соответственно с 
+функциями распределения $F_{X}$ и $F_{Y}$.
+
+Через $F_{X, Y}(x, y) = F_{X}(x) \cdot F_{Y}(y); x,y \in \R$
+
+## Замечание {-}
+
+Для проверки гипотезы $H_{0}$ используется специальные статистики $T(Z_{n})$, характеризующие
+отклонение наблюдения от теоретического предположения.
+
+## Определение 4
+
+Обозначим через $G$ ***множество всех возможных значений статистики $T$***:
+
+$$G = \{t : t = T(z_{n}), z_{n} \in S\}$$
+
+## Определение 5
+
+Построим разбиение $G$ на ***доверительную область $G_{\circ\alpha}$ и критическую область 
+$G_{| \alpha}$*** так, чтобы
+
+$$G_{\circ\alpha} \cup G_{| \alpha} = G$$
+
+$$G_{\circ\alpha} \cap G_{| \alpha} = \varnothing$$
+
+$P(T(z_{n}) \in G_{| \alpha} | H_{0}) \leqslant \alpha, P(T(Z_{n}) \in G_{\circ\alpha} | H_{0}) \geqslant 
+1 - \alpha$ для некоторого $\alpha \in (0; 1)$.
+
+Если $H_{0}$ принимается в случае, когда $T(Z_{n}) \in G_{| \alpha}$, то $\alpha$ называется
+***уровнем значимости критерия***.
+
+## Определение 6
+
+***Ошибкой \underline{первого} рода*** называется событие, когда $H_{0}$ *верна*, но она *отвергается*
+
+$T(z_{n}) \in G_{| \alpha}$, $H_{0}$ **верно**.
+
+## Определение 7
+
+***Ошибкой \underline{второго} рода*** называется событие, когда $H_{0}$ *неверно*, но она *принимается*
+
+$T(z_{n}) \in G_{\circ\alpha}$, $H_{0}$ **неверно**.
+
+## Замечание {-}
+
+1.  Если $H_{0}$ *принимается*, то это не значит, что $H_{0}$ верно. Это значит, что наблюдения
+$z_{n} = Z_{n}(\omega)$ ***согласуется*** с гипотезой $H_{0}$.
+
+2. Для построения доверитиельной и критической областей необходимо знать
+
+$$Law(T(Z_{n}) | H_{0})$$
+
+а также задать уровень значимости $\alpha$
+
+3. Структура критической области $G_{| \alpha}$ определяется алтернативой $H_{1}$
+
+## Определение 8
+
+Пусть $\F$ --- *множество всех распределений* $T(Z_{n})$, *удовлетворяющих альтернативе* $H_{1}$.
+
+Тогда ***функцией мощности критерия*** $W: \F \to [0; 1]$ называется
+
+$$W(F) = P(T(Z_{n}) \in G_{| \alpha} | Law(T(Z_{n})) = F_)$$
+
+Значение $W(F)$ называется ***мощностью критерия при альтернативе $F$***.
+
+## Определение 9
+
+Критерий называется ***несмещенным***, если $W(F) > \alpha, \forall F \in \F$.
+
+## Замечание {-} 
+
+1. Для построения $W(F)$ необходимо знать $Law(T(Z_{n}) | F)$, что не всегда доступно.
+
+2. Качество критерия определяется функцией мощности: чем выше мощность, тем чаще критерий отвергает 
+$H_{0}$, если она *неверна*.
+
+## \underline{Критерий согласия Колмогорова} {-}
+
+$H_{0} : F_{X}(x) = F(x), x \in \R$
+
+$H_{1} : F_{X}(x_{0}) \neq F(x_{0})$ для некоторого $x_{0} \in \R$
+
+$$T(Z_{n}) = \sup\limits_{x \in \R}|\hat{F_{n}}(x) - F(x)|$$
+
+Данный критерий применяется для *непрерывных* $F(x)$.
+
+$Law(T(Z_{n}) | H_{0})$ известно. Для *малых* $n \in \N$ соответствующие квантили берутся из таблиц. 
+При больших $n \in \N$ исользуют *асимптотическую аппроксимацию*:
+
+$$F_{\sqrt{n} T(Z_{n}) | H_{0}} (x) \overset{n \to \infty}{\longrightarrow} K(x) = 
+\begin{cases}
+    \sum\limits_{k = - \infty}^{+ \infty} (-1)^{k} e^{-2k^{2}x^{2}}, & x > 0 \\
+    0, & x \leqslant 0 \\
+\end{cases}$$
+
+$K(x)$ --- ***функция распределения Колмогорова***
+
+## \underline{Критерий согласия хи-квадрат Пирсона} {-}
+
+Пусть для выборки $Z_{n}$ построено разбиение $\R$:
+
+$- \infty = t_{0} < t_{1} < t_{2} < \dots < t_{l} < t_{l + 1} = + \infty$, где 
+
+$t_{1} \leqslant X^{(1)}, t_{l} > X^{(n)}$.
+
+На построенном разбиении построим гистограмму:
+
+$$\hat{f_{n}}(x) = 
+\begin{cases}
+    0, & x \in (t_{0}, t_{1}) \cup [t_{l}; t_{l + 1}), \\
+    \hat{p_{k}}, & x \in [t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
+\end{cases}$$
+
+Пусть $p_{k} = P(X \in [t_{k}; t_{k + 1}) |H_{0}) = F(t_{k + 1}) - F(t_{k}), k = \overline{0, l}$.
+
+*Статистика критерия Пирсона* имеет вид:
+
+$$T_{\chi^{2}}(Z_{n}) = n \cdot \sum\limits_{k = 0}^{l} \frac{(\hat{p_{k}} - p_{k})^{2}}
+{p_{k}}$$
+
+где $\hat{p_{0}} = \hat{p_{l}} = 0$.
+
+## Теорема 1 {#theorem-11-1}
+
+Пусть $p_{k} \in (0; 1), k = \overline{0, l}$. 
+
+Тогда 
+
+$$Law(T_{\chi^{2}}(Z_{n}) | H_{0}) \overset{n \to \infty}{\longrightarrow} \chi^{2}(l)$$
+
+## Замечание {-}
+
+1. **Высокая точность** приближения законом $\chi^{2}(l)$ **достигается** при $l \geqslant 5$ и 
+$n \geqslant 50$.
+
+2. Если у $F(x; \theta_{1}, \dots, \theta_{5})$ теоретической функции распределения
+есть $s$ *неизвестных параметров*, то 
+
+$$Law(T_{\chi^{2}}(Z_{n}) | H_{0}) \overset{n \to \infty}{\longrightarrow} \chi^{2}(l - s)$$
+
+## \underline{Проверка гипотезы о значении параметра} {-}
+
+Рассматривается выборка $Z_{n}$, порожденная распределением $N(m_{X}; \sigma_{X}^{2})$
+
+Рассмотрим $H_{0}: m_{X} = m_{0}$ против
+
+$H_{1} : m_{X} \neq m_{0}, H_{2} : m_{X} > m_{0}, H_{3} : m_{X} < m_{0}$
+
+**\underline{1 случай: $G_{X}^{2}$ известна}** 
+
+$$T(Z_{n}) = \frac{(\overline{X_{n}} - m_{0})}{\sigma_{X}} \sqrt{n}, Law(T(Z_{n}) | H_{0}) = N(0; 1)$$
+
+$$G_{1\alpha} = (- \infty; u_{\frac{\alpha}{2}}) \cup (u_{1 -\frac{\alpha}{2}}; + \infty)$$
+
+$$G_{2\alpha} = (u_{1 -\alpha}; + \infty), G_{3\alpha} = (- \infty; U_{\alpha})$$
+
+**\underline{2 случай: $G_{X}^{2}$ неизвестна}** 
+
+$$T(Z_{n}) = \frac{(\overline{X_{n}} - m_{0})}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1}, 
+Law(T(Z_{n}) | H_{0}) = t(n - 1)$$
+
+$$G_{1\alpha} = (- \infty; t_{\frac{\alpha}{2}}(n - 1)) \cup (t_{1 -\frac{\alpha}{2}}(n - 1);+ \infty)$$
+
+$$G_{2\alpha} = (t_{1 -\alpha}(n - 1); + \infty), G_{3\alpha} = (- \infty; t_{\alpha}(n - 1))$$
+
+Рассмотрим $H_{0}: \sigma_{X}^{2} = \sigma_{X}^{2}$ против
+
+$H_{1} : \sigma_{X}^{2} \neq \sigma_{0}^{2}$
+
+**\underline{1 случай: $m_{X}$ известна}** 
+
+$$T(Z_{n}) = \frac{\sum\limits_{k = 1}^{n}(X_{k} - m_{X})}{\sigma_{0}^{2}},
+Law(T(Z_{n}) | H_{0}) = \chi^{2}(n)$$
+
+**\underline{2 случай: $m_{X}$ неизвестна}** 
+
+$$T(Z_{n}) = \frac{n \hat{d_{X}}(n)}{\sigma_{0}^{2}},
+Law(T(Z_{n}) | H_{0}) = \chi^{2}(n - 1)$$
+
+\pagebreak
+
+# Метод наименьших квадратов 
+
+В рамках регрессионного анализа рассматривается задача восстановления зависимости $Y = \phi(x)$ 
+по набору наблюдений $Y_{1}, \dots, Y_{n}$, которые предполагаются **защищенными**.
+
+<!-- add PICTURE -->
+
+## Определение 1
+
+***Линейной регрессионной моделью*** называется класс линейных по набору неизвестных параметров
+$\theta \in \R^{s}$ функций:
+
+$$\phi(x; \theta) = \theta_{1}\phi_{1}(x) + \dots + \theta_{s}\phi_{s}(x)$$
+
+## Определение 2
+
+***Схемой Гаусса-Маркова*** называется модель наблюдения линейной регрессионной модели при 
+наличии случайных ошибок наблюдения:
+
+$$Y_{k} = \theta_{1}\phi_{1}(x) + \dots + \theta_{s}\phi_{s}(x_{k}) + \varepsilon_{k}, 
+k = \overline{1, n}$$
+
+ИЛИ 
+
+$Y = X\theta + E$, где $X = 
+\begin{pmatrix}
+    \phi_{1}(x_{1}) & \dots & \phi_{s}(x_{1}) \\
+    \vdots & \ddots & \vdots \\
+    \phi_{1}(x_{n}) & \dots & \phi_{s}(x_{n}) \\
+\end{pmatrix} \in \R^{n \times s}$
+
+$$\theta = (\theta_{1}, \dots, \theta_{s})^{T} \in \R^{s}, Y = (Y_{1}, \dots, Y_{s})^{T} \in 
+\R^{n}$$
+
+$$E = (\varepsilon_{1}, \dots, \varepsilon_{n})^{T} \in \R^{n}$$
+
+где $X$ называется ***регрессионной матрицей***. Предполагается, что 
+
+$$M[E] = 0, K_{E} = \sigma^{2} \cdot I$$
+
+## Определение 3
+
+***МНК-оценкой вектора $\theta$*** называется 
+
+$$\hat{\theta}(Y) = \underset{\theta}{argmin}(Y - X\theta)^{T}(Y - X\theta) = 
+\underset{\theta}{argmin}(\sum\limits_{k = 1}^{n}(Y_{k} - \theta_{1}\phi_{1}(x_{k}) - \dots - 
+\theta_{s}\phi_{s}(x_{k}))^{2})$$
+
+## Теорема 1 (Гаусса-Маркова) {#theorem-12-1}
+
+Пусть матрица $X \in \R^{n \times s}$ такая, что $det(X^{T}X) \neq 0$
+
+Тогда
+
+1. МНК-оценка $\hat{\theta}(Y)$ существует, ***единственна*** и определяется соотношением:
+
+$$\hat{\theta}(Y) = (X^{T}X)^{-1}X^{T}Y$$
+
+2. МНК-оценка $\hat{\theta}(Y)$ ***несмещенная*** обладает **наименьшей дисперсией** в классе
+линейных по $Y$ и *несмещенных* оценок по координатам.
+
+3. Ковариационная матрица $\hat{\theta}$ имеет вид
+
+$$K_{\hat{\theta}} = \sigma^{2} (X^{T}X)^{-1}$$
+
+### Доказательство {-}
+
+1. $$J(\theta) = (Y - X\theta)^{T}(Y - X\theta) = Y^{T}Y - 2Y^{T}X\theta + 
+\theta^{T}X^{T}X\theta \longrightarrow \min\limits_{\theta}$$
+
+$J(\theta)$ --- квадратичная функция. При этом $H_{J} = 2X^{T}X$ --- *матрица Гессе* **невырождена**
+и **положительно определена**:
+
+Пусть $x \in \R^{s} \backslash\{0\}$. Тогда $x^{T}(2X^{T}X)x = 2(Xx, Xx) > 0$.
+
+Т.о. $J(\theta)$ имеем *единственный экстремум* --- точку **минимума**, которая может быть найдена
+из необходимых условий:
+
+$$\nabla_{\theta}J(\theta) = -(2Y^{T}X)^{T} + 2X^{T} \cdot X\theta = 0$$
+
+$$\hat{\theta} = (X^{T}X)^{-1} X^{T} Y$$
+
+2. $M[\hat{\theta}] = M[(X^{T}X)^{-1}X^{T}Y] = (X^{T}X)^{-1} X^{T}M[X\theta + E] =
+(X^{T}X)^{-1}X^{T}X\theta + (X^{T}X)^{-1}X^{T} \cancelto{0}{M[E]} = 0$
+
+Рассмотрим произвольную несмещенную линейную оценку $\tilde{\theta} = AY$, где 
+$A \in \R^{s \times n}$
+
+Тогда $\forall \theta \in \R^{s}$
+
+$$\theta = M[\tilde{\theta}] = M[AX\theta + AE] = AX\theta + AM[E] = AX\theta$$
+
+Откуда $AX = I$
+
+$K_{\tilde{\theta}} = M[(\tilde{\theta} - \theta)(\tilde{\theta} - \theta)^{T}] = M[(AY - \theta)(AY - \theta
+)^{T}] = [(\cancel{AX\theta} - AX - \cancel{\theta})(\cancel{AX\theta} - AE - \cancel{\theta})^{T}] 
+\overset{AX = I}{=} M[AEE^{T}A^{T}] = AK_{E}A^{T} = \sigma^{2}AA^{T}$ \hfill ($\ast$)
+
+$AA^{T} = (A - ((X^{T}X)^{-1}X^{T}) + ((X^{T}X)^{-1}X^{T}))(A - (X^{T}X)^{-1}X^{T} + (X^{T}X)^{-1}X^{T})^{T}
+= (A - (X^{T}X)^{-1}X^{T})(A -(X^{T}X)^{-1}X^{T})^{T} + (A -(X^{T}X)^{-1}X^{T})X(X^{T}X)^{-1} +
+(X^{T}X)^{-1}X^{T}(A - (X^{T}X)^{-1}X^{T})^{T}  + (X^{T}X)^{-1}X^{T}X(X^{T}X)^{-1} =
+(A - (X^{T}X)^{-1}X^{T})(A -(X^{T}X)^{-1}X^{T})^{T} + AX(X^{T}X)^{-1} - 
+(X^{T}X)^{-1}X^{T}X(X{^T}X)^{-1} + (X^{T}X)^{-1}X^{T}A^{T} - (X^{T}X)^{-1}X^{T}X(X^{T}X)^{-1} + 
+(X^{T}X)^{-1} \overset{AX = I}{=} (A - (X^{T}X)^{-1}X^{T})(A-(X^{T}X)^{-1}X^{T})^{T} + (X^{T}X)^{-1}$
+
+т.к. $(A - (X^{T}X)^{-1}X^{T})(A - (X^{T}X)^{-1}X^{T})^{T} \geqslant 0$, то все ее диагональные элементы,
+которые и определяют $D[\theta_{k}], k = \overline{1, s}$, **неотрицательны**. Тогда *минимальное* значение
+$D[\theta_{k}], \forall k = \overline{1, s}$ достигается, если 
+
+$(A - (X^{T}X)^{-1}X^{T})(A - (X^{T}X)^{-1}X^{T})^{T} = 0$, т.е.
+
+$$A = (X^{T}X)^{-1}X^{T}$$
+
+ИЛИ
+
+$$\hat{\theta} = \hat{\theta}$$
+
+3. Если положить $A = (X^{T}X)^{-1}X^{T}$ то из ($\ast$) следует, что 
+
+$K_{\hat{\theta}} = \sigma^{2}(X^{T}X)^{-1}X^{T}X(X^{T}X)^{-1} = \sigma^{2}(X^{T}X)^{-1}$. $\blacksquare$
+
+## Замечание {-}
+
+[Теорема 1](#theorem-12-1) гарантирует свойства МНК-оценки для любых коррелированных шумов.
+
+## \underline{Нормальная регресcия} {-}
+
+## Определение 4
+
+Схема Гаусса-Маркова называется ***нормальной регрессией***, если $E \sim N(0; \sigma^{2}I)$.
+
+## Лемма 1 {#lemma-12-1}
+
+В нормальной регрессии 
+
+$$\hat{\theta} \sim N(\theta; \sigma^{2}(X^{T}X)^{-1})$$
+
+### Доказательство {-}
+
+Доказательство следует из [Леммы 1.3](#lemma-1-3) и [Теоремы 1 п.2, п.3](#theorem-12-1). $\blacksquare$
+
+## Лемма 2 {#lemma-12-2}
+
+В нормальной регрессии МНК-оценка и МП-оценка ***совпадают***
+
+### Доказательство {-}
+
+В силу [Леммы 1.3](#lemma-1-3) $Y \sim N(X\theta; \sigma^{2}I)$
+
+Тогда функция правдоподобия по определению имеет вид
+
+$$L(y; \theta) = f_{Y}(y; \theta) = \frac{1}{(2\pi)^{\frac{n}{2}}\sqrt{\det(\sigma^{2}I)}} 
+\exp\{- \frac{1}{2\sigma^{2}}(y - X\theta)^{T}(y - X\theta)\}$$
+
+откуда $\underset{\theta}{argmax} L(Y; \theta) = \underset{\theta}{argmin}(Y - X\theta)^{T}(Y - X\theta)
+= \hat{\theta}$. $\blacksquare$
+
+## Следствие 1
+
+В нормальной регрессии МНК-оценка $\hat{\theta}$ ***эффективна***, т.е. *оптимальна* в классе всех
+*несмещенных* оценок.
+
+### Доказательство {-}
+
+Доказательство следует из [Леммы 2](#lemma-12-2) и [Теоремы 8.1](#theorem-8-1). $\blacksquare$
+
+## Лемма 3 {#lemma-12-3}
+
+В нормальной регрессии МП-оценка $\sigma^{2}$ имеет вид
+
+$$\hat{\sigma^{2}} = \frac{1}{n} \lVert Y - X \hat{\theta} \rVert$$
+
+### Доказательство {-}
+
+$\ln L(Y; \theta; \sigma^{2}) = - \frac{n}{2} \ln(2\pi) - \frac{n}{2} \ln \sigma^{2} -
+\frac{(Y - X\theta)^{T}(Y - X\theta)}{2\sigma^{2}}$,
+
+$$\begin{cases}
+    \frac{\partial \ln L(Y;\theta;\sigma^{2})}{\partial \sigma^{2}} = - \frac{n}{2\sigma^{2}} + 
+\frac{(Y - X\theta)^{T}(Y - X\theta)}{2(\sigma^{2})^{2}} = 0, \\
+   \nabla_{\theta}\ln L(Y;\theta;\sigma^{2}) = - \frac{1}{2\sigma^{2}} (-
+2X^{T}Y + 2X^{T}X\theta) = 0 \\
+\end{cases}$$
+
+Откуда $\hat{\theta} = (X^{T}X)^{-1}X^{T}Y$ --- МНК-оценка,
+
+$$\hat{\sigma^{2}} = \frac{1}{n}(Y - X\hat{\theta})^{T}(Y - X\hat{\theta})$$
+\hfill $\blacksquare$
+
+## Определение 5
+
+***Вектором остатков*** называется
+
+$$\hat{E} = Y - X\hat{\theta}$$
+
+## Лемма 4 {#lemma-12-4}
+
+В нормальной регрессии $\hat{E} \sim N(0; \sigma^{2}(I - X(X^{T}X)^{-1}X^{T}))$
+
+### Доказательство {-}
+
+$\hat{E} = Y - X\hat{\theta} = X\theta + E - X(X^{T}X)^{-1}X^{T}(X\theta + E) = 
+X\theta + E - X(X^{T}X)^{-1}X^{T}X\theta - X(X^{T}X)^{-1}X^{T}E = 
+(I - X(X^{T}X)^{-1}X^{T})E$.
+
+Тогда в силу [Леммы 1.3](#lemma-1-3) $m_{\hat{E}} = 0$
+
+$K_{\hat{E}} = (I - X(X^{T}X)^{-1}X^{T})\sigma^{2}I(X-X(X^{T}X)^{-1}X^{T})^{T} = 
+\sigma^{2}(I - 2X(X^{T}X)^{-1}X^{T} + X(X^{T})^{-1}X^{T}X(X^{T}X)^{-1}X^{T}) = \sigma^{2}
+(I - (X(X^{T}X)^{-1}X^{T}))$. $\blacksquare$
+
+## Лемма 5 {#lemma-12-5}
+
+В нормальной регрессии $\hat{\theta}$ и $\hat{E}$  **независимы**
+
+### Доказательство {-}
+
+В силу [Леммы 1.5](#lemma-1-5) достаточно показать, что $\hat{\theta}$ и $\hat{E}$ *некоррелированы*.
+
+$K_{\hat{\theta}\hat{E}} = \mathrm{cov}(\hat{\theta}, Y - X\hat{\theta}) = \mathrm{cov}(\hat{\theta},
+Y) - \mathrm{cov}(\hat{\theta},\hat{\theta}) \cdot X^{T} \overset{*}{=}$
+
+с учетом [Леммы 1](#lemma-12-1) и [Теоремы 1](#theorem-12-1) 
+
+$\overset{*}{=} \mathrm{cov}((X^{T}X)^{-1}X^{T}Y, Y) - \sigma^{2}(X^{T}X)^{-1}X^{T} = 
+(X^{T}X)^{-1}X^{T} \mathrm{cov}(X\theta + E, X\theta + E) - \sigma^{2}(X^{T}X)^{-1}X^{T} = 
+(X^{T}X)^{-1}X^{T}\sigma^{2}I - \sigma^{2}(X^{T}X)^{-1}X^{T} = 0$. $\blacksquare$
+
+## Лемма 6 {#lemma-12-6}
+
+В нормальной регрессии
+
+$$\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} = n \cdot \frac{\hat{\sigma}^{2}}{\sigma^{2}} \sim
+\chi^{2}(n - s)$$
+
+### Доказательство {-}
+
+Пусть $E_{0} = \frac{E}{\sigma}$ Тогда $E_{0} \sim N(0; I)$
+
+$\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} = \frac{1}{\sigma^{2}} \lVert Y - X(X^{T}X)^{-1}X^{T}Y 
+\rVert^{2} = \frac{1}{\sigma^{2}} \lVert X\theta + E - X(X^{T}X)^{-1}X^{T}X\theta - X(X^{T}X)^{-1}X
+^{T}E \rVert^{2} = \frac{1}{\sigma^{2}} \lVert (I - X(X^{T}X)^{-1}X^{T})E \rVert^{2} = 
+E_{0}^{T} A E_{0}$, где 
+
+$A = (I - X(X^{T}X)^{-1}X^{T})^{T}(I - X(X^{T}X)^{-1}X^{T}) = 
+I - 2X(X^{T}X)^{-1}X^{T} + X(X^{T}X)^{-1}X^{T}X(X^{T}X)^{-1}X^{T} = 
+I - X(X^{T}X)^{-1}X^{T}$. Откуда следует, что $A^{2} = A$.
+
+Т.к. $A^{T} = A$ и $A \geqslant 0$, то все собственные значения $\lambda_{1}, \dots, \lambda_{n} \in \R$
+*неотрицательны*, а переход в нормальный жорданов базис описывается ортогональным преобразованием $C$:
+
+$$C^{T} = C^{-1}, A = C^{T}diag(\lambda_{1}, \dots, \lambda_{n})C$$
+
+Тогда 
+
+$$A^{2} = C^{T}diag(\lambda_{1}^{2}, \dots, \lambda_{n}^{2})C$$
+
+Из $A^{2} = A$ следует, что $\lambda_{i} = \lambda_{i}^{2}, i = \overline{1, n}$, т.е. $\lambda_{i} \in 
+\{0; 1\}$
+
+Тогда 
+
+<!-- rebuild second matrix -->
+$$\Lambda = 
+\begin{pmatrix}
+    \lambda_{1} & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & \lambda_{n} \\
+\end{pmatrix} = 
+\begin{pmatrix}
+    1 & \dots & 0 \\
+    \vdots & 1 & \vdots \\
+    0 & \dots & 0 \\
+\end{pmatrix}$$
+
+где $m = rgA$
+
+$\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} = E_{0}^{T} C^{T} \cdot \Lambda C E_{0} = 
+\sum\limits_{i = 1}^{n} \tilde{\varepsilon_{i}}^{2}$, где с учетом [Леммы 1.3](#lemma-1-3)
+
+$CE_{0} = (\tilde{\varepsilon_{1}}, \dots, \tilde{\varepsilon_{n}}) \sim N(0, CIC^{T}) = 
+N(0; I)$
+
+Т.о. по определению $\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} \sim \chi^{2}(m)$
+
+Т.к. $tr(AB) = tr(BA), \forall A, B^{T} \in \R^{n \times m}$, то 
+
+$tr(A) = tr(C^{T}\Lambda C) = tr(CC^{T}\Lambda) = tr(\Lambda) = m = rgA$
+
+$m = tr(I - X(X^{T}X)^{-1}X^{T}) = n -tr(X(X^{T}X)^{-1}X^{T}) = n - tr(X^{T}X(X^{T}X)^{-1}) = 
+n - tr(\underset{s \times s}{I}) = n - s$. $\blacksquare$
+
+## Лемма 7 {#lemma-12-7}
+
+В нормальной регрессии
+
+$$\frac{\hat{\theta_{k}} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} 
+\sim t(n - s)$$
+
+где $\alpha_{k}$ --- элемент на главной диагонали матрицы $(X^{T}X)^{-1}$
+
+### Доказательство {-}
+
+Из [Леммы 1](#lemma-12-1) следует, что $\hat{\theta_{k}} \sim N(\theta_{k}, \sigma^{2} \alpha_{k})$
+
+Тогда 
+
+$\frac{\hat{\theta_{k}} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$
+
+С учетом [определения распределения Стьюдента](#def-7-2) и [Леммы 5](#lemma-12-5), и [Леммы 6](#lemma-12-6)
+
+$\frac{\hat{\theta_{k}} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} = 
+\frac{\frac{\hat{\theta_{k}} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}}}{\sqrt{\frac{1}{n - s} 
+\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}}}} \sim t(n - s)$. $\blacksquare$
+
+## Лемма 8 {#lemma-12-8}
+
+В нормальной регрессии 
+
+$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} 
+\cdot \sqrt{n - s} \sim t(n - s)$, где
+
+$\alpha(x) = (\phi_{1}(x), \dots, \phi_{s}(x))(X^{T}X)^{-1}
+\begin{pmatrix}
+    \phi_{1}(x) \\
+    \vdots \\
+    \phi_{s}(x) \\
+\end{pmatrix}, x \in \R$
+
+### Доказательство {-}
+
+Из [Леммы 1](#lemma-12-1) следует, что 
+
+$$\phi(x; \hat{\theta}) = \hat{\theta}\phi_{1}(x) + \dots + \hat{\theta_{s}}\phi_{s}(x) \sim N(\phi(x; 
+\theta); \alpha(x)\sigma^{2})$$
+
+Тогда 
+
+$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$. 
+
+С учетом лемм 5 и 6, определения Стьюдента
+
+$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} =
+\frac{\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}}}{
+{\sqrt{\frac{1}{n - s} \frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}}}}} \sim t(n - s)$. $\blacksquare$
+
+## Замечание {-}
+
+Леммы *6, 7, 8* позволяют построить доверительные интервалы для $\theta_{1}, \dots, \theta_{s}, 
+\sigma^{2}, \phi(x;\theta)$.
+
+Для построения точеченой оценки $\theta_{1}, \dots, \theta_{s}$ и $\phi(x;\theta)$ исользуется 
+[Теорема 1](#theorem-12-1), для точечной оценки --- [Лемма 3](#lemma-12-3).
+
+Зачастую в качестве $\phi_{k}(x)$ рассматривают $\phi_{k}(x) = x^{k - 1}$. Однако порядок многочлена $s$,
+как правило, несмещен. Для его определения можно использовать ***критерий Фишера***:
+
+## \underline{Критерий Фишера} {-}
+
+$$H_{0} : \theta_{k} = 0$$
+
+$$H_{1} : \theta_{k} \neq 0$$
+
+$$T(Y) = \frac{\hat{\theta_{k}}^{2}}{\alpha_{k} \lVert \hat{E} \rVert^{2}}(n - s)$$
+
+где $\alpha_{k}$ --- k-й элемент на главной диагонали матрицы $(X^{T}X)^{-1}$.
+
+$$Law(T(Y) | H_{0}) = F(1, n - s)$$
+
+$$G_{\circ\alpha} = [0; F_{1 - \alpha}(1 ; n - s))$$
+
+$$G_{| \alpha} = [F_{1 - \alpha}(1 ; n - s); + \infty)$$
