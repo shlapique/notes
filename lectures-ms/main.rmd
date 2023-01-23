@@ -17,6 +17,9 @@ header-includes:
 - \usepackage{cancel}
 
 - \pagestyle{fancy}
+- \fancyhead{}
+- \fancyhead[LO, LE]{\leftmark}
+
 - \newcommand{\R}{\mathbb{R}}
 - \newcommand{\Ll}{\mathbb{L}}
 - \newcommand{\N}{\mathbb{N}}
@@ -27,6 +30,11 @@ header-includes:
 \input{./files/title.tex}
 
 \tableofcontents
+
+\vspace*{\fill}
+
+\underline{Last build:} \today
+
 \clearpage
 
 # Источники {-}
@@ -144,7 +152,7 @@ $$\psi_{X}(\lambda) = \int\limits_{\R}e^{i\lambda X}f_{X}(x)dx$$
 
 Причем:
 
-$$f_{X}(x) = \frac{1}{(2\pi)^{n}} \int\limits_{\R}e^{-i\lambda^{T} X}\psi_{X}(x)d\lambda$$
+$$f_{X}(x) = \frac{1}{(2\pi)^{n}} \int\limits_{\R}e^{-i\lambda^{T} X}\psi_{X}(\lambda)d\lambda$$
 
 
 ## Лемма 5 {#lemma-1-5}
@@ -211,7 +219,7 @@ K_x = diag(\sigma_{X_1}^{2}, \dots, \sigma_{X_n}^{2}) = \\
 
 $\psi_{X}(\lambda) = \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} - \frac{1}{2} \lambda^{T} K_{X} \lambda \} =
 \exp\{i\lambda_{1} m_{X_1} + \dots + i\lambda_{n} m_{X_n} - \frac{1}{2}(\lambda_{1}^{2} \sigma_{X_1}^{2} + \dots + 
-\lambda_{n}^{2} \sigma_{X_n}^{2})\} = \prod\limits_{k = 1}^{n} \exp\{i\lambda_{n} m_{X_n} - \frac{1}{2} \lambda_{k}^{2} \sigma_{K_n}^{2}\} = \prod\limits_{k = 1}^{n} \psi_{X_k} (\lambda_{k})$.
+\lambda_{n}^{2} \sigma_{X_n}^{2})\} = \prod\limits_{k = 1}^{n} \exp\{i\lambda_{k} m_{X_k} - \frac{1}{2} \lambda_{k}^{2} \sigma_{K_k}^{2}\} = \prod\limits_{k = 1}^{n} \psi_{X_k} (\lambda_{k})$.
 
 Откуда с учетом [Леммы 5, п.1](#lemma-1-5) $X_1, \dots, X_n$ --- **н/з**.
 
@@ -237,7 +245,9 @@ $$Y = \Lambda^{- \frac{1}{2}} S^{T}(X - m_{X})$$
 
 В силу [Леммы 3](#lemma-1-3):
 
-$$m_{Y} = Am_{X} + b = \Lambda^{- \frac{1}{2}}S^{T} - \Lambda^{- \frac{1}{2}}S^{T}m_{X} = 0,$$
+<!-- не было m_X -->
+
+$$m_{Y} = Am_{X} + b = \Lambda^{- \frac{1}{2}}S^{T}m_{X} - \Lambda^{- \frac{1}{2}}S^{T}m_{X} = 0,$$
 $$K_{Y} = AK_{X}A^{T} = \Lambda^{- \frac{1}{2}}S^{T}K_{X}S\Lambda^{- \frac{1}{2}} = I,$$
 
 т. е. $Y \sim N(0, I)$.
@@ -256,7 +266,8 @@ $$X = m_{X} + S\Lambda^{\frac{1}{2}} Y,$$
 
 ## Определение 1
 
-***Условным математическим ожиданием абсолютно непрерывного случайного вектора*** $X$ относительно абсолютно непрерывного случайного вектора $Y$ называется:
+***Условным математическим ожиданием абсолютно непрерывного случайного вектора*** $X$ относительно абсолютно непрерывного случайного 
+вектора $Y$ называется:
 
 $$M[X \mid Y] = \int\limits_{- \infty}^{+ \infty} xf_{X | Y} (x \mid Y)dx,$$
 
@@ -299,7 +310,7 @@ $= \phi(Y) M[X \mid Y]$. $\blacksquare$
 **\underline{Доказательство}**
 
 $M[X \mid Y] = \int\limits_{- \infty}^{+ \infty} xf_{X \mid Y} (x \mid Y)dx = \int\limits_{- \infty}^{+ \infty} x \frac{f_{z}(x, Y)}
-{f_{Y}(Y)}dx = \int\limits_{- \infty}{+ \infty}x \frac{f_{X}(x) f_{Y}(Y)}{f_{Y}(Y)} dx = M[X]$. $\blacksquare$
+{f_{Y}(Y)}dx = \int\limits_{- \infty}^{+ \infty}x \frac{f_{X}(x) f_{Y}(Y)}{f_{Y}(Y)} dx = M[X]$. $\blacksquare$
 
 ### Свойство 5 {#attr-1-5}
 
@@ -347,7 +358,7 @@ $$(X, Y) = M[X \cdot Y]$$
 
 ***Оценка $\hat{X}$ называется с.к.-оптимальной оценкой $X$***, если для любой другой оценки $\tilde{X}$ верно
 
-$$M[| \tilde{X} - \hat{X}|^{2}] \leqslant M[| X - \tilde{X} |^{2}]$$ 
+$$M[| X - \hat{X}|^{2}] \leqslant M[| X - \tilde{X} |^{2}]$$ 
 
 ## Теорема 1
 
