@@ -528,14 +528,17 @@ $$X \sim
 \end{pmatrix}
 $$
 
-$P(\{ \omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq 0 \}) = P(\{ \omega : \forall N \in \N \exists n \geqslant N: X_{n}(\omega)
+$P(\{ \omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq 0 \}) = P(\{ \omega : \forall N \in \N, 
+\exists n \geqslant N: X_{n}(\omega)
 = n \}) = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) =n \}) \overset{*}{=}$
 
 1. $\sum\limits_{n = N + 1}^{\infty}\{\omega : X_{n}(\omega) = n\} \subset \sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\}$
 
-2. $P(\sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\} \leqslant \sum\limits_{n = N}^{\infty}
+2. $P(\sum\limits_{n = N}^{\infty} \{\omega : X_{n}(\omega) = n\}) \leqslant \sum\limits_{n = N}^{\infty}
 P(\{\omega : X_{n}(\omega) = n \}) = \sum\limits_{n = N}^{\infty} \frac{1}{n^2}
-\overset{n \to \infty}{\longrightarrow} 0$, т.к. $\sum\limits_{n = 1}^{\infty} \frac{1}{n^2} < \infty$
+\overset{n \to \infty}{\longrightarrow} 0$, 
+
+т.к.  $\sum\limits_{n = 1}^{\infty} \frac{1}{n^2} < \infty$
 
 Тогда в силу *аксиомы непрерывности* $\overset{*}{=} 0$, т.е.
 $X_{n} \overset{\text{п.н.}}{\longrightarrow} 0$
@@ -548,7 +551,7 @@ $$P(|X_{n} - 0| \leqslant \varepsilon) =
 \begin{cases}
     1, & \varepsilon \geqslant n \\
     1 - \frac{1}{n^2}, & \varepsilon \in (0; n) \\
-\end{cases}$$
+\end{cases} \overset{n \to \infty}{\longrightarrow} 1 $$
 
 Тогда $X_{n} \overset{P}{\longrightarrow} 0$
 
@@ -572,7 +575,7 @@ $$f_{n, k} =
 \end{cases}$$
 
 Пусть $X \sim R(0; 1)$. Рассмотрим последовательность с.в. $X_{nk} = f_{nk}(X)$. $\forall \omega \in
-\Omega X(\omega) \in [0;1]$. Тогда $\forall n \in \N \exists k = \overline{1, n}$ такое, что
+\Omega X(\omega) \in [0;1]$. Тогда $\forall n \in \N, \exists k = \overline{1, n}$ такое, что
 $X(\omega) \in [\frac{k - 1}{n}; \frac{k}{n}]$. Т.е. если $\varepsilon = \frac{1}{2}$, то $\forall n
 \in \N$ найдется $k = \overline{1, n}$ такой, что
 
@@ -598,7 +601,7 @@ $$R(|X_{nk} - 0| > \varepsilon) =
 
 $$X_{nk} \overset{P}{\longrightarrow} 0$$
 
-$M[|X_{nk} - 0|^{2}] = M[X_{nk}] = M[f_{nk}(X)] = \int\limits_{0}^{1}f_{nk}(x) f_{x}(x)dx = \int\limits_{0}^
+$M[|X_{nk} - 0|^{2}] = M[X_{nk}] = M[f_{nk}(X)] = \int\limits_{0}^{1}f_{nk}(x) \underbrace{f_{X}(x)}_{1}dx = \int\limits_{0}^
 {1} f_{nk}(x)dx = \int\limits_{\frac{k -1}{n}}^{\frac{k}{n}} 1 dx = \frac{1}{n} \overset{n \to \infty}
 {\longrightarrow} 0$
 
@@ -618,7 +621,7 @@ $P(|Y_{n_{1}k} - 0| > \varepsilon) =
     0, & \varepsilon \geqslant n, \\
     \frac{1}{n}, & \varepsilon \in (0; n) \\
 \end{cases}
-\overset{n to \infty}{\longrightarrow} 0$
+\overset{n \to \infty}{\longrightarrow} 0$
 
 $$Y_{n_{1}k} \overset{P}{\longrightarrow} 0$$
 
@@ -639,8 +642,8 @@ $\{X_{n}\}_{n \in \N}$ и $X$. Поэтому исследование на сх
 ### Доказательство {-}
 
 $0 = P(\{\omega : \lim\limits_{n \to \infty} X_{n}(\omega) \neq X(\omega)\}) = P(\{\omega : \exists 
-\varepsilon > 0 \forall N \in \N \exists n \geqslant N : |X_{n}(\omega) - X(\omega) > \varepsilon\}) = 
-P(\sum\limits_{\varepsilon > 0)} \prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty}
+\varepsilon > 0 \forall N \in \N \exists n \geqslant N : |X_{n}(\omega) - X(\omega)| > \varepsilon\}) = 
+P(\sum\limits_{\varepsilon > 0} \prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty}
 \{ \omega : |X_{n}(\omega) - X(\omega)| > \varepsilon \}) \geqslant
 P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| >
 \varepsilon '\})$, $\forall \varepsilon ' > 0$
@@ -648,7 +651,7 @@ P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\
 Тогда $0 = P(\prod\limits_{N = 1}^{\infty} \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - 
 X(\omega)| > \varepsilon\})$,
 
-$$\sum\limits_{n = N + 1}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| > \varepsilon\}) \subset
+$$\sum\limits_{n = N + 1}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| > \varepsilon\} \subset
 \sum\limits_{n = N}^{\infty} \{\omega : |X_{n}(\omega) - X(\omega)| > \varepsilon\}$$
 
 В силу *аксиомы непрерывности*:
@@ -664,17 +667,17 @@ $$X_{N} \overset{P}{\longrightarrow} X$$
 
 Пусть $P(X \geqslant 0) = 1$, $M[X] < \infty$. Тогда $\forall \varepsilon > 0$
 
-$$P(X > \varepsilon) = \frac{M[X]}{\varepsilon}$$
+$$P(X > \varepsilon) \leqslant \frac{M[X]}{\varepsilon}$$
 
 ### Доказательство {-}
 
 $M[X] = \int\limits_{0}^{+ \infty} xdF_{X}(x) \geqslant \int\limits_{\varepsilon}^{+ \infty} xdF_{X}(x)
-\geqslant \varepsilon \int\limits_{\varepsilon}^{+ \infty} dF_{X}(X) = \varepsilon P(X > \varepsilon)$.
+\geqslant \varepsilon \int\limits_{\varepsilon}^{+ \infty} dF_{X}(x) = \varepsilon P(X > \varepsilon)$.
 $\blacksquare$
 
 ## Следствие 1
 
-Пусть $M[X^{-k}] < \infty$. Тогда $\forall \varepsilon > 0$:
+Пусть $M[X^{k}] < \infty$. Тогда $\forall \varepsilon > 0$:
 
 $$P(|X| > \varepsilon) \leqslant \frac{M[|X|^{k}|]}{\varepsilon^{k}}$$
 
@@ -813,7 +816,7 @@ $X_{1}, \dots, X_{n}$ --- *независимые* с.в.
 
 ### Доказательство {-}
 
-$M[|\overline{X_{n}} - m_{X}|^{2}] = M[|\overline{X_{n}} - M[\overline{X_{n}}]|^{2}|^{2}] = 
+$M[|\overline{X_{n}} - m_{X}|^{2}] = M[|\overline{X_{n}} - M[\overline{X_{n}}]|^{2}] = 
 D[\overline{X_{n}}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] = 
 \frac{n D[X_{1}]}{n^{2}} \overset{n \to \infty}{\longrightarrow} 0$
 
@@ -827,7 +830,6 @@ D[\overline{X_{n}}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] =
 
 Тогда $\overline{X_{n}} \overset{\text{п.н.}}{\longrightarrow} m_{X}$
 
-<!-- понять, че за 'т.о' -->
 ## Замечание {-}
 Т.о. для *однородной* выборки $\overline{X_{n}}$ сходится **почти наверное** и **по вероятности** к $m_{X}$,
 \underline{если оно существует}, и **в среднем квадратичном**, \underline{если существует дисперсия}.
@@ -854,14 +856,14 @@ $\overline{X_{n}} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
 Пусть $Z_{n}$ --- *неоднородная* выборка, $D[X_{k}] = D_{k} \leqslant D_{max} < \infty, k \in \N$.
 
 Тогда $\overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{\text{с.к.}}{\longrightarrow}
-0, \overline{X_{k}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{P}{\longrightarrow} 0$.
+0, \overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{P}{\longrightarrow} 0$.
 
 ### Доказательство {-}
 
 $\overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} = 
 \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - m_{X_{k}}) = \frac{1}{n} \sum\limits_{k = 1}^{n} Y_{k}$,
 
-где $M[Y_{k}] = 0, D[Y_{k}] = D[X_{k}] = \leqslant D_{max} < \infty$
+где $M[Y_{k}] = 0, D[Y_{k}] = D[X_{k}] \leqslant D_{max} < \infty$
 
 Тогда $\overline{Y_{k}}$ удовлетворяет условиям [Теоремы 4.3](#theorem-4-3). $\blacksquare$
 
@@ -880,7 +882,6 @@ $$\overline{X_{n}} \overset{\text{п.н.}}{\longrightarrow} m_{X}$$
 Условие [Теоремы 4](#theorem-4-4) более мягкое, чем условие [Теоремы 3](#theorem-4-3). Пусть 
 $D[X_{k}] \leqslant D_{max}, k \in \N$. Тогда 
 
-<!-- dont know what exactly means sign like '6' or \sigma -->
 $$\sum\limits_{k = 1}^{n} \frac{D[X_{k}]}{k^{2}} \leqslant \sum\limits_{k = 1}^{n} \frac{D_{max}}{k^{2}} =
 \frac{\pi^{2} D_{max}}{\sigma} < \infty$$
 
@@ -920,7 +921,7 @@ $$\frac{N(A)}{N} = \frac{1}{N} \sum\limits_{k = 1}^{N} X_{k} \overset{\text{п.�
 Как правило, в теории вероятностей это неизвестно, а с.в. описываются при помощи их распределений, а не
 как функции. При этом если у двух величин совпадают распределения, то это вовсе не значит, что они равны.
 
-Поэтому довольно важным является вид сходимости *по распределению*, т.е. в смысле **"описательного
+Поэтому довольно важным является вид сходимости *по распределению*, т.е. в смысле "описательного
 инструмента" с.в.
 
 ## Определение 1
@@ -949,7 +950,7 @@ $F_{X_{n} + Y_{n}}(x_{0}) = P(X_{n} + Y_{n} \leqslant x_{0}) = \underbrace{P(\{X
 \{|Y_{n}| > \varepsilon\})}_{p_{1}} + 
 \underbrace{P(\{X_{n} + Y_{n} \leqslant x_{0}\} \{|Y_{n}| \leqslant \varepsilon\})}_{p_{2}}$
 
-$$0 \leqslant p_{1} \leqslant P(|Y_{n} > \varepsilon) \overset{n \to \infty}{\longrightarrow} 0$$
+$$0 \leqslant p_{1} \leqslant P(|Y_{n}| > \varepsilon) \overset{n \to \infty}{\longrightarrow} 0$$
 
 $p_{2} = P(\{X_{n} + Y_{n} \leqslant x_{0}\} \{- \varepsilon \leqslant Y_{n} \leqslant \varepsilon\})
 \overset{*}{\leqslant}$
@@ -1025,7 +1026,7 @@ $$M[X_{1}] = m_{X}, D[X_{1}] = \sigma_{X}^{2}$$
 
 Тогда 
 
-$$S_{n} \frac{\sum\limits_{k = 1}^{n} X_{n} - nm_{X}}{\sigma_{X} \sqrt{n}} \overset{d}{\longrightarrow}
+$$S_{n} = \frac{\sum\limits_{k = 1}^{n} X_{n} - nm_{X}}{\sigma_{X} \sqrt{n}} \overset{d}{\longrightarrow}
 N(0; 1)$$
 
 ### Доказательство {-}
@@ -1049,15 +1050,15 @@ $\psi''(0) = - M[(X_{k} - m_{X})^{2} e^{i0(X_{k} - m_{X})}] = - M[(X_{k} - m_{X}
 
 Тогда согласно *формуле Тейлора*
 
-$\psi(\lambda) = \psi(0) + \psi'(0) \lambda + \psi''(0) \frac{\lambda^{2}}{2} + 0(\lambda^{2}) = 
-1 - \frac{\sigma_{X}^{2}}{2} \lambda^{2} + 0(\lambda^{2})$
+$\psi(\lambda) = \psi(0) + \psi'(0) \lambda + \psi''(0) \frac{\lambda^{2}}{2} + o(\lambda^{2}) = 
+1 - \frac{\sigma_{X}^{2}}{2} \lambda^{2} + o(\lambda^{2})$
 
 Рассмотрим $\ln\psi_{S_{n}}(\lambda) = n \ln\psi(\frac{\lambda}{\sigma_{X} \sqrt{n}}) =
-n \ln(1 - \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})) = 
-n(- \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n}) + 0(-
-\frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n}))) = 
-n(- \frac{\lambda^{2}}{2n} + 0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})) = - \frac{\lambda^{2}}{2n} +
-\frac{0(\frac{\lambda^{2}}{\sigma_{X}^{2}n})}{\frac{\lambda^{2}}{\sigma_{X}^{2}n}} \cdot
+n \ln(1 - \frac{\lambda^{2}}{2n} + o(\frac{\lambda^{2}}{\sigma_{X}^{2}n})) = 
+n(- \frac{\lambda^{2}}{2n} + o(\frac{\lambda^{2}}{\sigma_{X}^{2}n}) + o(-
+\frac{\lambda^{2}}{2n} + o(\frac{\lambda^{2}}{\sigma_{X}^{2}n}))) = 
+n(- \frac{\lambda^{2}}{2n} + o(\frac{\lambda^{2}}{2n})) = - \frac{\lambda^{2}}{2n} +
+\frac{o(\frac{\lambda^{2}}{\sigma_{X}^{2}n})}{\frac{\lambda^{2}}{\sigma_{X}^{2}n}} \cdot
 \frac{\lambda^{2}}{2} \overset{n \to \infty}{\longrightarrow} - \frac{\lambda^{2}}{2}$,
 
 $$\psi_{S_{n}}(\lambda) \overset{n \to \infty}{\longrightarrow} e^{- \frac{\lambda^{2}}{2}}$$
@@ -1093,7 +1094,7 @@ N(0; 1)$. $\blacksquare$
 Вычислить вероятность того, что при $n = 1000$  подбрасываниях монета упадет *"орлом"* от $400$ до $600$
 раз.
 
-Пусть $X$ --- число выпавших *"орлов"*. Тогда $X \sim Bi(1000; \frac{1}{2})$. По *формуле Бернулли*Ж
+Пусть $X$ --- число выпавших *"орлов"*. Тогда $X \sim Bi(1000; \frac{1}{2})$. По *формуле Бернулли*
 
 $$P(X \in [400; 600]) = \sum\limits_{k = 400}^{600} C_{1000}^{k} \frac{1}{2^{1000}}$$
 
@@ -1102,7 +1103,7 @@ $$P(X \in [400; 600]) = \sum\limits_{k = 400}^{600} C_{1000}^{k} \frac{1}{2^{100
 В силу [Теоремы 1](#theorem-5-1) и [Следствия](#cons-5-1)
 
 <!-- тут может быть ошибка: сходимость не по 'n -> \infty', а по 'd' -->
-$$\frac{X - n \frac{1}{2}}{\sqrt{n \frac{1}{2}(1 - \frac{1}{2})}} \overset{n \to \infty}{\longrightarrow} 
+$$\frac{X - n \frac{1}{2}}{\sqrt{n \frac{1}{2}(1 - \frac{1}{2})}} \overset{d}{\longrightarrow} 
 N(0; 1)$$
 
 Тогда 
@@ -1117,7 +1118,7 @@ $P(400 \leqslant X \leqslant 600) = P(\frac{400 - 500}{\sqrt{250}} \leqslant
 D[X_{n}] = \sigma_{X_{n}}^{2}, M[|X_{n} - m_{X_{n}}|^{3}] = C_{n}^{3} < \infty$
 
 При этом $\frac{(\sum\limits_{k = 1}^{n} C_{k}^{3})^{\frac{1}{3}}}{
-(\sum\limits_{k = 1}^{n} \sigma_{X_{n}}^{2})^{\frac{1}{2}}} \overset{n \to \infty}{\longrightarrow} 0$ 
+(\sum\limits_{k = 1}^{n} \sigma_{X_{k}}^{2})^{\frac{1}{2}}} \overset{n \to \infty}{\longrightarrow} 0$ 
 ***(Условие Ляпунова)***
 
 Тогда $\frac{(\sum\limits_{k = 1}^{n} X_{k} - M[\sum\limits_{k = 1}^{n} X_{k}]}{
@@ -1170,7 +1171,7 @@ $\frac{2C_{0}\rho}{\sigma_{X}^{3}\sqrt{n}} = \frac{2 \cdot 0.4784 \cdot \frac{1}
 
 ***Выборкой*** называется $Z_{n} = (X_{1}, \dots, X_{n})^{T}$ *независимый вектор*
 с.в. Если все $X_{1}, \dots, X_{n}$ --- *одинаково распределены*, а $F(x)$ --- *функция
-распределения*, то говорят, что $Z_{n}$ --- ***однородная*** выбрка, порожденная распределением $F(x)$
+распределения*, то говорят, что $Z_{n}$ --- ***однородная*** выборка, порожденная распределением $F(x)$
 
 ## Определение 2
 
@@ -1183,7 +1184,7 @@ $\frac{2C_{0}\rho}{\sigma_{X}^{3}\sqrt{n}} = \frac{2 \cdot 0.4784 \cdot \frac{1}
 
 ## Замечание {-}
 
-Обычно распределение, порождающее выбрку, известно неточно.
+Обычно распределение, порождающее выборку, известно неточно.
 
 $$F_{X} = F_{X}(x; \theta)$$
 
@@ -1200,7 +1201,7 @@ $Z_{n} = (X_{1}, \dots, X_{n})^{T}$ и обозначается $X^{(k)}$
 
 ## Замечание {-}
 
-$X^{(k)}$ является функцией от всей выборки, т.к. при различных $\omega \in \Omega X^{(k)}$ будет 
+$X^{(k)}$ является функцией от всей выборки, т.к. при различных $\omega \in \Omega$ $X^{(k)}$ будет 
 совпадать по значению с разными $X_{i}$.
 
 ## Определение 6
@@ -1220,7 +1221,7 @@ $$F_{(k)}(x) = P(X^{(k)} \leqslant x) = \sum\limits_{i = k}^{n} C_{n}^{i} (F(x))
 
 ### Доказательство {-}
 
-Рассмотрим с.в. $Y$, равную числу элементов выборки, не превоскходящих $x$. Тогда $Y \sim Bi(n; F(x))$.
+Рассмотрим с.в. $Y$, равную числу элементов выборки, не превосходящих $x$. Тогда $Y \sim Bi(n; F(x))$.
 
 $F_{(k)}(x) = P(X^{(k)} \leqslant x) = P(Y \geqslant k) = 
 \sum\limits_{i = k}^{n} C_{n}^{i} (F(x))^{i}(1 - F(x))^{n - i}$. $\blacksquare$
@@ -1229,19 +1230,19 @@ $F_{(k)}(x) = P(X^{(k)} \leqslant x) = P(Y \geqslant k) =
 
 $F_{(1)}(x) = 1 - (1 - F(x))^{n}$,
 
-$F_{(n)}(x) = (F_{(x)})^{n}$.
+$F_{(n)}(x) = (F)^{n}$.
 
 ## Определение 8
 
 ***Выборочной квантилью*** уровня $\alpha \in (0; 1)$ называется *порядковая статистика* 
-$X^{([nd] + 1)}$
+$X^{([n\alpha] + 1)}$
 
 ## Теорема 1 (Мостеллера) {#theorem-6-1}
 
 Пусть $X$ --- *абсолютно непрерывная* с.в., $x_{\alpha}$ --- *точка гладкости* $f_{X}(x), 
 f_{X}(x_{\alpha}) > 0$
 
-Тогда $(X^{([nd] + 1)} - x_{\alpha}) \sqrt{\frac{n f_{X}^{2} (x_{\alpha})}{p(1 - p)}}
+Тогда $(X^{([n\alpha] + 1)} - x_{\alpha}) \sqrt{\frac{n f_{X}^{2} (x_{\alpha})}{p(1 - p)}}
 \overset{d}{\longrightarrow} N(0; 1)$
 
 ## Определение 9
@@ -1256,7 +1257,7 @@ $$\hat{F_{n}}(x) =
 
 ## Замечание {-}
 
-Фактически $\hat{F_{n}}(x)$ --- **частота события** $\{X \leqslant x\}$, которая исользуется 
+Фактически $\hat{F_{n}}(x)$ --- **частота события** $\{X \leqslant x\}$, которая используется 
 для оценки вероятности $F(x) = P(X \leqslant x)$.
 
 <!-- mb change to real plot in R later -->
@@ -1269,10 +1270,10 @@ $$\hat{F_{n}}(x) =
 
 2. \fbox{$M[\hat{F_{n}}(x)] = F(x)$}
 
-3. \fbox{$\sup_{x \in \R}|\hat{F_{n}}(x) - F(x)| \overset{\text{п.н.}}{\longrightarrow} 0$}
+3. \fbox{$\sup\limits_{x \in \R}|\hat{F_{n}}(x) - F(x)| \overset{\text{п.н.}}{\longrightarrow} 0$}
 ***(Теорема Гливенко - Кантелли)***
 
-4. \fbox{$[(\hat{F_{n}}(x) - F(x))^{2}] = \frac{F(x)(1 - F(x))} 
+4. \fbox{$M[(\hat{F_{n}}(x) - F(x))^{2}] = \frac{F(x)(1 - F(x))} 
 {n} \leqslant \frac{1}{4n}$}
 
 5. \fbox{$|\hat{F_{n}}(x) - F(x)| \overset{\text{с.к.}}{\longrightarrow} 0$}
@@ -1283,10 +1284,10 @@ $$\hat{F_{n}}(x) =
 
 ## Замечание {-}
 
-$\hat{F_{n}}(x)$ При увеличении $n$ *равномерно приблежается* к $F(x)$, при этом точность приближения можно
+$\hat{F_{n}}(x)$ при увеличении $n$ *равномерно приближается* к $F(x)$, при этом точность приближения можно
 оценить при помощи свойств **4** и **6**.
 
-\underline{Гистрограмма}. На основе реализации вариационного ряда построим разбиение $\R$
+\underline{Гистограмма}. На основе реализации вариационного ряда построим разбиение $\R$
 $- \infty = t_{0} < t_{1} < t_{2} < \dots < t_{l} < t_{l + 1} = + \infty$,
 
 $t_{1} \leqslant x^{(1)}, t_{l} > x{(n)}$.
@@ -1320,7 +1321,7 @@ $$\hat{f_{n}}(x) =
 
 ## Замечание {-}
 
-Если плотность вероятности $f_{X}(x)$ *непрерывна* и *ограничена*, а число разрядо гистограммы
+Если плотность вероятности $f_{X}(x)$ *непрерывна* и *ограничена*, а число разрядов гистограммы
 $l_{n}$ *удовлетворяет условию*: $l_{n} \longrightarrow + \infty, \frac{n}{l_{n}} \longrightarrow +
 \infty$,
 
@@ -1332,7 +1333,7 @@ $$\hat{f_{n}}(x) \overset{P}{\longrightarrow} f_{X}(x)$$
 
 ## \underline{Выборочные моменты} {-}
 
-## Определние 1
+## Определение 1
 
 ***Выборочным начальным*** и ***центральным моментами*** называется соответственно статистики:
 
@@ -1344,7 +1345,7 @@ $\hat{\mu_{r}}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \hat\nu_{1}(n))
 
 ## Определение 2
 
-***Выборочным средним*** и ***выборочой дисперсией*** называются соответственно статистики:
+***Выборочным средним*** и ***выборочной дисперсией*** называются соответственно статистики:
 
 $\overline{X_{n}} = \hat{\nu_{1}(n)} = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}$ 
 
@@ -1429,7 +1430,7 @@ $$\frac{\sum\limits_{k = 1}^{n} X_{k} - n m_{X}}{\sigma_{X} \sqrt{n}} =
 
 ## \underline{Точечные оценки} {-}
 
-## Опредление 1
+## Определение 1
 
 Пусть $X_{1}, \dots, X_{n}$ --- *независимые* с.в.
 
@@ -1441,7 +1442,7 @@ $$Y = \sum\limits_{k = 1}^{n} X_{k}^{2} \sim \chi^{2}(n)$$
 
 ## Свойства распределения $\chi^{2}(n)$
 
-1. Y имеет плотность вероятности
+1. $Y$ имеет плотность вероятности
 
 $$f_{Y}(x; n) = 
 \begin{cases}
@@ -1459,7 +1460,7 @@ $$f_{Y}(x; n) =
 
 $$\psi_{Y}(\lambda) = (1 - 2\lambda i)^{\frac{n}{2}}$$
 
-3. $Y \sim \chi^{2}(n), M[Y] = n, D[Y] = 2n.
+3. $Y \sim \chi^{2}(n), M[Y] = n, D[Y] = 2n$
 
 4. Пусть *н / з* $Y_{1} \sim \chi^{2}(n_{1}), \dots, Y_{k} \sim \chi^{2}(n_{k})$. Тогда
 
