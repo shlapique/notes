@@ -1,2 +1,7 @@
 *.log
 *.swp
+*.Rprofile
+Rplots.pdf
+renv
+
+

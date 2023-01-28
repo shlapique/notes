@@ -1261,6 +1261,10 @@ $$\hat{F_{n}}(x) =
 для оценки вероятности $F(x) = P(X \leqslant x)$.
 
 <!-- mb change to real plot in R later -->
+```{r, echo=FALSE}
+
+
+```
 
 ![](./files/freq-prob.png)
 
