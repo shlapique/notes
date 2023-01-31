@@ -7,6 +7,9 @@ check_device <- function()
 
 plotter <- function(data)
 {
+    # first and last 'x' on graph (for pretty look in pdf)
+    first <- 0
+    last  <- 0
     print("OUT OF PLOTTER")
     dash_data <- data.frame() # vertical dashed lines
     dash_data_tmp <- dash_data
@@ -17,11 +20,15 @@ plotter <- function(data)
         {
             dash_data_tmp <- dash_data
             dash_data <- rbind(dash_data_tmp, data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], data[i+1, 2])))
+            last <- i
+            first <- last - length(dash_data[, 1]) / 2
         }
     }
+    last <- last + 1
     print("DAASH DATA IS")
     print(dash_data)
-    p <- ggplot(data.frame("x"=c(data[1, 1], dash_data[1, 1]), "f"=c(data[1, 2], dash_data[1, 2])), mapping=aes(x=x, y=f)) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "f"=c(dash_data[1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
+    print(paste("LAST = ", last, "FIRST = ", first))
+    p <- ggplot(data.frame("x"=c(data[first, 1], dash_data[1, 1]), "f"=c(data[first, 2], dash_data[1, 2])), mapping=aes(x=x, y=f)) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "f"=c(dash_data[1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
     j <- 1
     m <- length(dash_data[, 1]) - 1
     while(j <= length(dash_data[, 1]))
@@ -36,9 +43,9 @@ plotter <- function(data)
         }
         j <- j + 2
     }
-    p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[length(data[,1]), 1]), "f"=c(dash_data[length(dash_data[,1]), 2], data[length(data[,1]), 2])), mapping=aes(x=x, y=f))
-    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], 0, dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c("X^(1)", "X^(2)", "0", "X^(n-1)", "X^(n)"))
-    p <- p + scale_y_continuous(breaks=c(1/length(data[, 1]), 2/length(data[, 1]), dash_data[length(dash_data[, 1])-1, 2], 1), labels=c("1/n", "2/n", "1 - 1/n", "1"))
+    p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[last, 1]), "f"=c(dash_data[length(dash_data[,1]), 2], data[last, 2])), mapping=aes(x=x, y=f))
+    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c("X^(1)", "X^(2)", "X^(n-1)", "X^(n)"))
+    p <- p + scale_y_continuous(breaks=c(dash_data[2, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c("1/n", "1 - 1/n", "1"))
     p
 }
 
@@ -75,8 +82,8 @@ por_stat <- function(n, x, sort_sample)
     return (data.frame("x"=X, "f"=Y))
 }
 
-n <- 11
-x <- seq(-5, 5, 1)
+n <- 21 
+x <- seq(-10, 10, 1)
 y <- rnorm(n, 0, 1)
 data <- por_stat(n, x, sort(y))
 data
