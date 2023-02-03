@@ -1,4 +1,5 @@
 library(ggplot2)
+library(latex2exp)
 
 check_device <- function()
 {
@@ -44,9 +45,9 @@ plotter <- function(data)
         j <- j + 2
     }
     p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[last, 1]), "f"=c(dash_data[length(dash_data[,1]), 2], data[last, 2])), mapping=aes(x=x, y=f))
-    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c("X^(1)", "X^(2)", "X^(n-1)", "X^(n)"))
-    p <- p + scale_y_continuous(breaks=c(dash_data[2, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c("1/n", "1 - 1/n", "1"))
-    p
+    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c(TeX("$X^{1}$"), TeX("$X^{2}$"), TeX("$X^{n-1}$"), TeX("$X^{n}$")))
+    p <- p + scale_y_continuous(breaks=c(dash_data[2, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c(TeX("$\\frac{1}{n}$"), TeX("$\\frac{n - 1}{n}$"), TeX("$1$")))
+    p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{F}_{n}(x)$"))
 }
 
 # if x >= X^{(1)}
@@ -81,6 +82,7 @@ por_stat <- function(n, x, sort_sample)
     }
     return (data.frame("x"=X, "f"=Y))
 }
+
 
 n <- 21 
 x <- seq(-10, 10, 1)

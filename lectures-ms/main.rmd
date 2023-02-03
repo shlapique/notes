@@ -1260,9 +1260,10 @@ $$\hat{F_{n}}(x) =
 Фактически $\hat{F_{n}}(x)$ --- **частота события** $\{X \leqslant x\}$, которая используется 
 для оценки вероятности $F(x) = P(X \leqslant x)$.
 
-```{r, echo=FALSE, out.width="80%"}
-
+```{r, echo=FALSE}
+# check for sampling_function.R' for test
 library(ggplot2)
+library(latex2exp)
 plotter <- function(data)
 {
     # first and last 'x' on graph (for pretty look in pdf)
@@ -1275,30 +1276,32 @@ plotter <- function(data)
         if(data[i, 2] != data[i + 1, 2])
         {
             dash_data_tmp <- dash_data
-            dash_data <- rbind(dash_data_tmp, data.frame("x"=c(data[i, 1], data[i, 1]), "F"=c(data[i, 2], data[i+1, 2])))
+            dash_data <- rbind(dash_data_tmp, data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], data[i+1, 2])))
             last <- i
             first <- last - length(dash_data[, 1]) / 2
         }
     }
     last <- last + 1
-    p <- ggplot(data.frame("x"=c(data[first, 1], dash_data[1, 1]), "F"=c(data[first, 2], dash_data[1, 2])), mapping=aes(x=x, y=F)) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "F"=c(dash_data[1, 2])), mapping=aes(x=x, y=F), shape=21, size=3, fill="white")
+    p <- ggplot(data.frame("x"=c(data[first, 1], dash_data[1, 1]), "f"=c(data[first, 2], dash_data[1, 2])), mapping=aes(x=x, y=f)) + geom_vline(xintercept=0) + geom_hline(yintercept=0) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "f"=c(dash_data[1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
     j <- 1
     m <- length(dash_data[, 1]) - 1
     while(j <= length(dash_data[, 1]))
     {
-        data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "F"=c(dash_data[j, 2], dash_data[j+1, 2]))
-        p <- p + geom_line(data_tmp, mapping=aes(x=x, y=F), linetype="dashed")
+        data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(dash_data[j, 2], dash_data[j+1, 2]))
+        p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
         if(m-1 != 0)
         {
-            data_tmp <- data.frame("x"=c(dash_data[m-1, 1], dash_data[m, 1]), "F"=c(dash_data[m-1, 2], dash_data[m, 2]))
-            p <- p + geom_line(data_tmp, mapping=aes(x=x, y=F)) + geom_point(data.frame("x"=c(dash_data[m, 1]), "F"=c(dash_data[m, 2])), mapping=aes(x=x, y=F), shape=21, size=3, fill="white")
+            data_tmp <- data.frame("x"=c(dash_data[m-1, 1], dash_data[m, 1]), "f"=c(dash_data[m-1, 2], dash_data[m, 2]))
+            p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f)) + geom_point(data.frame("x"=c(dash_data[m, 1]), "f"=c(dash_data[m, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
             m <- m - 2
         }
         j <- j + 2
     }
-    p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[last, 1]), "F"=c(dash_data[length(dash_data[,1]), 2], data[last, 2])), mapping=aes(x=x, y=F))
-    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c("X^(1)", "X^(2)", "X^(n-1)", "X^(n)"))
-    p <- p + scale_y_continuous(breaks=c(0, dash_data[2, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c("0", "1/n", "1 - 1/n", "1"))
+    p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[last, 1]), "f"=c(dash_data[length(dash_data[,1]), 2], data[last, 2])), mapping=aes(x=x, y=f))
+    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[5, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c(TeX("$X^{(1)}$"), TeX("$X^{(2)}$"), TeX("$X^{(3)}$"), TeX("$X^{(n-1)}$"), TeX("$X^{(n)}$")))
+    p <- p + scale_y_continuous(breaks=c(dash_data[2, 2], dash_data[4, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c(TeX("$\\frac{1}{n}$"), TeX("$\\frac{2}{n}$"), TeX("$\\frac{n - 1}{n}$"), TeX("$1$"))) 
+    p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{F}_{n}(x)$")) + theme(axis.text=element_text(colour="red"),
+                                                                                          axis.title=element_text(colour="blue"))
     p
 }
 
@@ -1332,15 +1335,16 @@ por_stat <- function(n, x, sort_sample)
             Y[i] <- 0
         }
     }
-    return (data.frame("x"=X, "F"=Y))
+    return (data.frame("x"=X, "f"=Y))
 }
 
+# 7
+set.seed(7)
 n <- 21 
 x <- seq(-10, 10, 1)
 y <- rnorm(n, 0, 1)
 data <- por_stat(n, x, sort(y))
 plotter(data)
-
 ```
 
 <!-- ![](./files/freq-prob.png) -->
