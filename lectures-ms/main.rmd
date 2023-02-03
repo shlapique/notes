@@ -1284,16 +1284,17 @@ plotter <- function(data)
     last <- last + 1
     p <- ggplot(data.frame("x"=c(data[first, 1], dash_data[1, 1]), "f"=c(data[first, 2], dash_data[1, 2])), mapping=aes(x=x, y=f)) + geom_vline(xintercept=0) + geom_hline(yintercept=0) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "f"=c(dash_data[1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
     j <- 1
-    m <- length(dash_data[, 1]) - 1
+    m <- 2
     while(j <= length(dash_data[, 1]))
     {
-        data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(dash_data[j, 2], dash_data[j+1, 2]))
+        # data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(dash_data[j, 2], dash_data[j+1, 2]))
+        data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(0, dash_data[j+1, 2]))
         p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
-        if(m-1 != 0)
+        if(m+1 != length(dash_data[, 1])+1)
         {
-            data_tmp <- data.frame("x"=c(dash_data[m-1, 1], dash_data[m, 1]), "f"=c(dash_data[m-1, 2], dash_data[m, 2]))
-            p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f)) + geom_point(data.frame("x"=c(dash_data[m, 1]), "f"=c(dash_data[m, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
-            m <- m - 2
+            data_tmp <- data.frame("x"=c(dash_data[m, 1], dash_data[m+1, 1]), "f"=c(dash_data[m, 2], dash_data[m+1, 2]))
+            p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f)) + geom_point(data.frame("x"=c(dash_data[m+1, 1]), "f"=c(dash_data[m+1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
+            m <- m + 2
         }
         j <- j + 2
     }
