@@ -1,16 +1,36 @@
 library(ggplot2)
+library(latex2exp)
 
 check_device <- function()
 {
     while (!is.null(dev.list())) Sys.sleep(1)
 }
 
-l <- 6 
-set.seed(0)
-data <- data.frame(x=rnorm(30))
+histo <- function(data)
+{
+    p <- ggplot(data.frame("x"=c(-3, data[1, 1]), "f"=c(0, 0)), mapping=aes(x=x, y=f)) + geom_line()
+    for(i in 1:(length(data[, 1])-1))
+    {
+        p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i+1, 1]), "f"=c(data[i, 2], data[i, 2])), mapping=aes(x=x, y=f)) 
+        print(paste("data[i, 1], data[i+1, 1] : ", data[i, 1], data[i+1, 1]))
+        print(i)
+    }
+    p <- p + geom_line(data.frame("x"=c(data[1, 1], data[1, 1]), "f"=c(data[1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    for(i in 1:length(data[, 1]))
+    {
+        p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    }
+    p <- p + geom_line(data.frame("x"=c(data[length(data[, 1]), 1], data[length(data[, 1]), 1]), "f"=c(data[length(data[, 1]), 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    p
+}
+
+data <- data.frame("x"=c(seq(-2, 4, 1)), "f"=0)
+for(i in 1:length(data[, 1]))
+{
+    data[i, 2] <- abs(runif(1, min=0, max=1))
+}
+data[length(data[, 1]), 2] <- 0 # for expl: in 5 points we have 4 bins
 data
-
 X11()
-ggplot(data, aes(x)) + geom_histogram(aes(y=after_stat(density)), fill='lightblue', col='black', bins=l)
+histo(data)
 check_device()
-
