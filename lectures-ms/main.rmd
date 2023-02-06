@@ -1261,7 +1261,7 @@ $$\hat{F_{n}}(x) =
 для оценки вероятности $F(x) = P(X \leqslant x)$.
 
 ```{r, echo=FALSE}
-# check for sampling_function.R' for test
+# check 'sampling_function.R' for test
 library(ggplot2)
 library(latex2exp)
 plotter <- function(data)
@@ -1389,7 +1389,7 @@ $[t_{k};  t_{k + 1}), k = \overline{0, l}$
 
 Заметим, что $\hat{p_{0}} = \hat{p_{l}} = 0$.
 
-## Определние 10
+## Определение 10
 
 ***Гистограммой*** называется функция:
 
@@ -1399,11 +1399,46 @@ $$\hat{f_{n}}(x) =
     \hat{p_{k}}, & x \in (t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
 \end{cases}$$
 
-<!-- add PICTURE OF HISTOGRAM 
+```{r, echo=FALSE}
+# check 'hist.R' for tests and debug
+library(ggplot2)
+library(latex2exp)
+histo <- function(data)
+{
+    p <- ggplot() + geom_vline(xintercept=0) + geom_hline(yintercept=0)
+    for(i in 1:(length(data[, 1])-1))
+    {
+        p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i+1, 1]), "f"=c(data[i, 2], data[i, 2])), mapping=aes(x=x, y=f)) 
+    }
+    p <- p + geom_line(data.frame("x"=c(data[1, 1], data[1, 1]), "f"=c(data[1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    for(i in 2:(length(data[, 1])-1))
+    {
+        if(data[i, 2] > data[i-1, 2])
+        {
+            p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+        } else # if current point value is less then previous
+        {
+            p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i-1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+        }
+    }
+    p <- p + geom_line(data.frame("x"=c(data[length(data[, 1]), 1], data[length(data[, 1]), 1]), "f"=c(data[length(data[, 1])-1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    p <- p + scale_x_continuous(breaks=c(data[seq(1, 5, 1), 1]), labels=TeX(sprintf(r'($t_{%d}$)', 1:5)))
 
+    p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{f}_{n}(x)$")) + theme(axis.text=element_text(colour="red"),
+                                                                                          axis.title=element_text(colour="blue"))
+    p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank())
+    p
+}
 
-
--->
+data <- data.frame("x"=c(seq(-0.7, 0.5, 0.3)), "f"=0)
+set.seed(0)
+for(i in 1:length(data[, 1]))
+{
+    data[i, 2] <- abs(runif(1, min=0, max=1))
+}
+data[length(data[, 1]), 2] <- 0 # for expl: in 5 points we have 4 bins
+histo(data)
+```
 
 ## Замечание {-}
 
@@ -1538,9 +1573,18 @@ $$f_{Y}(x; n) =
 
 где $\Gamma(z) = \int\limits_{0}^{+ \infty} y^{z - 1} e^{-y} dy$ --- гамма-функция.
 
-<!-- add PICTURE OF DISTRIBUTION
-
--->
+```{r, echo=FALSE}
+library(ggplot2)
+library(latex2exp)
+p <- ggplot(data.frame(x = c(0, 15)), aes(x=x)) + stat_function(fun=dchisq, args=list(df=1), aes(colour="n = 1"))
+p <- p + stat_function(fun=dchisq, args=list(df=2), aes(colour="n = 2"))
+p <- p + stat_function(fun=dchisq, args=list(df=6), aes(colour="n > 2")) # n > 2
+p <- p + scale_colour_manual("", values=c("green", "purple", "red"))
+p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) + theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$f_{Y}(x, n)$")) + theme(axis.text=element_text(colour="red"),
+                                                                                      axis.title=element_text(colour="blue"))
+p
+```
 
 2. $Y$ имеет характеристическую функцию
 

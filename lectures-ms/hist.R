@@ -28,10 +28,17 @@ histo <- function(data)
         }
     }
     p <- p + geom_line(data.frame("x"=c(data[length(data[, 1]), 1], data[length(data[, 1]), 1]), "f"=c(data[length(data[, 1])-1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    # p <- p + scale_x_continuous(breaks=c(data[seq(1, 5, 1), 1]), labels=c(TeX("t_{1}"), TeX("t_{1}"), TeX("t_{1}"), TeX("t_{1}"), TeX("t_{1}")))
+    p <- p + scale_x_continuous(breaks=c(data[seq(1, 5, 1), 1]), labels=TeX(sprintf(r'($t_{%d}$)', 1:5)))
+
+    p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{f}_{n}(x)$")) + theme(axis.text=element_text(colour="red"),
+                                                                                          axis.title=element_text(colour="blue"))
+    p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank())
     p
 }
 
-data <- data.frame("x"=c(seq(-2, 3, 1)), "f"=0)
+data <- data.frame("x"=c(seq(-0.7, 0.5, 0.3)), "f"=0)
+set.seed(0)
 for(i in 1:length(data[, 1]))
 {
     data[i, 2] <- abs(runif(1, min=0, max=1))
