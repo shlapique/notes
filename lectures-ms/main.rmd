@@ -726,15 +726,15 @@ A_{n}$. Тогда
 \overset{N \to \infty}{\longrightarrow} 0$, т.к. $\sum\limits_{n = 1}^{\infty} P(A_{n}) < \infty$
 
 2. $P(B) = \dots = \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} A_{n}) = 
-\lim\limits_{N \to \infty} (1 - P(\prod\limits_{n = N}^{\infty} \overline{A_{n}})) = 
-1 - \lim\limits_{N \to \infty} P(\prod\limits_{M = N}^{\infty} \prod\limits_{n = N}^{M} \overline{A_{n}})
+\lim\limits_{N \to \infty} (1 - P(\prod\limits_{n = N}^{\infty} \overline{A}_{n})) = 
+1 - \lim\limits_{N \to \infty} P(\prod\limits_{M = N}^{\infty} \prod\limits_{n = N}^{M} \overline{A}_{n})
 \overset{*}{=}$
 
-т.к. $\prod\limits_{n = N}^{M + 1} \overline{A_{n}} \subset \prod\limits_{n = N}^{M} \overline{A_{n}}$, то
+т.к. $\prod\limits_{n = N}^{M + 1} \overline{A}_{n} \subset \prod\limits_{n = N}^{M} \overline{A}_{n}$, то
 по *аксиоме непрерывности*
 
 $\overset{*}{=} 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} P(\prod\limits_{n = N}^{M}
-\overline{A_{n}}) = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} \prod\limits_{n = N}^{M}
+\overline{A}_{n}) = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} \prod\limits_{n = N}^{M}
 (1 - P(A_{n})) = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty} \prod\limits_{n = N}^{M} 
 e^{\ln(1 - P(A_{n}))} = 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty}
 e^{\sum\limits{n = N}^{M} \ln(1 - P(A_{n}))} \overset{*}{\geqslant}$
@@ -804,34 +804,34 @@ $X_{1}, \dots, X_{n}$ --- *независимые* с.в.
 
 ## Определение 2
 
-***Выборочным средним*** $\overline{X_{n}}$ выборки $Z_{n}$ называется $\overline{X_{n}} = \frac{1}{n}
+***Выборочным средним*** $\overline{X}_{n}$ выборки $Z_{n}$ называется $\overline{X}_{n} = \frac{1}{n}
 \sum\limits_{k = 1}^{n} X_{k}$
 
 ## Теорема 1 (Закон Больших Чисел Чебышёва)
 
 Пусть $Z_{n}$ --- однородная выборка, $M[X_{k}^{2}] < \infty$.
 
-Тогда $\overline{X_{n}} \overset{\text{с.к.}}{\longrightarrow} m_{X}, \overline{X_{n}} 
+Тогда $\overline{X}_{n} \overset{\text{с.к.}}{\longrightarrow} m_{X}, \overline{X}_{n} 
 \overset{P}{\longrightarrow} m_{X}$
 
 ### Доказательство {-}
 
-$M[|\overline{X_{n}} - m_{X}|^{2}] = M[|\overline{X_{n}} - M[\overline{X_{n}}]|^{2}] = 
-D[\overline{X_{n}}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] = 
+$M[|\overline{X}_{n} - m_{X}|^{2}] = M[|\overline{X}_{n} - M[\overline{X}_{n}]|^{2}] = 
+D[\overline{X}_{n}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] = 
 \frac{n D[X_{1}]}{n^{2}} \overset{n \to \infty}{\longrightarrow} 0$
 
-Т.е. по определению $\overline{X_{n}} \overset{\text{с.к.}}{\longrightarrow} m_{X}$.
+Т.е. по определению $\overline{X}_{n} \overset{\text{с.к.}}{\longrightarrow} m_{X}$.
 
-С учетом [Леммы 3.3](#lemma-3-3) $\overline{X_{n}} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
+С учетом [Леммы 3.3](#lemma-3-3) $\overline{X}_{n} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
 
 ## Теорема 2 (Закон Больших Чисел Колмогорова) {#theorem-4-2}
 
 Пусть $Z_{n}$ --- *однородная* выборка, $M[X_{k}] = m_{X} < \infty$.
 
-Тогда $\overline{X_{n}} \overset{\text{п.н.}}{\longrightarrow} m_{X}$
+Тогда $\overline{X}_{n} \overset{\text{п.н.}}{\longrightarrow} m_{X}$
 
 ## Замечание {-}
-Т.о. для *однородной* выборки $\overline{X_{n}}$ сходится **почти наверное** и **по вероятности** к $m_{X}$,
+Т.о. для *однородной* выборки $\overline{X}_{n}$ сходится **почти наверное** и **по вероятности** к $m_{X}$,
 \underline{если оно существует}, и **в среднем квадратичном**, \underline{если существует дисперсия}.
 
 ## Теорема 3 {#theorem-4-3}
@@ -839,33 +839,33 @@ D[\overline{X_{n}}] = \frac{1}{n^{2}} D[\sum\limits_{k = 1}^{n} X_{k}] =
 Пусть $Z_{n}$ --- *неоднородная* выборка, $M[X_{k}] = m_{X} < \infty, D[X_{k}] = D_{k} \leqslant D_{max} <
 \infty$, где $k \in \N$
 
-Тогда $\overline{X_{n}} \overset{\text{с.к.}}{\longrightarrow} m_{X}, 
-\overline{X_{n}} \overset{P}{\longrightarrow} m_{X}$.
+Тогда $\overline{X}_{n} \overset{\text{с.к.}}{\longrightarrow} m_{X}, 
+\overline{X}_{n} \overset{P}{\longrightarrow} m_{X}$.
 
 ### Доказательство {-}
 
-$M[|\overline{X_{n}} - m_{X}|^{2}] = M[|\overline{X_{n}} - M[\overline{X_{n}}]|^{2}] = D[X_{n}] =
+$M[|\overline{X}_{n} - m_{X}|^{2}] = M[|\overline{X}_{n} - M[\overline{X}_{n}]|^{2}] = D[X_{n}] =
 \frac{1}{n^{2}} \sum\limits_{k = 1}^{n} D_{k} \leqslant \frac{n D_{max}}{n^{2}} = 
 \frac{D_{max}}{n} \overset{n \to \infty}{\longrightarrow} 0$
 
-Т.о. $\overline{X_{n}} \overset{\text{с.к.}}{\longrightarrow} m_{X}$. Тогда в силу [Леммы 3.3](#lemma-3-3)
-$\overline{X_{n}} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
+Т.о. $\overline{X}_{n} \overset{\text{с.к.}}{\longrightarrow} m_{X}$. Тогда в силу [Леммы 3.3](#lemma-3-3)
+$\overline{X}_{n} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
 
 ## Следствие 1
 
 Пусть $Z_{n}$ --- *неоднородная* выборка, $D[X_{k}] = D_{k} \leqslant D_{max} < \infty, k \in \N$.
 
-Тогда $\overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{\text{с.к.}}{\longrightarrow}
-0, \overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{P}{\longrightarrow} 0$.
+Тогда $\overline{X}_{n} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{\text{с.к.}}{\longrightarrow}
+0, \overline{X}_{n} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} \overset{P}{\longrightarrow} 0$.
 
 ### Доказательство {-}
 
-$\overline{X_{n}} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} = 
+$\overline{X}_{n} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} = 
 \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - m_{X_{k}}) = \frac{1}{n} \sum\limits_{k = 1}^{n} Y_{k}$,
 
 где $M[Y_{k}] = 0, D[Y_{k}] = D[X_{k}] \leqslant D_{max} < \infty$
 
-Тогда $\overline{Y_{k}}$ удовлетворяет условиям [Теоремы 4.3](#theorem-4-3). $\blacksquare$
+Тогда $\overline{Y}_{k}$ удовлетворяет условиям [Теоремы 4.3](#theorem-4-3). $\blacksquare$
 
 ## Теорема 4 {#theorem-4-4}
 
@@ -875,7 +875,7 @@ $$\sum\limits_{k = 1}^{n} \frac{D[X_{k}]}{k^{2}} < \infty$$
 
 Тогда
 
-$$\overline{X_{n}} \overset{\text{п.н.}}{\longrightarrow} m_{X}$$
+$$\overline{X}_{n} \overset{\text{п.н.}}{\longrightarrow} m_{X}$$
 
 ## Замечание {-}
 
@@ -995,9 +995,9 @@ $$X_{n} + Y_{n} \overset{d}{\longrightarrow} X$$
 
 Пусть $C \neq 0$. Тогда $Y_{n} - C = \tilde{Y} \overset{P}{\longrightarrow} 0$,
 
-$X_{n} + C = \tilde{X_{n}} \overset{d}{\longrightarrow} X + C = \tilde{X}$
+$X_{n} + C = \tilde{X}_{n} \overset{d}{\longrightarrow} X + C = \tilde{X}$
 
-Получаем $X_{n} + Y_{n} = \tilde{X_{n}} + \tilde{Y_{n}} \overset{d}{\longrightarrow} \tilde{X} = X + C$.
+Получаем $X_{n} + Y_{n} = \tilde{X}_{n} + \tilde{Y}_{n} \overset{d}{\longrightarrow} \tilde{X} = X + C$.
 $\blacksquare$
 
 ## Доказательство леммы 5.1
@@ -1078,15 +1078,15 @@ $$\frac{X_{n} - np}{\sqrt{np(1 - p)}} \overset{d}{\longrightarrow} N(0; 1)$$
 
 ### Доказательство {-}
 
-Т.к. $X_{n} \sim Bi(n; p)$, то существуют **независимые** $\tilde{X_{1}}, \dots, \tilde{X_{n}} \sim
+Т.к. $X_{n} \sim Bi(n; p)$, то существуют **независимые** $\tilde{X}_{1}, \dots, \tilde{X}_{n} \sim
 Be(p)$ такие, что
 
-$$X_{n} = \sum\limits_{k = 1}^{n} \tilde{X_{k}}, M[\tilde{X_{k}}] = p = m_{X}, D[\tilde{X_{k}}] =
+$$X_{n} = \sum\limits_{k = 1}^{n} \tilde{X}_{k}, M[\tilde{X}_{k}] = p = m_{X}, D[\tilde{X}_{k}] =
 p(1 - p) = \sigma_{X}^{2}$$
 
 Тогда  в силу [Теоремы 1](#theorem-5-1):
 
-$\frac{\sum\limits_{k = 1}^{n} \tilde{X_{k}} - nm_{X}}{\sigma_{X}\sqrt{n}} \overset{d}{\longrightarrow}
+$\frac{\sum\limits_{k = 1}^{n} \tilde{X}_{k} - nm_{X}}{\sigma_{X}\sqrt{n}} \overset{d}{\longrightarrow}
 N(0; 1)$. $\blacksquare$
 
 ## Пример 1
@@ -1247,9 +1247,9 @@ f_{X}(x_{\alpha}) > 0$
 
 ## Определение 9
 
-***Выборочной функцией распределения*** называется статистика $\hat{F_{n}}(x)$:
+***Выборочной функцией распределения*** называется статистика $\hat{F}_{n}(x)$:
 
-$$\hat{F_{n}}(x) =
+$$\hat{F}_{n}(x) =
 \begin{cases}
     \frac{1}{n} \max\{k = \overline{1, n} : X^{(k)} \leqslant x\}, & x \geqslant X^{(1)}, \\
     0, & x < X^{(1)} \\
@@ -1257,91 +1257,94 @@ $$\hat{F_{n}}(x) =
 
 ## Замечание {-}
 
-Фактически $\hat{F_{n}}(x)$ --- **частота события** $\{X \leqslant x\}$, которая используется 
+Фактически $\hat{F}_{n}(x)$ --- **частота события** $\{X \leqslant x\}$, которая используется 
 для оценки вероятности $F(x) = P(X \leqslant x)$.
 
 ```{r, echo=FALSE}
 # check 'sampling_function.R' for test
 library(ggplot2)
 library(latex2exp)
-plotter <- function(data)
-{
+plotter <- function(data) {
     # first and last 'x' on graph (for pretty look in pdf)
     first <- 0
-    last  <- 0
-    dash_data <- data.frame() # vertical dashed lines
+    last <- 0
+    dash_data <- data.frame()  # vertical dashed lines
     dash_data_tmp <- dash_data
-    for(i in 1:(length(data[, 1])-1))
-    {
-        if(data[i, 2] != data[i + 1, 2])
-        {
+    for (i in 1:(length(data[, 1]) - 1)) {
+        if (data[i, 2] != data[i + 1, 2]) {
             dash_data_tmp <- dash_data
-            dash_data <- rbind(dash_data_tmp, data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], data[i+1, 2])))
+            dash_data <- rbind(dash_data_tmp, data.frame(x = c(data[i, 1], data[i,
+                1]), f = c(data[i, 2], data[i + 1, 2])))
             last <- i
-            first <- last - length(dash_data[, 1]) / 2
+            first <- last - length(dash_data[, 1])/2
         }
     }
     last <- last + 1
-    p <- ggplot(data.frame("x"=c(data[first, 1], dash_data[1, 1]), "f"=c(data[first, 2], dash_data[1, 2])), mapping=aes(x=x, y=f)) + geom_hline(yintercept=0) + geom_line() + geom_point(data.frame("x"=c(dash_data[1, 1]), "f"=c(dash_data[1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
+    p <- ggplot(data.frame(x = c(data[first, 1], dash_data[1, 1]), f = c(data[first,
+        2], dash_data[1, 2])), mapping = aes(x = x, y = f)) + geom_hline(yintercept = 0) +
+        geom_line() + geom_point(data.frame(x = c(dash_data[1, 1]), f = c(dash_data[1,
+        2])), mapping = aes(x = x, y = f), shape = 21, size = 3, fill = "white")
     j <- 1
     m <- 2
-    while(j <= length(dash_data[, 1]))
-    {
-        # data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(dash_data[j, 2], dash_data[j+1, 2]))
-        data_tmp <- data.frame("x"=c(dash_data[j, 1], dash_data[j+1, 1]), "f"=c(0, dash_data[j+1, 2]))
-        p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
-        if(m+1 != length(dash_data[, 1])+1)
-        {
-            data_tmp <- data.frame("x"=c(dash_data[m, 1], dash_data[m+1, 1]), "f"=c(dash_data[m, 2], dash_data[m+1, 2]))
-            p <- p + geom_line(data_tmp, mapping=aes(x=x, y=f)) + geom_point(data.frame("x"=c(dash_data[m+1, 1]), "f"=c(dash_data[m+1, 2])), mapping=aes(x=x, y=f), shape=21, size=3, fill="white")
+    while (j <= length(dash_data[, 1])) {
+        data_tmp <- data.frame(x = c(dash_data[j, 1], dash_data[j + 1, 1]), f = c(0,
+            dash_data[j + 1, 2]))
+        p <- p + geom_line(data_tmp, mapping = aes(x = x, y = f), linetype = "dashed",
+            colour = "grey")
+        if (m + 1 != length(dash_data[, 1]) + 1) {
+            data_tmp <- data.frame(x = c(dash_data[m, 1], dash_data[m + 1, 1]), f = c(dash_data[m,
+                2], dash_data[m + 1, 2]))
+            p <- p + geom_line(data_tmp, mapping = aes(x = x, y = f)) + geom_point(data.frame(x = c(dash_data[m +
+                1, 1]), f = c(dash_data[m + 1, 2])), mapping = aes(x = x, y = f),
+                shape = 21, size = 3, fill = "white")
             m <- m + 2
         }
         j <- j + 2
     }
-    p <- p + geom_line(data.frame("x"=c(dash_data[length(dash_data[,1]), 1], data[last, 1]), "f"=c(dash_data[length(dash_data[,1]), 2], data[last, 2])), mapping=aes(x=x, y=f))
-    p <- p + scale_x_continuous(breaks=c(dash_data[1, 1], dash_data[3, 1], dash_data[5, 1], dash_data[length(dash_data[, 1])-2, 1], dash_data[length(dash_data[, 1]), 1]), labels=c(TeX("$X^{(1)}$"), TeX("$X^{(2)}$"), TeX("$X^{(3)}$"), TeX("$X^{(n-1)}$"), TeX("$X^{(n)}$")))
-    p <- p + scale_y_continuous(breaks=c(dash_data[2, 2], dash_data[4, 2], dash_data[length(dash_data[, 1])-1, 2], 1), labels=c(TeX("$\\frac{1}{n}$"), TeX("$\\frac{2}{n}$"), TeX("$\\frac{n - 1}{n}$"), TeX("$1$"))) 
-    p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{F}_{n}(x)$")) + theme(axis.text=element_text(colour="red"),
-                                                                                          axis.title=element_text(colour="blue"))
+    p <- p + geom_line(data.frame(x = c(dash_data[length(dash_data[, 1]), 1], data[last,
+        1]), f = c(dash_data[length(dash_data[, 1]), 2], data[last, 2])), mapping = aes(x = x,
+        y = f))
+    p <- p + scale_x_continuous(breaks = c(dash_data[1, 1], dash_data[3, 1], dash_data[5,
+        1], dash_data[length(dash_data[, 1]) - 2, 1], dash_data[length(dash_data[,
+        1]), 1]), labels = c(TeX("$X^{(1)}$"), TeX("$X^{(2)}$"), TeX("$X^{(3)}$"),
+        TeX("$X^{(n-1)}$"), TeX("$X^{(n)}$")))
+    p <- p + scale_y_continuous(breaks = c(dash_data[2, 2], dash_data[4, 2], dash_data[length(dash_data[,
+        1]) - 1, 2], 1), labels = c(TeX("$\\frac{1}{n}$"), TeX("$\\frac{2}{n}$"),
+        TeX("$\\frac{n - 1}{n}$"), TeX("$1$")))
+    p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{F}_{n}(x)$")) +
+        theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
     p
 }
 
 # if x >= X^{(1)}
-flid <- function(n, data, x)
-{
+flid <- function(n, data, x) {
     max <- 0
-    for(i in 1:length(data))
-    {
-        if(data[i] <= x && i > max)
-        {
+    for (i in 1:length(data)) {
+        if (data[i] <= x && i > max) {
             max <- i
         }
     }
-    return (1 / n * max)
+    return(1/n * max)
 }
 
-por_stat <- function(n, x, sort_sample)
-{
+por_stat <- function(n, x, sort_sample) {
     X <- c()
     Y <- c()
-    for(i in 1:length(x))
-    {
-        if(x[i] >= min(sort_sample))
-        {
+    for (i in 1:length(x)) {
+        if (x[i] >= min(sort_sample)) {
             X[i] <- x[i]
             Y[i] <- flid(n, sort_sample, x[i])
-        } else 
-        {
+        } else {
             X[i] <- x[i]
             Y[i] <- 0
         }
     }
-    return (data.frame("x"=X, "f"=Y))
+    return(data.frame(x = X, f = Y))
 }
 
 # 7
 set.seed(7)
-n <- 21 
+n <- 21
 x <- seq(-10, 10, 1)
 y <- rnorm(n, 0, 1)
 data <- por_stat(n, x, sort(y))
@@ -1350,27 +1353,27 @@ plotter(data)
 
 <!-- ![](./files/freq-prob.png) -->
 
-## Свойства $\hat{F_{n}}(x)$ 
+## Свойства $\hat{F}_{n}(x)$ 
 
-1. \fbox{$n \cdot \hat{F_{n}}(x) \sim Bi(n; F(x))$}
+1. \fbox{$n \cdot \hat{F}_{n}(x) \sim Bi(n; F(x))$}
 
-2. \fbox{$M[\hat{F_{n}}(x)] = F(x)$}
+2. \fbox{$M[\hat{F}_{n}(x)] = F(x)$}
 
-3. \fbox{$\sup\limits_{x \in \R}|\hat{F_{n}}(x) - F(x)| \overset{\text{п.н.}}{\longrightarrow} 0$}
+3. \fbox{$\sup\limits_{x \in \R}|\hat{F}_{n}(x) - F(x)| \overset{\text{п.н.}}{\longrightarrow} 0$}
 ***(Теорема Гливенко - Кантелли)***
 
-4. \fbox{$M[(\hat{F_{n}}(x) - F(x))^{2}] = \frac{F(x)(1 - F(x))} 
+4. \fbox{$M[(\hat{F}_{n}(x) - F(x))^{2}] = \frac{F(x)(1 - F(x))} 
 {n} \leqslant \frac{1}{4n}$}
 
-5. \fbox{$|\hat{F_{n}}(x) - F(x)| \overset{\text{с.к.}}{\longrightarrow} 0$}
+5. \fbox{$|\hat{F}_{n}(x) - F(x)| \overset{\text{с.к.}}{\longrightarrow} 0$}
 
-6. \fbox{$\frac{\hat{F_{n}}(x) - F(x)}{\sqrt{F(x)(1 - F(x))}} \sqrt{n}
+6. \fbox{$\frac{\hat{F}_{n}(x) - F(x)}{\sqrt{F(x)(1 - F(x))}} \sqrt{n}
 \overset{d}{\longrightarrow} N(0; 1)$}
 (Следует из теоремы [Муавра - Лапласа](#cons-5-1))
 
 ## Замечание {-}
 
-$\hat{F_{n}}(x)$ при увеличении $n$ *равномерно приближается* к $F(x)$, при этом точность приближения можно
+$\hat{F}_{n}(x)$ при увеличении $n$ *равномерно приближается* к $F(x)$, при этом точность приближения можно
 оценить при помощи свойств **4** и **6**.
 
 \underline{Гистограмма}. На основе реализации вариационного ряда построим разбиение $\R$
@@ -1384,57 +1387,58 @@ $$h_{k} = t_{k + 1} - t_{k} = \frac{t_{l} - t_{1}}{l - 1}, k = \overline{1, l - 
 
 Вычислим частоту попадания элементов выборки в k-й интервал:
 
-$\hat{p_{k}} = \frac{n_{k}}{n}$, где $n_{k}$ --- число элементов выборки, попавших в 
+$\hat{p}_{k} = \frac{n_{k}}{n}$, где $n_{k}$ --- число элементов выборки, попавших в 
 $[t_{k};  t_{k + 1}), k = \overline{0, l}$
 
-Заметим, что $\hat{p_{0}} = \hat{p_{l}} = 0$.
+Заметим, что $\hat{p}_{0} = \hat{p}_{l} = 0$.
 
 ## Определение 10
 
 ***Гистограммой*** называется функция:
 
-$$\hat{f_{n}}(x) =
+$$\hat{f}_{n}(x) =
 \begin{cases}
     0, & x \in (t_{0}; t_{1}) \cup [t_{l}; t_{l + 1}), \\
-    \hat{p_{k}}, & x \in (t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
+    \hat{p}_{k}, & x \in (t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
 \end{cases}$$
 
 ```{r, echo=FALSE}
 # check 'hist.R' for tests and debug
-histo <- function(data)
-{
-    p <- ggplot() + geom_hline(yintercept=0)
-    for(i in 1:(length(data[, 1])-1))
-    {
-        p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i+1, 1]), "f"=c(data[i, 2], data[i, 2])), mapping=aes(x=x, y=f)) 
+histo <- function(data) {
+    p <- ggplot() + geom_hline(yintercept = 0)
+    for (i in 1:(length(data[, 1]) - 1)) {
+        p <- p + geom_line(data.frame(x = c(data[i, 1], data[i + 1, 1]), f = c(data[i,
+            2], data[i, 2])), mapping = aes(x = x, y = f))
     }
-    p <- p + geom_line(data.frame("x"=c(data[1, 1], data[1, 1]), "f"=c(data[1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
-    for(i in 2:(length(data[, 1])-1))
-    {
-        if(data[i, 2] > data[i-1, 2])
-        {
-            p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
-        } else # if current point value is less then previous
-        {
-            p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i, 1]), "f"=c(data[i-1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
+    p <- p + geom_line(data.frame(x = c(data[1, 1], data[1, 1]), f = c(data[1, 2],
+        0)), mapping = aes(x = x, y = f), linetype = "dashed", colour = "grey")
+    for (i in 2:(length(data[, 1]) - 1)) {
+        if (data[i, 2] > data[i - 1, 2]) {
+            p <- p + geom_line(data.frame(x = c(data[i, 1], data[i, 1]), f = c(data[i,
+                2], 0)), mapping = aes(x = x, y = f), linetype = "dashed", colour = "grey")
+        } else {
+            p <- p + geom_line(data.frame(x = c(data[i, 1], data[i, 1]), f = c(data[i -
+                1, 2], 0)), mapping = aes(x = x, y = f), linetype = "dashed", colour = "grey")
         }
     }
-    p <- p + geom_line(data.frame("x"=c(data[length(data[, 1]), 1], data[length(data[, 1]), 1]), "f"=c(data[length(data[, 1])-1, 2], 0)), mapping=aes(x=x, y=f), linetype="dashed", colour="grey")
-    p <- p + scale_x_continuous(breaks=c(data[seq(1, 5, 1), 1]), labels=TeX(sprintf(r'($t_{%d}$)', 1:5)))
+    p <- p + geom_line(data.frame(x = c(data[length(data[, 1]), 1], data[length(data[,
+        1]), 1]), f = c(data[length(data[, 1]) - 1, 2], 0)), mapping = aes(x = x,
+        y = f), linetype = "dashed", colour = "grey")
+    p <- p + scale_x_continuous(breaks = c(data[seq(1, 5, 1), 1]), labels = TeX(sprintf("$t_{%d}$",
+        1:5)))
 
-    p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$\\hat{f}_{n}(x)$")) + theme(axis.text=element_text(colour="red"),
-                                                                                          axis.title=element_text(colour="blue"))
-    p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank())
+    p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{f}_{n}(x)$")) +
+        theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
+    p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
     p
 }
 
-data <- data.frame("x"=c(seq(-0.7, 0.5, 0.3)), "f"=0)
+data <- data.frame(x = c(seq(-0.7, 0.5, 0.3)), f = 0)
 set.seed(0)
-for(i in 1:length(data[, 1]))
-{
-    data[i, 2] <- abs(runif(1, min=0, max=1))
+for (i in 1:length(data[, 1])) {
+    data[i, 2] <- abs(runif(1, min = 0, max = 1))
 }
-data[length(data[, 1]), 2] <- 0 # for expl: in 5 points we have 4 bins
+data[length(data[, 1]), 2] <- 0  # for expl: in 5 points we have 4 bins
 histo(data)
 ```
 
@@ -1446,7 +1450,7 @@ $l_{n}$ *удовлетворяет условию*: $l_{n} \longrightarrow + \i
 
 то
 
-$$\hat{f_{n}}(x) \overset{P}{\longrightarrow} f_{X}(x)$$
+$$\hat{f}_{n}(x) \overset{P}{\longrightarrow} f_{X}(x)$$
 
 Т.е. гистограмма является статистической аппроксимацией функции плотности вероятности.
 
@@ -1456,21 +1460,21 @@ $$\hat{f_{n}}(x) \overset{P}{\longrightarrow} f_{X}(x)$$
 
 ***Выборочным начальным*** и ***центральным моментами*** называется соответственно статистики:
 
-$\hat{\nu_{r}(n)} = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}^{r}$ 
+$\hat{\nu}_{r}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}^{r}$ 
 
 И
 
-$\hat{\mu_{r}}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \hat\nu_{1}(n))^{r}$
+$\hat{\mu}_{r}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \hat{\nu}_{1}(n))^{r}$
 
 ## Определение 2
 
 ***Выборочным средним*** и ***выборочной дисперсией*** называются соответственно статистики:
 
-$\overline{X_{n}} = \hat{\nu_{1}(n)} = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}$ 
+$\overline{X}_{n} = \hat{\nu}_{1}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}$ 
 
 И
 
-$\hat{d_{X}}(n) = \hat{S}^{2}(n) = \hat{\mu_{2}}(n) = 
+$\hat{d}_{X}(n) = \hat{S}^{2}(n) = \hat{\mu}_{2}(n) = 
 \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X})^{2}$
 
 ## Определение 3
@@ -1479,55 +1483,55 @@ $\hat{d_{X}}(n) = \hat{S}^{2}(n) = \hat{\mu_{2}}(n) =
 выборки, порожденные распределениями $F_{X}$ и $F_{Y}$ соответственно. Тогда
 ***выборочным коэффициентом корреляции*** называется:
 
-$$\hat{r_{XY}} = \frac{\sum\limits_{k = 1}^{n} (X_{k} - \overline{X_{n}})(Y_{k} - \overline{Y_{k}})}
-{n\sqrt{\hat{d_{X}} \cdot \hat{d_{Y}}}}$$
+$$\hat{r}_{XY} = \frac{\sum\limits_{k = 1}^{n} (X_{k} - \overline{X}_{n})(Y_{k} - \overline{Y}_{k})}
+{n\sqrt{\hat{d}_{X} \cdot \hat{d}_{Y}}}$$
 
 ## Свойства выборочных моментов 
 
-1. \fbox{$M[\hat{\nu_{r}}(n)] = \nu_{r}, r \in \N$}
+1. \fbox{$M[\hat{\nu}_{r}(n)] = \nu_{r}, r \in \N$}
 
 **\underline{Доказательство}**
 
-$M[\hat{\nu_{r}}(n)] = \frac{1}{n} \sum\limits_{k = 1}^{n} M[X_{k}^{r}] = \frac{1}{n} n \nu_{r}$.
+$M[\hat{\nu}_{r}(n)] = \frac{1}{n} \sum\limits_{k = 1}^{n} M[X_{k}^{r}] = \frac{1}{n} n \nu_{r}$.
 $\blacksquare$
 
-2. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\nu_{r}}(n) \overset{\text{п.н.}}{\longrightarrow} \nu_{r}$}
+2. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\nu}_{r}(n) \overset{\text{п.н.}}{\longrightarrow} \nu_{r}$}
 
 **\underline{Доказательство}**
 
-3. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\mu_{r}}(n) \overset{\text{п.н.}}{\longrightarrow} \mu_{r}$}
+3. \fbox{Если $M[X^{r}] < \infty$, то $\hat{\mu}_{r}(n) \overset{\text{п.н.}}{\longrightarrow} \mu_{r}$}
 
 **\underline{Доказательство}**
 
-$\hat{\mu_{r}}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X_{n}})^{r} = 
-\frac{1}{n} \sum\limits_{k = 1}^{n} \sum\limits_{i = 0}^{r} C_{r}^{i} X_{k}^{i}( - \hat{X_{n}})^{r - i}=
-\sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X_{n}})^{r - i} (\frac{1}{n} \sum\limits_{k = 1}^{n}
-X_{k}^{i}) = \sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X_{n}})^{r - i} \hat{\nu_{i}}(n)
+$\hat{\mu}_{r}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X}_{n})^{r} = 
+\frac{1}{n} \sum\limits_{k = 1}^{n} \sum\limits_{i = 0}^{r} C_{r}^{i} X_{k}^{i}( - \hat{X}_{n})^{r - i}=
+\sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X}_{n})^{r - i} (\frac{1}{n} \sum\limits_{k = 1}^{n}
+X_{k}^{i}) = \sum\limits_{i = 0}^{r} C_{r}^{i} ( - \hat{X}_{n})^{r - i} \hat{\nu}_{i}(n)
 \underset{\text{св-во (2)}}{\overset{\text{п.н.}}{\longrightarrow}}
-\sum\limits_{i = 0}^{r} C_{r}^{i} (- \nu_{1})^{r - i} \hat{\nu_{i}} = 
+\sum\limits_{i = 0}^{r} C_{r}^{i} (- \nu_{1})^{r - i} \hat{\nu}_{i} = 
 \dots = \mu_{i}$. $\blacksquare$
 
-4. \fbox{$D[\overline{X_{n}}] = \frac{1}{n}D[X]$}
+4. \fbox{$D[\overline{X}_{n}] = \frac{1}{n}D[X]$}
 
 **\underline{Доказательство}**
 
 С учетом *независимости* $X_{1}, \dots, X_{n}$
 
-$D[X\overline{X_{n}}] = D[\frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}] = \frac{1}{n^{2}}
+$D[X\overline{X}_{n}] = D[\frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}] = \frac{1}{n^{2}}
 \sum\limits_{k = 1}^{n} D[X_{k}] = \frac{n D[X]}{n^{2}}$. $\blacksquare$
 
-5. \fbox{$M[\hat{d_{X}}(n)] = \frac{n - 1}{n}D[X]$}
+5. \fbox{$M[\hat{d}_{X}(n)] = \frac{n - 1}{n}D[X]$}
 
 **\underline{Доказательство}**
 
-$M[\hat{d_{X}}(n)] = \frac{1}{n} \sum\limits_{k = 1}{n} M[(X_{k} - \overline{X_{n}})^{2}] =
-M[(X_{1} - \overline{X_{n}})^{2}] = D[X_{1} - \overline{X_{n}})^{2}] = 
-D[\frac{n - 1}{n} X_{1} - \sum\limits_{k = 2}{n} \frac{1}{n}\overline{X_{k}}] 
+$M[\hat{d}_{X}(n)] = \frac{1}{n} \sum\limits_{k = 1}{n} M[(X_{k} - \overline{X}_{n})^{2}] =
+M[(X_{1} - \overline{X}_{n})^{2}] = D[X_{1} - \overline{X}_{n})^{2}] = 
+D[\frac{n - 1}{n} X_{1} - \sum\limits_{k = 2}{n} \frac{1}{n}\overline{X}_{k}] 
 \overset{\text{н / з}}{=} 
 \frac{n - 1}{n}D[X_{1}] + \frac{1}{n^{2}} \sum\limits_{k = 2}^{n} D[X_{k}] =
 D[X] \frac{n^{2} -2n + 1 + n - 1}{n^{2}} = D[X] \cdot \frac{n - 1}{n}$. $\blacksquare$
 
-6. \fbox{$\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \overset{d}{\longrightarrow} 
+6. \fbox{$\frac{\overline{X}_{n} - m_{X}}{\sigma_{X}} \sqrt{n} \overset{d}{\longrightarrow} 
 N(0; 1)$}
 
 **\underline{Доказательство}**
@@ -1540,7 +1544,7 @@ $$\frac{\sum\limits_{k = 1}^{n} X_{k} - n m_{X}}{\sigma_{X} \sqrt{n}} =
 \overset{d}{\longrightarrow} N(0; 1)$$
 \hfill $\blacksquare$
 
-7. \fbox{$\frac{\hat{d_{X}}(n) - \sigma_{X}^{2}}{\sqrt{\mu_{4} - \mu_{2}}} \sqrt{n}
+7. \fbox{$\frac{\hat{d}_{X}(n) - \sigma_{X}^{2}}{\sqrt{\mu_{4} - \mu_{2}}} \sqrt{n}
 \overset{d}{\longrightarrow} N(0; 1)$}
 
 \pagebreak
@@ -1572,13 +1576,15 @@ $$f_{Y}(x; n) =
 где $\Gamma(z) = \int\limits_{0}^{+ \infty} y^{z - 1} e^{-y} dy$ --- гамма-функция.
 
 ```{r, echo=FALSE}
-p <- ggplot(data.frame(x = c(0, 15)), aes(x=x)) + stat_function(fun=dchisq, args=list(df=1), aes(colour="n = 1"))
-p <- p + stat_function(fun=dchisq, args=list(df=2), aes(colour="n = 2"))
-p <- p + stat_function(fun=dchisq, args=list(df=6), aes(colour="n > 2")) # n > 2
-p <- p + scale_colour_manual("", values=c("green", "purple", "red"))
-p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) + theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
-p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$f_{Y}(x, n)$")) + theme(axis.text=element_text(colour="red"),
-                                                                                      axis.title=element_text(colour="blue"))
+p <- ggplot(data.frame(x = c(0, 15)), aes(x = x)) + stat_function(fun = dchisq, args = list(df = 1),
+    aes(colour = "n = 1"))
+p <- p + stat_function(fun = dchisq, args = list(df = 2), aes(colour = "n = 2"))
+p <- p + stat_function(fun = dchisq, args = list(df = 6), aes(colour = "n > 2"))  # n > 2
+p <- p + scale_colour_manual("", values = c("green", "purple", "red"))
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + theme(axis.text.x = element_blank(),
+    axis.ticks.x = element_blank())
+p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
+    axis.title = element_text(colour = "blue"))
 p
 ```
 
@@ -1596,9 +1602,9 @@ $$\sum\limits_{k = 1}^{n} Y_{i} \sim \chi^{2}(\sum\limits_{k = 1}^{n} n_{i})$$
 
 6. Пусть $Z_{n}$ *порожденная распределением* $N(m_{X}, \sigma_{X}^{2})$. Тогда если 
 
-$\hat{d_{X}} = \frac{1}{n} \sum\limits_{k = 1}^{n}(X_{k} - \overline{X_{n}})^{2}$, 
+$\hat{d}_{X} = \frac{1}{n} \sum\limits_{k = 1}^{n}(X_{k} - \overline{X}_{n})^{2}$, 
 
-то $\frac{n \hat{d_{X}}}{\sigma_{X}^{2}} \sim \chi^{2}(n - 1)$.
+то $\frac{n \hat{d}_{X}}{\sigma_{X}^{2}} \sim \chi^{2}(n - 1)$.
 
 ***(Доказательство приведено далее в теореме Фишера)***
 
@@ -1619,19 +1625,23 @@ $$f_{x; n} = \frac{\Gamma(\frac{n + 1}{2})}{\sqrt{\pi n} \Gamma(\frac{n}{2})} (1
 
 ```{r, echo=FALSE}
 dt2 <- function(x, mu, nu, df, ncp) {
-      dt((x-mu)/nu,df,ncp)/nu
+    dt((x - mu)/nu, df, ncp)/nu
 }
 set.seed(1)
-x <- data.frame(rt(5000,df=5,ncp=1)*10+7)
+x <- data.frame(rt(5000, df = 5, ncp = 1) * 10 + 7)
 names(x) <- c("test.data")
-p <- ggplot(x, aes(x=test.data)) + stat_function(fun = dt2, args=list(mu=50, nu=10, df=1, ncp=1), aes(colour = "n = 1"))
-p <- p + stat_function(fun = dt2, args=list(mu=50, nu=10, df=5, ncp=1), aes(colour = "n = 5"))
-p <- p + stat_function(fun = dt2, args=list(mu=50, nu=10, df=1000000, ncp=1), aes(colour = "n = inf"))
-p <- p + scale_colour_discrete("", labels=c("n = 1", "n = 5", TeX("$n= \\infty$")))
-p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank()) + theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
-p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$f_{Y}(x, n)$")) + theme(axis.text=element_text(colour="red"),
-                                                                                      axis.title=element_text(colour="blue"))
-p <- p + theme(legend.position="bottom")
+p <- ggplot(x, aes(x = test.data)) + stat_function(fun = dt2, args = list(mu = 50,
+    nu = 10, df = 1, ncp = 1), aes(colour = "n = 1"))
+p <- p + stat_function(fun = dt2, args = list(mu = 50, nu = 10, df = 5, ncp = 1),
+    aes(colour = "n = 5"))
+p <- p + stat_function(fun = dt2, args = list(mu = 50, nu = 10, df = 1e+06, ncp = 1),
+    aes(colour = "n = inf"))
+p <- p + scale_colour_discrete("", labels = c("n = 1", "n = 5", TeX("$n= \\infty$")))
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + theme(axis.text.x = element_blank(),
+    axis.ticks.x = element_blank())
+p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
+    axis.title = element_text(colour = "blue"))
+p <- p + theme(legend.position = "bottom")
 p
 ```
 
@@ -1645,7 +1655,7 @@ $$D[Y] = \frac{n}{n - 2}, n > 2$$
 
 5. Пусть $Z_{n}$ порождена распределением $N(m_{X}; \sigma_{X}^{2})$. Тогда
 
-$$\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}}}} \cdot \sqrt{n - 1} \sim t(n - 1)$$
+$$\frac{\overline{X}_{n} - m_{X}}{\sqrt{\hat{d}_{X}}} \cdot \sqrt{n - 1} \sim t(n - 1)$$
 
 ***(Доказательство приведено далее в теореме Фишера)***
 
@@ -1668,19 +1678,21 @@ m^{\frac{n}{2}} \frac{x^{\frac{n}{2} - 1}}{(m + nx)^{\frac{n + m}{2}}}, & x > 0 
 ```{r, echo=FALSE}
 m <- 4
 n <- 15
-break_x <- ((n-2)*m)/(n*(m+2))
+break_x <- ((n - 2) * m)/(n * (m + 2))
 break_y <- df(break_x, n, m)
-p <- ggplot(data.frame(x = c(0, 5)), aes(x=x)) + stat_function(fun=df, args=list(df1=n, df2=m), aes(colour="n > 2"))
-p <- p + geom_line(data.frame("x"=c(0, 0), "f"=c(0, break_y)), mapping=aes(x=x, y=f), arrow=arrow(length=unit(0.01, "npc"), 
-                                                                                                  type="closed"))
-p <- p + geom_line(data.frame("x"=c(0, 6), "f"=c(0, 0)), mapping=aes(x=x, y=f), arrow=arrow(length=unit(0.01, "npc"), 
-                                                                                                  type="closed"))
-p <- p + scale_colour_manual("", values=c("green"))
-p <- p + ggtitle("") + xlab(label="x") + ylab(label=TeX("$f_{y}(x, n, m)$")) + theme(axis.text=element_text(colour="red"),
-                                                                                      axis.title=element_text(colour="blue"))
-p <- p + scale_x_continuous(breaks=c(0, break_x), label=c("0", TeX("$\\frac{(n-2)m}{n(m+2)}$")))
-p <- p + geom_line(data.frame("x"=c(break_x, break_x), "f"=c(0, break_y)), mapping=aes(x=x, y=f), linetype="dashed")
-p <- p + theme(axis.text.y=element_blank(), axis.ticks.y=element_blank())
+p <- ggplot(data.frame(x = c(0, 5)), aes(x = x)) + stat_function(fun = df, args = list(df1 = n,
+    df2 = m), aes(colour = "n > 2"))
+p <- p + geom_line(data.frame(x = c(0, 0), f = c(0, break_y)), mapping = aes(x = x,
+    y = f), arrow = arrow(length = unit(0.01, "npc"), type = "closed"))
+p <- p + geom_line(data.frame(x = c(0, 6), f = c(0, 0)), mapping = aes(x = x, y = f),
+    arrow = arrow(length = unit(0.01, "npc"), type = "closed"))
+p <- p + scale_colour_manual("", values = c("green"))
+p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{V}(x, n, m)$")) +
+    theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
+p <- p + scale_x_continuous(breaks = c(0, break_x), label = c("0", TeX("$\\frac{(n-2)m}{n(m+2)}$")))
+p <- p + geom_line(data.frame(x = c(break_x, break_x), f = c(0, break_y)), mapping = aes(x = x,
+    y = f), linetype = "dashed")
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
 p
 ```
 
@@ -1693,8 +1705,8 @@ $$D[V] = \frac{2m^{2}(m + n - 2)}{n(m - 2)^{2}(m - 4)}, m > 4$$
 
 Тогда если $Z_{n}$ и $W_{n}$ **независимы**,
 
-$$V = \frac{\frac{1}{n - 1} \sum\limits_{k = 1}{n}(X_{k} - \overline{X_{n}})^{2}}
-{\frac{1}{m - 1} \sum\limits_{k = 1}{n}(Y_{k} - \overline{Y_{m}})^{2}} \sim F(n - 1; m - 1)$$
+$$V = \frac{\frac{1}{n - 1} \sum\limits_{k = 1}{n}(X_{k} - \overline{X}_{n})^{2}}
+{\frac{1}{m - 1} \sum\limits_{k = 1}{n}(Y_{k} - \overline{Y}_{m})^{2}} \sim F(n - 1; m - 1)$$
 
 ***(Данный факт следует из свойства **6** распределения $\chi^{2}(n)$)***
 
@@ -1736,10 +1748,10 @@ $$\hat{\theta} \overset{\text{с.к.}}{\longrightarrow} \theta$$
 
 ## Замечание {-}
 
-1. Из свойств $\overline{X_{n}}$ следует, что $\overline{X_{n}}$ --- **несмещенная** и
+1. Из свойств $\overline{X}_{n}$ следует, что $\overline{X}_{n}$ --- **несмещенная** и
 **сильносостоятельная** оценка $m_{X}$.
 
-2. Из свойств $\hat{d_{X}}$ следует, что $\hat{d_{X}}$ --- **смещенная** и **сильносостоятельная** 
+2. Из свойств $\hat{d}_{X}$ следует, что $\hat{d}_{X}$ --- **смещенная** и **сильносостоятельная** 
 оценка $m_{X}$.
 
 ## Определение 10
@@ -1758,37 +1770,37 @@ $D[\overline{X}] < \infty$, то $\overline{X}$ --- *с.к.-состоятель
 
 ## Теорема 1 {#theorem-7-1}
 
-Пусть $\hat{\theta_{1}}, \hat{\theta_{2}}$, --- *с.к.-оптимальные* оценки параметра $\theta$. Тогда 
+Пусть $\hat{\theta}_{1}, \hat{\theta}_{2}$, --- *с.к.-оптимальные* оценки параметра $\theta$. Тогда 
 
-$$\hat{\theta_{1}} = \hat{\theta_{2}}$$
+$$\hat{\theta}_{1} = \hat{\theta}_{2}$$
 
 ### Доказательство {-}
 
-Т.к. $\hat{\theta_{1}}$ и $\hat{\theta_{2}}$ **оптимальны**, то $D[\hat{\theta_{1}}] = D[\hat{\theta_{2}}] =
+Т.к. $\hat{\theta}_{1}$ и $\hat{\theta}_{2}$ **оптимальны**, то $D[\hat{\theta}_{1}] = D[\hat{\theta}_{2}] =
 d$. 
 
-Пусть $\hat{\theta_{3}} = \frac{1}{2} (\hat{\theta_{1}} + \hat{\theta_{2}})$. Тогда
+Пусть $\hat{\theta}_{3} = \frac{1}{2} (\hat{\theta}_{1} + \hat{\theta}_{2})$. Тогда
 
-$D[\hat{\theta_{3}}] = \frac{1}{4} D[\hat{\theta_{1}} + \hat{\theta_{2}}] = \frac{1}{4}
-(D[\hat{\theta_{1}}] + [D\hat{\theta_{2}}] + 2\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})) =
-\frac{1}{2}(d + \mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})) \leqslant 
-\frac{1}{2}(d + |\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}})|)
-\leqslant \frac{1}{2}(d + \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}) = d$
+$D[\hat{\theta}_{3}] = \frac{1}{4} D[\hat{\theta}_{1} + \hat{\theta}_{2}] = \frac{1}{4}
+(D[\hat{\theta}_{1}] + [D\hat{\theta}_{2}] + 2\mathrm{cov}(\hat{\theta}_{1}, \hat{\theta}_{2})) =
+\frac{1}{2}(d + \mathrm{cov}(\hat{\theta}_{1}, \hat{\theta}_{2})) \leqslant 
+\frac{1}{2}(d + |\mathrm{cov}(\hat{\theta}_{1}, \hat{\theta}_{2})|)
+\leqslant \frac{1}{2}(d + \sqrt{D[\hat{\theta}_{1}] \cdot D[\hat{\theta}_{2}]}) = d$
 
-Тогда *в силу оптимальности* $\hat{\theta_{1}}$ и $\hat{\theta_{2}}$ 
+Тогда *в силу оптимальности* $\hat{\theta}_{1}$ и $\hat{\theta}_{2}$ 
 
-$$D[\hat{\theta_{3}}] = d$$
+$$D[\hat{\theta}_{3}] = d$$
 
-$d = D[\hat{\theta_{3}}] = \frac{1}{2}(d + \mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}}))$, 
-$\mathrm{cov}(\hat{\theta_{1}}, \hat{\theta_{2}}) = d = \sqrt{D[\hat{\theta_{1}}] \cdot D[\hat{\theta_{2}}]}$,
+$d = D[\hat{\theta}_{3}] = \frac{1}{2}(d + \mathrm{cov}(\hat{\theta}_{1}, \hat{\theta}_{2}))$, 
+$\mathrm{cov}(\hat{\theta}_{1}, \hat{\theta}_{2}) = d = \sqrt{D[\hat{\theta}_{1}] \cdot D[\hat{\theta}_{2}]}$,
 
 т.е. в *нераввенстве Коши-Буняковского* достигается *равенство*. Следовательно,
 
-$$\hat{\theta_{1}} = \alpha \hat{\theta_{2}} + \beta, \alpha > 0$$
+$$\hat{\theta}_{1} = \alpha \hat{\theta}_{2} + \beta, \alpha > 0$$
 
 $$\begin{cases}
-    M[\hat{\theta_{1}}] = \alpha M[\hat{\theta_{2}}] + \beta \\
-    D[\hat{\theta_{1}}] = \alpha^{2} D[\hat{\theta_{2}}] \\
+    M[\hat{\theta}_{1}] = \alpha M[\hat{\theta}_{2}] + \beta \\
+    D[\hat{\theta}_{1}] = \alpha^{2} D[\hat{\theta}_{2}] \\
 \end{cases} \implies
 \begin{cases}
     \theta = \alpha \theta + \beta \\
@@ -1799,7 +1811,7 @@ $$\begin{cases}
     \alpha = 1 \\
 \end{cases}$$ 
 
-Окончательно, $\hat{\theta_{1}} = \hat{\theta_{2}}$. $\blacksquare$
+Окончательно, $\hat{\theta}_{1} = \hat{\theta}_{2}$. $\blacksquare$
 
 \pagebreak
 
@@ -1977,11 +1989,11 @@ b(\theta)$
 Пусть $X \sim N(\theta; \sigma^{2})$
 
 $U(Z_{n}; \theta) = \sum\limits_{k = 1}^{n} \frac{\partial \ln f(X_{k}; \theta)}{\partial \theta} = 
-\sum\limits_{k = 1}^{n} \frac{X_{k} - \theta}{\sigma^{2}} = \frac{n}{\sigma^{2}} (\overline{X_{n}} -
+\sum\limits_{k = 1}^{n} \frac{X_{k} - \theta}{\sigma^{2}} = \frac{n}{\sigma^{2}} (\overline{X}_{n} -
 \theta)$
 
-Т.о. $a(\theta) = \frac{\sigma^{2}}{n}$. Тогда $a(\theta) U(Z_{n}; \theta) = \overline{X_{n}} - \theta$, 
-откуда следует, что $\overline{X_{n}}$ --- *эффективная оценка*.
+Т.о. $a(\theta) = \frac{\sigma^{2}}{n}$. Тогда $a(\theta) U(Z_{n}; \theta) = \overline{X}_{n} - \theta$, 
+откуда следует, что $\overline{X}_{n}$ --- *эффективная оценка*.
 
 \pagebreak
 
@@ -2023,15 +2035,15 @@ $$\ln L(Z_{k}; \theta) = \sum\limits_{k = 1}{n}(- \frac{1}{2} \ln(2\pi) - \frac{
 
 $\begin{cases}
     \frac{\partial \ln L(Z_{n}; \theta)}{\partial \theta_{1}} = \sum\limits_{k = 1}^{n}
-\frac{(X_{k} - \theta_{1})}{\theta_{2}} = \frac{1}{\theta_{2}}(n \overline{X_{n}} - n \theta_{1}) = 0 \\
+\frac{(X_{k} - \theta_{1})}{\theta_{2}} = \frac{1}{\theta_{2}}(n \overline{X}_{n} - n \theta_{1}) = 0 \\
     \frac{\partial \ln L(Z_{n}; \theta)}{\partial \theta_{2}} = \sum\limits_{k = 1}^{n}
 (\frac{(X_{k} - \theta_{1})^{2}}{2 \theta_{2}^{2}} - \frac{1}{2 \theta_{2}})
-= \frac{1}{2 \theta_{2}}(n \hat{d_{X}}(n) - n \theta_{2}) = 0 \\
+= \frac{1}{2 \theta_{2}}(n \hat{d}_{X}(n) - n \theta_{2}) = 0 \\
 \end{cases}$
 
 $\begin{cases}
-    \hat{\theta_{1}} = \overline{X_{n}} \\
-    \hat{\theta_{2}} = \hat{d_{X}}(n) \\
+    \hat{\theta}_{1} = \overline{X}_{n} \\
+    \hat{\theta}_{2} = \hat{d}_{X}(n) \\
 \end{cases}$
 
 ## Пример 2
@@ -2057,8 +2069,8 @@ $$L(Z_{n}; \theta) =
 
 Откуда $L(Z_{n}; \theta)$ *возрастает* по $\theta_{1}$ и *убывает* по $\theta_{2}$
 
-Тогда $\hat{\theta_{1}} = \min_{k = \overline{1, n}} X_{k} = X^{(1)}, 
-\hat{\theta_{1}} = \max_{k = \overline{1, n}} X_{k} = X^{(n)}$
+Тогда $\hat{\theta}_{1} = \min_{k = \overline{1, n}} X_{k} = X^{(1)}, 
+\hat{\theta}_{1} = \max_{k = \overline{1, n}} X_{k} = X^{(n)}$
 
 ## Замечание {-}
 
@@ -2089,8 +2101,8 @@ $$g(\theta_{1}; \theta_{2}) =
 
 $$\hat{g}(Z_{n}) = 
 \begin{pmatrix}
-    \frac{1}{2} + \Phi_{0}(\frac{x_{0} - \overline{X_{n}}}{\sqrt{\hat{d_{X}(n)}}}) \\
-    \sqrt{\hat{d_{X}(n)}} \\
+    \frac{1}{2} + \Phi_{0}(\frac{x_{0} - \overline{X}_{n}}{\sqrt{\hat{d}_{X}(n)}}) \\
+    \sqrt{\hat{d}_{X}(n)} \\
 \end{pmatrix}$$
 
 $X_{0} \in \R$
@@ -2134,9 +2146,9 @@ $\forall \theta$, то
 Тогда 
 
 $$\begin{cases}
-    \nu_{1}(\theta) = & \hat{\nu_{1}}(n) \\
+    \nu_{1}(\theta) = & \hat{\nu}_{1}(n) \\
     \vdots & \vdots \\
-    \nu_{r}(\theta) = & \hat{\nu_{r}}(n) \\
+    \nu_{r}(\theta) = & \hat{\nu}_{r}(n) \\
 \end{cases}$$
 
 называется ***системой метода моментов***.
@@ -2145,7 +2157,7 @@ $$\begin{cases}
 
 Решение системы метода моментов 
 
-$$\hat{\theta_{i}} = \phi_{i}(\hat{\nu_{1}}(n), \dots, \hat{\nu_{r}}(n)), i = \overline{1, r}$$
+$$\hat{\theta}_{i} = \phi_{i}(\hat{\nu}_{1}(n), \dots, \hat{\nu}_{r}(n)), i = \overline{1, r}$$
 
 называется ***оценкой метода моментов***.
 
@@ -2156,28 +2168,28 @@ $$\hat{\theta_{i}} = \phi_{i}(\hat{\nu_{1}}(n), \dots, \hat{\nu_{r}}(n)), i = \o
 
 ### Доказательство {-}
 
-Доказательство следует из **состоятельности** статистик $\hat{\nu_{i}}(n)$.
+Доказательство следует из **состоятельности** статистик $\hat{\nu}_{i}(n)$.
 
 ## Пример 1
 
-$X \sim N(\theta_{1}; \theta_{2})$. Тогда $\hat{\theta_{1}} = \overline{X_{n}}, 
-\hat{\theta_{2}} = \hat{d_{X}}(n)$
+$X \sim N(\theta_{1}; \theta_{2})$. Тогда $\hat{\theta}_{1} = \overline{X}_{n}, 
+\hat{\theta}_{2} = \hat{d}_{X}(n)$
 
 ## Пример 2
 
 $X \sim R(\theta_{1}; \theta_{2})$. Тогда
 
 $$\begin{cases}
-    \overline{X_{n}} = \frac{\theta_{1} + \theta_{2}}{2} \\
-    \hat{\d_{X}}(n) = \frac{(\theta_{2} - \theta_{1})^{2}}{12} \\
+    \overline{X}_{n} = \frac{\theta_{1} + \theta_{2}}{2} \\
+    \hat{d}_{X}(n) = \frac{(\theta_{2} - \theta_{1})^{2}}{12} \\
 \end{cases}
 \begin{cases}
-    \theta_{1} + \theta_{2} = 2 \overline{X_{n}} \\
-    \theta_{2} - \theta_{1} = 2 \sqrt{\hat{d_{X}}(n)}\sqrt{3} \\
+    \theta_{1} + \theta_{2} = 2 \overline{X}_{n} \\
+    \theta_{2} - \theta_{1} = 2 \sqrt{\hat{d}_{X}(n)}\sqrt{3} \\
 \end{cases}
 \begin{cases}
-    \theta_{1} = \overline{X_{n}} - \sqrt{3 \hat{d_{X}}(n)} \\
-    \theta_{2} = \overline{X_{n}} + \sqrt{3 \hat{d_{X}}(n)} \\
+    \theta_{1} = \overline{X}_{n} - \sqrt{3 \hat{d}_{X}(n)} \\
+    \theta_{2} = \overline{X}_{n} + \sqrt{3 \hat{d}_{X}(n)} \\
 \end{cases}$$
 
 ## Замечание {-}
@@ -2192,17 +2204,17 @@ $$\begin{cases}
 
 Пусть выполнено условие:
 
-$$P(\hat{\theta_{1}}(Z_{n}) \leqslant \theta \leqslant \hat{\theta_{2}}(Z_{n})) = 1 - \alpha$$
+$$P(\hat{\theta}_{1}(Z_{n}) \leqslant \theta \leqslant \hat{\theta}_{2}(Z_{n})) = 1 - \alpha$$
 
-для некоторого распределения параметром $F_{x}(x; \theta)$. Тогда интервал $[\hat{\theta_{1}}(Z_{n}); 
-\hat{\theta_{2}}(Z_{n})]$ --- называется ***доверительным интервалом*** или ***интервальной оценкой***
+для некоторого распределения параметром $F_{x}(x; \theta)$. Тогда интервал $[\hat{\theta}_{1}(Z_{n}); 
+\hat{\theta}_{2}(Z_{n})]$ --- называется ***доверительным интервалом*** или ***интервальной оценкой***
 параметра $\theta$ уровня надежности $1 - \alpha$.
 
 ## Определение 2
 
 Доверительный интервал называется ***центральным***, если верно условие:
 
-$$P(\theta \leqslant \hat{\theta_{1}}(Z_{n})) = P(\theta \geqslant \hat{\theta_{2}}(Z_{n})) = 
+$$P(\theta \leqslant \hat{\theta}_{1}(Z_{n})) = P(\theta \geqslant \hat{\theta}_{2}(Z_{n})) = 
 \frac{\alpha}{2}$$
 
 ## Определение 3
@@ -2211,8 +2223,8 @@ $$P(\theta \leqslant \hat{\theta_{1}}(Z_{n})) = P(\theta \geqslant \hat{\theta_{
 
 
 <!-- тут может быть ошибка: не было после "или" альфа справа -->
-$P(\theta \geqslant \hat{\theta_{2}}(Z_{n})) = \alpha$ или 
-$P(\theta \leqslant \hat{\theta_{1}}(Z_{n})) = \alpha$
+$P(\theta \geqslant \hat{\theta}_{2}(Z_{n})) = \alpha$ или 
+$P(\theta \leqslant \hat{\theta}_{1}(Z_{n})) = \alpha$
 
 ## Замечание {-}
 
@@ -2247,7 +2259,7 @@ $$P(G^{-1}(Z_{n}; g_{1}) \leqslant G^{-1}(Z_{n}; g_{2}) = 1 - \alpha$$
 
 Тогда границы интервальной оценки имеют вид:
 
-$$\hat{\theta_{1}}(Z_{n}) = G^{-1}(Z_{n}; g_{1}), \hat{\theta_{2}}(Z_{n}) = G^{-1}(Z_{n}; g_{2})$$
+$$\hat{\theta}_{1}(Z_{n}) = G^{-1}(Z_{n}; g_{1}), \hat{\theta}_{2}(Z_{n}) = G^{-1}(Z_{n}; g_{2})$$
 
 ## Замечание {-}
 
@@ -2290,18 +2302,18 @@ $$0 = \sum\limits_{k = 1}^{n} C_{1k} \cdot C_{ik} = \sum\limits_{k = 1}^{n} \fra
 
 Пусть $Z_{n}$ --- *однородная* выборка, порожденная распределением $N(m_{X}; \sigma_{X}^{2})$. Тогда
 
-1. $\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(0; 1)$
+1. $\frac{\overline{X}_{n} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(0; 1)$
 
-2. $\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} \sim \chi(n - 1)$
+2. $\frac{n \hat{d}_{X}(n)}{\sigma_{X}^{2}} \sim \chi(n - 1)$
 
-3. $\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1} \sim t(n - 1)$
+3. $\frac{\overline{X}_{n} - m_{X}}{\sqrt{\hat{d}_{X}(n)}} \sqrt{n - 1} \sim t(n - 1)$
 
-4. $\overline{X_{n}}$ и $\hat{d_{X}(n)}$ **независимы**
+4. $\overline{X}_{n}$ и $\hat{d}_{X}(n)$ **независимы**
 
 ### Доказательство {-}
 
 <!-- check here for sign in brackets i \ sigma sqrt n ... "_" -->
-.1) $\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} = \sum\limits_{k = 1}^{n} \frac{1}{\sigma_{X}
+.1) $\frac{\overline{X}_{n} - m_{X}}{\sigma_{X}} \sqrt{n} = \sum\limits_{k = 1}^{n} \frac{1}{\sigma_{X}
 \sqrt{n}} X_{k} - \frac{m_{X}\sqrt{n}}{\sigma_{X}} = 
 (\frac{1}{\sigma_{X} \sqrt{n}} + \frac{1}{\sigma_{X} \sqrt{n}} + \dots + \frac{1}{\sigma_{X} \sqrt{n}})
 \cdot Z_{n} - \frac{m_{X}\sqrt{n}}{\sigma_{X}}$.
@@ -2314,7 +2326,7 @@ $$0 = \sum\limits_{k = 1}^{n} C_{1k} \cdot C_{ik} = \sum\limits_{k = 1}^{n} \fra
 \end{pmatrix};
 \sigma_{X}^{2} I)$, то в силу [Леммы 1.3](#lemma-1-3)
 
-$\frac{\overline{X_{n}} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(m; \sigma^{2})$, где $m = 
+$\frac{\overline{X}_{n} - m_{X}}{\sigma_{X}} \sqrt{n} \sim N(m; \sigma^{2})$, где $m = 
 (\frac{1}{\sigma_{X} \sqrt{n}} \dots \frac{1}{\sigma_{X} \sqrt{n}})
 \begin{pmatrix}
     m_{X} \\
@@ -2372,15 +2384,15 @@ $$m_{Y} = \frac{1}{\sigma_{X}} C(\sigma_{X}^{2} I) \frac{1}{\sigma_{X}} C^{T} = 
 
 Тогда в силу [Леммы 1.4](#lemma-1-4) $Y_{1}, \dots, Y_{n}$ *независимы*
 
-$\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k} - 
-\overline{X_{n}})^{2} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k}^{2} - 
-2 X_{k}\overline{X_{n}} + \overline{X_{n}}^{2}) = \frac{1}{\sigma_{X}^{2}}
-(\sum\limits_{k = 1}^{n} X_{k}^{2} - 2n \overline{X_{n}}(\frac{1}{n}  \sum\limits_{k = 1}^{n} X_{k}) +
-n \overline{X_{n}}^{2}) = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n} X_{k}^{2} - 
-\frac{n}{\sigma_{X}^{2}} \overline{X_{n}}^{2} \overset{*}{=}$
+$\frac{n \hat{d}_{X}(n)}{\sigma_{X}^{2}} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k} - 
+\overline{X}_{n})^{2} = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n}(X_{k}^{2} - 
+2 X_{k}\overline{X}_{n} + \overline{X}_{n}^{2}) = \frac{1}{\sigma_{X}^{2}}
+(\sum\limits_{k = 1}^{n} X_{k}^{2} - 2n \overline{X}_{n}(\frac{1}{n}  \sum\limits_{k = 1}^{n} X_{k}) +
+n \overline{X}_{n}^{2}) = \frac{1}{\sigma_{X}^{2}} \sum\limits_{k = 1}^{n} X_{k}^{2} - 
+\frac{n}{\sigma_{X}^{2}} \overline{X}_{n}^{2} \overset{*}{=}$
 
 $Y_{1} = \frac{1}{\sigma_{X} \sqrt{n}}(X_{1} + \dots + X_{n}) = \frac{\sqrt{n}}{\sigma_{X}} 
-\overline{X_{n}}$. Тогда с учетом [Леммы 1](#lemma-10-1)
+\overline{X}_{n}$. Тогда с учетом [Леммы 1](#lemma-10-1)
 
 $\overset{*}{=} \frac{1}{\sigma_{X}^{2}} \lVert Z_{n} \rVert^{2} - Y_{1}^{2} = 
 \frac{1}{\sigma_{X}^{2}} \lVert C Z_{n} \rVert^{2} - Y_{1}^{2} = \lVert \frac{1}{\sigma_{X}}Z_{n} 
@@ -2389,13 +2401,13 @@ Y_{1}^{2} = \sum\limits_{k = 2}^{n} Y_{k}^{2}$, где
 
 $Y_{k} \sim N(0; 1), k = \overline{2, n}$. Тогда по определению 
 
-$$\frac{n \hat{d_{X}(n)}}{\sigma_{X}^{2}} = \sum\limits_{k = 2}^{n} Y_{k}^{2} \sim \chi^{2}(n - 1)$$
+$$\frac{n \hat{d}_{X}(n)}{\sigma_{X}^{2}} = \sum\limits_{k = 2}^{n} Y_{k}^{2} \sim \chi^{2}(n - 1)$$
 
-.4) Заметим, что $\overline{X_{n}} = \frac{\sigma_{X}}{\sqrt{n}} Y_{1} = \phi(Y_{1})$, где 
+.4) Заметим, что $\overline{X}_{n} = \frac{\sigma_{X}}{\sqrt{n}} Y_{1} = \phi(Y_{1})$, где 
 $Y_{1}$ и $(Y_{2}, \dots, Y_{n})^{T}$ **независимы**. Тогда **независимы** также $\phi(Y_{1})$ и
-$\psi(Y_{2}, \dots, Y_{n})$, т.е. $\overline{X_{n}}$ и $\hat{d_{X}}(n)$
+$\psi(Y_{2}, \dots, Y_{n})$, т.е. $\overline{X}_{n}$ и $\hat{d}_{X}(n)$
 
-.3) $\frac{\overline{X_{n}} - m_{X}}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1} = 
+.3) $\frac{\overline{X}_{n} - m_{X}}{\sqrt{\hat{d}_{X}(n)}} \sqrt{n - 1} = 
 \frac{\frac{\sigma_{X}}{\sqrt{n}} Y_{1} - m_{X}}{\sqrt{\frac{\sigma_{X}^{2}}{n}
 \sum\limits_{k = 2}^{n} Y_{k}^{2}}}\sqrt{n - 1} = 
 \frac{Y_{1} - \frac{m_{X} \sqrt{n}}{\sigma_{X}}}{\sqrt{\frac{1}{n - 1}
@@ -2411,22 +2423,22 @@ $N(\theta; \sigma_{X}^{2})$, если $\sigma_{X}^{2}$ *неизвестна*, �
 
 В силу [Теоремы Фишера](#theorem-10-1)
 
-$$G(Z_{n}; \theta) = \frac{\overline{X_{n}} - \theta}{\sqrt{\hat{d_{X}}(n)}} \sqrt{n - 1} \sim (n - 1)$$
+$$G(Z_{n}; \theta) = \frac{\overline{X}_{n} - \theta}{\sqrt{\hat{d}_{X}(n)}} \sqrt{n - 1} \sim (n - 1)$$
 
 Тогда 
 
-$1 - \alpha = P(t_{\frac{\alpha}{2}}(n - 1) \leqslant \frac{\overline{X_{n}} - \theta}
-{sqrt{\hat{d_{X}}(n)}}\sqrt(n - 1) \leqslant t_{1 - \frac{\alpha}{2}}(n - 1)) = 
-P(\overline{X_{n}} - \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1) \leqslant \theta 
-\leqslant \overline{X_{n}} + \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1))$
+$1 - \alpha = P(t_{\frac{\alpha}{2}}(n - 1) \leqslant \frac{\overline{X}_{n} - \theta}
+{sqrt{\hat{d}_{X}(n)}}\sqrt(n - 1) \leqslant t_{1 - \frac{\alpha}{2}}(n - 1)) = 
+P(\overline{X}_{n} - \sqrt{\frac{\hat{d}_{X}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1) \leqslant \theta 
+\leqslant \overline{X}_{n} + \sqrt{\frac{\hat{d}_{X}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1))$
 
 Тогда интервальная оценка имеет вид:
 
-$$[\overline{X_{n}} - \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1); 
-\overline{X_{n}} + \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)]$$
+$$[\overline{X}_{n} - \sqrt{\frac{\hat{d}_{X}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1); 
+\overline{X}_{n} + \sqrt{\frac{\hat{d}_{X}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)]$$
 
-Заметим, что $\overline{X_{n}}$ --- *точечная оценка* $\theta$ --- лежит в середине интервала. При этом
-длина интервала $2 \sqrt{\frac{\hat{d_{X}}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)$ **возрастает** по 
+Заметим, что $\overline{X}_{n}$ --- *точечная оценка* $\theta$ --- лежит в середине интервала. При этом
+длина интервала $2 \sqrt{\frac{\hat{d}_{X}(n)}{n - 1}} t_{1 - \frac{\alpha}{2}}(n - 1)$ **возрастает** по 
 $\sigma_{X}^{2}$ и **убывает** по $\alpha$ и $n$.
 
 ## Пример 4
@@ -2594,7 +2606,7 @@ $H_{0} : F_{X}(x) = F(x), x \in \R$
 
 $H_{1} : F_{X}(x_{0}) \neq F(x_{0})$ для некоторого $x_{0} \in \R$
 
-$$T(Z_{n}) = \sup\limits_{x \in \R}|\hat{F_{n}}(x) - F(x)|$$
+$$T(Z_{n}) = \sup\limits_{x \in \R}|\hat{F}_{n}(x) - F(x)|$$
 
 Данный критерий применяется для *непрерывных* $F(x)$.
 
@@ -2619,20 +2631,20 @@ $t_{1} \leqslant X^{(1)}, t_{l} > X^{(n)}$.
 
 На построенном разбиении построим гистограмму:
 
-$$\hat{f_{n}}(x) = 
+$$\hat{f}_{n}(x) = 
 \begin{cases}
     0, & x \in (t_{0}, t_{1}) \cup [t_{l}; t_{l + 1}), \\
-    \hat{p_{k}}, & x \in [t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
+    \hat{p}_{k}, & x \in [t_{k}; t_{k + 1}), k = \overline{1, l - 1} \\
 \end{cases}$$
 
 Пусть $p_{k} = P(X \in [t_{k}; t_{k + 1}) |H_{0}) = F(t_{k + 1}) - F(t_{k}), k = \overline{0, l}$.
 
 *Статистика критерия Пирсона* имеет вид:
 
-$$T_{\chi^{2}}(Z_{n}) = n \cdot \sum\limits_{k = 0}^{l} \frac{(\hat{p_{k}} - p_{k})^{2}}
+$$T_{\chi^{2}}(Z_{n}) = n \cdot \sum\limits_{k = 0}^{l} \frac{(\hat{p}_{k} - p_{k})^{2}}
 {p_{k}}$$
 
-где $\hat{p_{0}} = \hat{p_{l}} = 0$.
+где $\hat{p}_{0} = \hat{p}_{l} = 0$.
 
 ## Теорема 1 {#theorem-11-1}
 
@@ -2662,7 +2674,7 @@ $H_{1} : m_{X} \neq m_{0}, H_{2} : m_{X} > m_{0}, H_{3} : m_{X} < m_{0}$
 
 **\underline{1 случай: $G_{X}^{2}$ известна}** 
 
-$$T(Z_{n}) = \frac{(\overline{X_{n}} - m_{0})}{\sigma_{X}} \sqrt{n}, Law(T(Z_{n}) | H_{0}) = N(0; 1)$$
+$$T(Z_{n}) = \frac{(\overline{X}_{n} - m_{0})}{\sigma_{X}} \sqrt{n}, Law(T(Z_{n}) | H_{0}) = N(0; 1)$$
 
 $$G_{1\alpha} = (- \infty; u_{\frac{\alpha}{2}}) \cup (u_{1 -\frac{\alpha}{2}}; + \infty)$$
 
@@ -2670,7 +2682,7 @@ $$G_{2\alpha} = (u_{1 -\alpha}; + \infty), G_{3\alpha} = (- \infty; U_{\alpha})$
 
 **\underline{2 случай: $G_{X}^{2}$ неизвестна}** 
 
-$$T(Z_{n}) = \frac{(\overline{X_{n}} - m_{0})}{\sqrt{\hat{d_{X}(n)}}} \sqrt{n - 1}, 
+$$T(Z_{n}) = \frac{(\overline{X}_{n} - m_{0})}{\sqrt{\hat{d}_{X}(n)}} \sqrt{n - 1}, 
 Law(T(Z_{n}) | H_{0}) = t(n - 1)$$
 
 $$G_{1\alpha} = (- \infty; t_{\frac{\alpha}{2}}(n - 1)) \cup (t_{1 -\frac{\alpha}{2}}(n - 1);+ \infty)$$
@@ -2688,7 +2700,7 @@ Law(T(Z_{n}) | H_{0}) = \chi^{2}(n)$$
 
 **\underline{2 случай: $m_{X}$ неизвестна}** 
 
-$$T(Z_{n}) = \frac{n \hat{d_{X}}(n)}{\sigma_{0}^{2}},
+$$T(Z_{n}) = \frac{n \hat{d}_{X}(n)}{\sigma_{0}^{2}},
 Law(T(Z_{n}) | H_{0}) = \chi^{2}(n - 1)$$
 
 \pagebreak
@@ -2863,7 +2875,7 @@ $$L(y; \theta) = f_{Y}(y; \theta) = \frac{1}{(2\pi)^{\frac{n}{2}}\sqrt{\det(\sig
 
 В нормальной регрессии МП-оценка $\sigma^{2}$ имеет вид
 
-$$\hat{\sigma^{2}} = \frac{1}{n} \lVert Y - X \hat{\theta} \rVert$$
+$$\hat{\sigma}^{2} = \frac{1}{n} \lVert Y - X \hat{\theta} \rVert$$
 
 ### Доказательство {-}
 
@@ -2879,7 +2891,7 @@ $$\begin{cases}
 
 Откуда $\hat{\theta} = (X^{T}X)^{-1}X^{T}Y$ --- МНК-оценка,
 
-$$\hat{\sigma^{2}} = \frac{1}{n}(Y - X\hat{\theta})^{T}(Y - X\hat{\theta})$$
+$$\hat{\sigma}^{2} = \frac{1}{n}(Y - X\hat{\theta})^{T}(Y - X\hat{\theta})$$
 \hfill $\blacksquare$
 
 ## Определение 5
@@ -2989,30 +3001,30 @@ n - tr(\underset{s \times s}{I}) = n - s$. $\blacksquare$
 
 В нормальной регрессии
 
-$$\frac{\hat{\theta_{k}} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} 
+$$\frac{\hat{\theta}_{k} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} 
 \sim t(n - s)$$
 
 где $\alpha_{k}$ --- элемент на главной диагонали матрицы $(X^{T}X)^{-1}$
 
 ### Доказательство {-}
 
-Из [Леммы 1](#lemma-12-1) следует, что $\hat{\theta_{k}} \sim N(\theta_{k}, \sigma^{2} \alpha_{k})$
+Из [Леммы 1](#lemma-12-1) следует, что $\hat{\theta}_{k} \sim N(\theta_{k}, \sigma^{2} \alpha_{k})$
 
 Тогда 
 
-$\frac{\hat{\theta_{k}} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$
+$\frac{\hat{\theta}_{k} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$
 
 С учетом [определения распределения Стьюдента](#def-7-2) и [Леммы 5](#lemma-12-5), и [Леммы 6](#lemma-12-6)
 
-$\frac{\hat{\theta_{k}} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} = 
-\frac{\frac{\hat{\theta_{k}} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}}}{\sqrt{\frac{1}{n - s} 
+$\frac{\hat{\theta}_{k} - \theta_{k}}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} \cdot \sqrt{n - s} = 
+\frac{\frac{\hat{\theta}_{k} - \theta_{k}}{\sigma \sqrt{\alpha_{k}}}}{\sqrt{\frac{1}{n - s} 
 \frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}}}} \sim t(n - s)$. $\blacksquare$
 
 ## Лемма 8 {#lemma-12-8}
 
 В нормальной регрессии 
 
-$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} 
+$\frac{\phi(x; \hat{\theta}_{k}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} 
 \cdot \sqrt{n - s} \sim t(n - s)$, где
 
 $\alpha(x) = (\phi_{1}(x), \dots, \phi_{s}(x))(X^{T}X)^{-1}
@@ -3026,17 +3038,17 @@ $\alpha(x) = (\phi_{1}(x), \dots, \phi_{s}(x))(X^{T}X)^{-1}
 
 Из [Леммы 1](#lemma-12-1) следует, что 
 
-$$\phi(x; \hat{\theta}) = \hat{\theta}\phi_{1}(x) + \dots + \hat{\theta_{s}}\phi_{s}(x) \sim N(\phi(x; 
+$$\phi(x; \hat{\theta}) = \hat{\theta}\phi_{1}(x) + \dots + \hat{\theta}_{s}\phi_{s}(x) \sim N(\phi(x; 
 \theta); \alpha(x)\sigma^{2})$$
 
 Тогда 
 
-$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$. 
+$\frac{\phi(x; \hat{\theta}_{k}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}} \sim N(0; 1)$. 
 
 С учетом лемм 5 и 6, определения Стьюдента
 
-$\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} =
-\frac{\frac{\phi(x; \hat{\theta_{k}}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}}}{
+$\frac{\phi(x; \hat{\theta}_{k}) - \phi(x; \theta_{k})}{\lVert \hat{E} \rVert \sqrt{\alpha_{k}}} =
+\frac{\frac{\phi(x; \hat{\theta}_{k}) - \phi(x; \theta_{k})}{\sigma \sqrt{\alpha_{k}}}}{
 {\sqrt{\frac{1}{n - s} \frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}}}}} \sim t(n - s)$. $\blacksquare$
 
 ## Замечание {-}
@@ -3056,7 +3068,7 @@ $$H_{0} : \theta_{k} = 0$$
 
 $$H_{1} : \theta_{k} \neq 0$$
 
-$$T(Y) = \frac{\hat{\theta_{k}}^{2}}{\alpha_{k} \lVert \hat{E} \rVert^{2}}(n - s)$$
+$$T(Y) = \frac{\hat{\theta}_{k}^{2}}{\alpha_{k} \lVert \hat{E} \rVert^{2}}(n - s)$$
 
 где $\alpha_{k}$ --- k-й элемент на главной диагонали матрицы $(X^{T}X)^{-1}$.
 
