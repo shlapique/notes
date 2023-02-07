@@ -4,4 +4,4 @@
 - [ ] fix 'hats' on wide letters
 - [ ] fix spell mistakes
 - [ ] reduce 'contens'
-- [ ] add plots and pictures
+- [X] add plots and pictures

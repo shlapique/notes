@@ -8,8 +8,7 @@ check_device <- function()
 
 histo <- function(data)
 {
-    # p <- ggplot(data.frame("x"=c(-3, data[1, 1]), "f"=c(0, 0)), mapping=aes(x=x, y=f)) + geom_line()
-    p <- ggplot() + geom_vline(xintercept=0) + geom_hline(yintercept=0)
+    p <- ggplot() + geom_hline(yintercept=0)
     for(i in 1:(length(data[, 1])-1))
     {
         p <- p + geom_line(data.frame("x"=c(data[i, 1], data[i+1, 1]), "f"=c(data[i, 2], data[i, 2])), mapping=aes(x=x, y=f)) 
