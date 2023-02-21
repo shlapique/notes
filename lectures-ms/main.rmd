@@ -246,8 +246,6 @@ $$Y = \Lambda^{- \frac{1}{2}} S^{T}(X - m_{X})$$
 
 В силу [Леммы 3](#lemma-1-3):
 
-<!-- не было m_X -->
-
 $$m_{Y} = Am_{X} + b = \Lambda^{- \frac{1}{2}}S^{T}m_{X} - \Lambda^{- \frac{1}{2}}S^{T}m_{X} = 0,$$
 $$K_{Y} = AK_{X}A^{T} = \Lambda^{- \frac{1}{2}}S^{T}K_{X}S\Lambda^{- \frac{1}{2}} = I,$$
 
@@ -454,13 +452,13 @@ $\mathrm{cov}(X - \mu(Y), Y) = \mathrm{cov}(X, Y) - \mathrm{cov}(\mu(Y), Y) = \m
 
 т.е. $X - \mu(Y)$ и $Y$ **некорреливаны**.
 
-Тогда в силу [Леммы 1.5, п.2](#lemma-1-5) $X - \mu(Y)$ и $Y$ **независимы**. Построим характеристическую функцию условного распределения $X$
+Тогда в силу [Леммы 1.4, п.2](#lemma-1-4) $X - \mu(Y)$ и $Y$ **независимы**. Построим характеристическую функцию условного распределения $X$
 относительно $Y$:
 
 $\psi_{X \mid Y}(\lambda \mid Y) = \int\limits_{\R^{n}} e^{i\lambda^{T} X} f_{X \mid Y}(x \mid Y)dx = M[e^{i\lambda^{T}X} \mid Y] =
 M[e^{i\lambda^{T}(X - \mu(Y))} e^{i\lambda^{T} \mu(Y)} \mid Y] \overset{*}{=}$
 
-в силу [Леммы 1.2](#lemma-1-2) и *независимости* $X - \mu(Y)$ и $Y$
+в силу [Свойства 2 УМО](#attr-1-2) и *независимости* $X - \mu(Y)$ и $Y$
 
 $\overset{*}{=} M[e^{i\lambda^{T}(X - \mu(Y))} \mid Y] \cdot M[e^{i\lambda^{T}\mu(Y)} \mid Y] = M[e^{i\lambda^{T}(X - \mu(Y))}]
 e^{i\lambda^{T} \mu(Y)} = \psi_{X - \mu(Y)}(\lambda) e^{i\lambda^{T} \mu(Y)} = \exp\{- \frac{1}{2} \lambda^{T} \Delta \lambda \}
@@ -724,7 +722,7 @@ A_{n}$. Тогда
 т.к. $\sum\limits_{n = N + 1}^{\infty} A_{n} \subset \sum\limits_{n = N}^{\infty} A_{n}$, то *по
 аксиоме непрерывности* $\overset{*}{=} \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} A_{n})
 \leqslant \lim\limits_{N \to \infty} \sum\limits_{n = N}^{\infty} P(A_{n})
-\overset{N \to \infty}{\longrightarrow} 0$, т.к. $\sum\limits_{n = 1}^{\infty} P(A_{n}) < \infty$
+= 0$, т.к. $\sum\limits_{n = 1}^{\infty} P(A_{n}) < \infty$
 
 2. $P(B) = \dots = \lim\limits_{N \to \infty} P(\sum\limits_{n = N}^{\infty} A_{n}) = 
 \lim\limits_{N \to \infty} (1 - P(\prod\limits_{n = N}^{\infty} \overline{A}_{n})) = 
@@ -745,7 +743,6 @@ e^{\sum\limits{n = N}^{M} \ln(1 - P(A_{n}))} \overset{*}{\geqslant}$
 $\overset{*}{\geqslant} 1 - \lim\limits_{N \to \infty} \lim\limits_{M \to \infty}
 e^{- \sum\limits_{n = N}^{M} P(A_{n})} = 1 - \lim\limits_{n \to \infty} 0 = 1$. $\blacksquare$
 
-<!-- тут в конспекте опечатка было 'Лемма 3' -->
 ## Лемма 4 {#lemma-3-4}
 
 Пусть $X_{n} \overset{P}{\longrightarrow} X$,
@@ -941,7 +938,7 @@ $F_{X}(x)$.
 
 Пусть $X_{n} \overset{d}{\longrightarrow} X$, $Y_{n} \overset{P}{\longrightarrow} C$
 
-Тогда $X_{n} + Y_{n} \overset{d}{\longrightarrow} C$
+Тогда $X_{n} + Y_{n} \overset{d}{\longrightarrow} X + C$
 
 ### Доказательство {-}
 
@@ -1103,7 +1100,6 @@ $$P(X \in [400; 600]) = \sum\limits_{k = 400}^{600} C_{1000}^{k} \frac{1}{2^{100
 
 В силу [Теоремы 1](#theorem-5-1) и [Следствия](#cons-5-1)
 
-<!-- тут может быть ошибка: сходимость не по 'n -> \infty', а по 'd' -->
 $$\frac{X - n \frac{1}{2}}{\sqrt{n \frac{1}{2}(1 - \frac{1}{2})}} \overset{d}{\longrightarrow} 
 N(0; 1)$$
 
@@ -1475,7 +1471,7 @@ $\overline{X}_{n} = \hat{\nu}_{1}(n) = \frac{1}{n} \sum\limits_{k = 1}^{n} X_{k}
 
 И
 
-$\hat{d}_{X}(n) = \hat{S}^{2}(n) = \hat{\mu}_{2}(n) = 
+$\hat{d}_{X}(n) = \hat{S^{2}}(n) = \hat{\mu}_{2}(n) = 
 \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - \overline{X})^{2}$
 
 ## Определение 3
@@ -1629,7 +1625,7 @@ dt2 <- function(x, mu, nu, df, ncp) {
     dt((x - mu)/nu, df, ncp)/nu
 }
 set.seed(1)
-x <- data.frame(rt(5000, df = 5, ncp = 1) * 10 + 7)
+x <- data.frame(rt(5000, df = 5, ncp = 1) * 3 + 45)
 names(x) <- c("test.data")
 p <- ggplot(x, aes(x = test.data)) + stat_function(fun = dt2, args = list(mu = 50,
     nu = 10, df = 1, ncp = 1), aes(colour = "n = 1"))
@@ -1963,7 +1959,7 @@ $1 = \frac{\partial}{\partial \theta} (\theta) = \frac{\partial}{\partial \theta
 dx_{1}, \dots, dx_{n} = 
 \int\limits_{\R^{n}} \hat{\theta}(z_{n}) \frac{\partial \ln L(z_{n}; \theta)}{\partial \theta} \cdot
 L(z_{n}; \theta) dx_{1}, \dots, dx_{n} = M[\hat{\theta} U(Z_{n}; \theta)] = 
-M[(\hat{\theta} - \theta)(U(Z_{n}; \theta) - \theta)] + \theta \cdot M[U(Z_{n}; \theta)] =
+M[(\hat{\theta} - 0)(U(Z_{n}; \theta) - \theta)] + \theta \cdot M[U(Z_{n}; \theta)] =
 \mathrm{cov}(\hat{\theta}, U(Z_{n}; \theta))$
 
 Откуда с учетом *неравенства Коши-Буняковского* 
@@ -2123,7 +2119,7 @@ $X_{0} \in \R$
 
 2. Если $|\frac{\partial^{k} f(x; \theta)}{\partial \theta^{k}}| \leqslant g_{k}(x), \forall \theta$, где
 
-$\int\limits_{\R} g_{1}(x)dx < \infty, \int\limits_{\R} g_{2}(x)dx \leqslant \infty, 
+$\int\limits_{\R} g_{1}(x)dx < \infty, \int\limits_{\R} g_{2}(x)dx < \infty, 
 \int\limits_{\R} g_{3}(x)f(x; \theta)dx \leqslant C \leqslant \infty$, а
 функция $i(\theta) = \int\limits_{\R}
 (\frac{\partial \ln f(x; \theta)}{\partial \theta})^{2} f(x; \theta)dx$ *конечна* и *положительна*
@@ -2223,7 +2219,6 @@ $$P(\theta \leqslant \hat{\theta}_{1}(Z_{n})) = P(\theta \geqslant \hat{\theta}_
 Доверительный интервал называется ***правосторонним*** или ***левосторонним***, если выполнено условие:
 
 
-<!-- тут может быть ошибка: не было после "или" альфа справа -->
 $P(\theta \geqslant \hat{\theta}_{2}(Z_{n})) = \alpha$ или 
 $P(\theta \leqslant \hat{\theta}_{1}(Z_{n})) = \alpha$
 
@@ -2244,7 +2239,7 @@ $$[\hat{\theta}(Z_{n}) - \varepsilon_{1}; \hat{\theta}(Z_{n}) + \varepsilon_{2}]
 
 ## Определение 4
 
-Статистика $G(Z_{n}; \theta)$ называется ***центральной***, если $G$ *непрерывна и *строго монотонна* по 
+Статистика $G(Z_{n}; \theta)$ называется ***центральной***, если $G$ *непрерывна* и *строго монотонна* по 
 $\theta, \forall z_{n} \in S$, а ее распределение **не зависит** от $\theta$.
 
 Если распределение $F_{G}(Z_{n}; \theta)$ известно, то можно подобрать числа $g_{1}, g_{2}$ такие, что 
@@ -2256,7 +2251,7 @@ g_{2} = G_{1 - \frac{\alpha}{2}}$ --- квантили уровней $\frac{\al
 Если $G(Z_{n}; \theta)$ *монотонно возрастает* по $\theta$, то можно перейти к эквивалентному 
 неравенству:
 
-$$P(G^{-1}(Z_{n}; g_{1}) \leqslant G^{-1}(Z_{n}; g_{2}) = 1 - \alpha$$
+$$P(G^{-1}(Z_{n}; g_{1}) \leqslant \theta \leqslant G^{-1}(Z_{n}; g_{2}) = 1 - \alpha$$
 
 Тогда границы интервальной оценки имеют вид:
 
@@ -2457,7 +2452,7 @@ $\overset{*}{=} (F_{X}(\theta \sqrt[n]{x}))^{n} =
 \begin{cases}
     1^{n}, & \theta \sqrt[n]{x} \geqslant \theta, \\
     0^{n}, & 0 \leqslant 0, \\
-    -(\frac{\theta \sqrt[n]{x} - 0}{\theta - 0})^{n}, & \theta \sqrt[n]{x} \leqslant (0; \theta) \\
+    -(\frac{\theta \sqrt[n]{x} - 0}{\theta - 0})^{n}, & 0 \leqslant (0; \theta) \\
 \end{cases} = 
 \begin{cases}
     1, & x \geqslant 1, \\
@@ -2789,7 +2784,7 @@ $$\nabla_{\theta}J(\theta) = -(2Y^{T}X)^{T} + 2X^{T} \cdot X\theta = 0$$
 $$\hat{\theta} = (X^{T}X)^{-1} X^{T} Y$$
 
 2. $M[\hat{\theta}] = M[(X^{T}X)^{-1}X^{T}Y] = (X^{T}X)^{-1} X^{T}M[X\theta + E] =
-(X^{T}X)^{-1}X^{T}X\theta + (X^{T}X)^{-1}X^{T} \cancelto{0}{M[E]} = 0$
+(X^{T}X)^{-1}X^{T}X\theta + (X^{T}X)^{-1}X^{T} \cancelto{0}{M[E]} = \theta$
 
 Рассмотрим произвольную несмещенную линейную оценку $\tilde{\theta} = AY$, где 
 $A \in \R^{s \times n}$
@@ -2923,7 +2918,7 @@ $K_{\hat{E}} = (I - X(X^{T}X)^{-1}X^{T})\sigma^{2}I(X-X(X^{T}X)^{-1}X^{T})^{T} =
 
 ### Доказательство {-}
 
-В силу [Леммы 1.5](#lemma-1-5) достаточно показать, что $\hat{\theta}$ и $\hat{E}$ *некоррелированы*.
+В силу [Леммы 1.4](#lemma-1-4) достаточно показать, что $\hat{\theta}$ и $\hat{E}$ *некоррелированы*.
 
 $K_{\hat{\theta}\hat{E}} = \mathrm{cov}(\hat{\theta}, Y - X\hat{\theta}) = \mathrm{cov}(\hat{\theta},
 Y) - \mathrm{cov}(\hat{\theta},\hat{\theta}) \cdot X^{T} \overset{*}{=}$
