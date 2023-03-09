@@ -13,7 +13,6 @@ indent: true
 
 header-includes:
 - \usepackage{indentfirst}
-- \usepackage[russian, english]{babel}
 - \usepackage{fancyhdr}
 - \usepackage{cancel}
 
@@ -1310,6 +1309,7 @@ plotter <- function(data) {
         TeX("$\\frac{n - 1}{n}$"), TeX("$1$")))
     p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{F}_{n}(x)$")) +
         theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
+    p <- p + theme_classic()
     p
 }
 
@@ -1347,8 +1347,6 @@ y <- rnorm(n, 0, 1)
 data <- por_stat(n, x, sort(y))
 plotter(data)
 ```
-
-<!-- ![](./files/freq-prob.png) -->
 
 ## Свойства $\hat{F}_{n}(x)$ 
 
@@ -1582,6 +1580,7 @@ p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     axis.ticks.x = element_blank())
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
+p <- p + theme_classic()
 p
 ```
 
@@ -1639,6 +1638,7 @@ p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
 p <- p + theme(legend.position = "bottom")
+p <- p + theme_classic()
 p
 ```
 
@@ -1690,6 +1690,7 @@ p <- p + scale_x_continuous(breaks = c(0, break_x), label = c("0", TeX("$\\frac{
 p <- p + geom_line(data.frame(x = c(break_x, break_x), f = c(0, break_y)), mapping = aes(x = x,
     y = f), linetype = "dashed")
 p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+p <- p + theme_classic()
 p
 ```
 
