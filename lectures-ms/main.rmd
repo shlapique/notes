@@ -1308,8 +1308,9 @@ plotter <- function(data) {
         1]) - 1, 2], 1), labels = c(TeX("$\\frac{1}{n}$"), TeX("$\\frac{2}{n}$"),
         TeX("$\\frac{n - 1}{n}$"), TeX("$1$")))
     p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{F}_{n}(x)$")) +
-        theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
-    p <- p + theme_classic()
+        theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"),
+            panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank())
     p
 }
 
@@ -1424,7 +1425,9 @@ histo <- function(data) {
 
     p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{f}_{n}(x)$")) +
         theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
-    p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
+    p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
     p
 }
 
@@ -1576,11 +1579,13 @@ p <- ggplot(data.frame(x = c(0, 15)), aes(x = x)) + stat_function(fun = dchisq, 
 p <- p + stat_function(fun = dchisq, args = list(df = 2), aes(colour = "n = 2"))
 p <- p + stat_function(fun = dchisq, args = list(df = 6), aes(colour = "n > 2"))  # n > 2
 p <- p + scale_colour_manual("", values = c("green", "purple", "red"))
-p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + theme(axis.text.x = element_blank(),
-    axis.ticks.x = element_blank())
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
+    theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
-p <- p + theme_classic()
 p
 ```
 
@@ -1633,12 +1638,13 @@ p <- p + stat_function(fun = dt2, args = list(mu = 50, nu = 10, df = 5, ncp = 1)
 p <- p + stat_function(fun = dt2, args = list(mu = 50, nu = 10, df = 1e+06, ncp = 1),
     aes(colour = "n = inf"))
 p <- p + scale_colour_discrete("", labels = c("n = 1", "n = 5", TeX("$n= \\infty$")))
-p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + theme(axis.text.x = element_blank(),
-    axis.ticks.x = element_blank())
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+    theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(), 
+    panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
 p <- p + theme(legend.position = "bottom")
-p <- p + theme_classic()
 p
 ```
 
@@ -1689,8 +1695,9 @@ p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{V}(x, n, m)$"))
 p <- p + scale_x_continuous(breaks = c(0, break_x), label = c("0", TeX("$\\frac{(n-2)m}{n(m+2)}$")))
 p <- p + geom_line(data.frame(x = c(break_x, break_x), f = c(0, break_y)), mapping = aes(x = x,
     y = f), linetype = "dashed")
-p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())
-p <- p + theme_classic()
+p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank())
 p
 ```
 
@@ -2982,7 +2989,7 @@ $$\Lambda =
 $\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} = E_{0}^{T} C^{T} \cdot \Lambda C E_{0} = 
 \sum\limits_{i = 1}^{n} \tilde{\varepsilon_{i}}^{2}$, где с учетом [Леммы 1.3](#lemma-1-3)
 
-$CE_{0} = (\tilde{\varepsilon_{1}}, \dots, \tilde{\varepsilon_{n}}) \sim N(0, CIC^{T}) = 
+$CE_{0} = (\tilde{\varepsilon}_{1}, \dots, \tilde{\varepsilon}_{n}) \sim N(0, CIC^{T}) = 
 N(0; I)$
 
 Т.о. по определению $\frac{\lVert \hat{E} \rVert^{2}}{\sigma^{2}} \sim \chi^{2}(m)$
