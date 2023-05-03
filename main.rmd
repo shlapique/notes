@@ -121,7 +121,7 @@ K_Y = AK_XA^{T}.
 
 Тогда компоненты вектора $X$ ***независимы*** тогда и только тогда, когда они *некоррелированы*.
 
-### note {-}
+## Замечание {-}
 
 Доказательство данных утверждений при помощи аппарата функций распределения и плотности довольно сложно.
 Поэтому рассмотрим аппарат характеристических функций.
@@ -859,7 +859,6 @@ $\overline{X}_{n} \overset{P}{\longrightarrow} m_{X}$. $\blacksquare$
 
 $\overline{X}_{n} - \frac{1}{n} \sum\limits_{k = 1}^{n} m_{X_{k}} = 
 \frac{1}{n} \sum\limits_{k = 1}^{n} (X_{k} - m_{X_{k}}) = \frac{1}{n} \sum\limits_{k = 1}^{n} Y_{k}$,
-
 где $M[Y_{k}] = 0, D[Y_{k}] = D[X_{k}] \leqslant D_{max} < \infty$
 
 Тогда $\overline{Y}_{k}$ удовлетворяет условиям [Теоремы 4.3](#theorem-4-3). $\blacksquare$
@@ -901,7 +900,8 @@ $$\frac{N(A)}{N} = \frac{1}{N} \sum\limits_{k = 1}^{N} X_{k} \overset{\text{с.�
 
 в силу [Теоремы 2](#theorem-4-2)
 
-$$\frac{N(A)}{N} = \frac{1}{N} \sum\limits_{k = 1}^{N} X_{k} \overset{\text{п.н.}}{\longrightarrow} P(A)$$
+$$\frac{N(A)}{N} = \frac{1}{N} \sum\limits_{k = 1}^{N} X_{k} 
+\overset{\text{п.н.}}{\longrightarrow} P(A)$$ 
 
 \hfill $\blacksquare$
 
@@ -1277,8 +1277,8 @@ plotter <- function(data) {
     }
     last <- last + 1
     p <- ggplot(data.frame(x = c(data[first, 1], dash_data[1, 1]), f = c(data[first,
-        2], dash_data[1, 2])), mapping = aes(x = x, y = f)) + geom_hline(yintercept = 0) +
-        geom_line() + geom_point(data.frame(x = c(dash_data[1, 1]), f = c(dash_data[1,
+        2], dash_data[1, 2])), mapping = aes(x = x, y = f)) + geom_hline(size = 1, yintercept = 0) +
+        geom_line(line_widht = 3) + geom_point(data.frame(x = c(dash_data[1, 1]), f = c(dash_data[1,
         2])), mapping = aes(x = x, y = f), shape = 21, size = 3, fill = "white")
     j <- 1
     m <- 2
@@ -2239,7 +2239,6 @@ $P(\theta \leqslant \hat{\theta}_{1}(Z_{n})) = \alpha$
 
 1. Можно визуализировать интервальную оценку следующим образом:
 
-<!-- add PICTURE -->
 ```{r, out.width="70%", out.height="70%", echo=FALSE}
 library(ggplot2)
 library(latex2exp)
