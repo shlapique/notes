@@ -1310,7 +1310,8 @@ plotter <- function(data) {
     p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$\\hat{F}_{n}(x)$")) +
         theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"),
             panel.grid.major = element_blank(),
-            panel.grid.minor = element_blank())
+            panel.grid.minor = element_blank(),
+            panel.background = element_blank())
     p
 }
 
@@ -1427,7 +1428,8 @@ histo <- function(data) {
         theme(axis.text = element_text(colour = "red"), axis.title = element_text(colour = "blue"))
     p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
         panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank())
     p
 }
 
@@ -1582,7 +1584,8 @@ p <- p + scale_colour_manual("", values = c("green", "purple", "red"))
 p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) + 
     theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
         panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank())
 
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
@@ -1640,7 +1643,8 @@ p <- p + stat_function(fun = dt2, args = list(mu = 50, nu = 10, df = 1e+06, ncp 
 p <- p + scale_colour_discrete("", labels = c("n = 1", "n = 5", TeX("$n= \\infty$")))
 p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
     theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(), 
-    panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+    panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+    panel.background = element_blank())
 
 p <- p + ggtitle("") + xlab(label = "x") + ylab(label = TeX("$f_{Y}(x, n)$")) + theme(axis.text = element_text(colour = "red"),
     axis.title = element_text(colour = "blue"))
@@ -1697,7 +1701,8 @@ p <- p + geom_line(data.frame(x = c(break_x, break_x), f = c(0, break_y)), mappi
     y = f), linetype = "dashed")
 p <- p + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
     panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank())
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank())
 p
 ```
 
@@ -2273,8 +2278,8 @@ ggplot(data, aes(x, y)) +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
   theme(
     panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank()
-  ) +
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank()) +
   theme(axis.title.x = element_blank(), axis.title.y = element_blank()) +
   theme(plot.title = element_blank())
 ```
