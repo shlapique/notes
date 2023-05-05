@@ -18,20 +18,22 @@ sudo R
 ```
 
 ```bash
-install.packages(c("rmarkdown","reticulate"));
+install.packages(c("rmarkdown","reticulate","renv"));
 ```
 
-### install renv and packages
+### install packages
 ```bash
 R
 ```
 
 ```bash
-install.packages("renv")
+renv::restore()
 ```
 
+# how to run
+
 ```bash
-renv::restore()
+./build.R
 ```
 
 ## todo
