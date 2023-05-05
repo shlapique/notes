@@ -1,5 +1,10 @@
 # Prerequisites
 
+## Ubuntu LTS 20.04 (or WSL2 on Windows)
+
+```bash
+sudo apt install pandoc texlive-xelatex-dev-bin R tcl libpng libpng-dev texlive-babel-russian texlive-xetex texlive-lang-cyrillic fonts-cmu
+```
 
 ## todo
 
