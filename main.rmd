@@ -51,9 +51,10 @@ header-includes:
 
 ## Замечание {-}
 
-Вектор $X = (X_{1}, \dots, X_{n})^{T}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ --- *случайные величины* *(далее **с.в**)*, определенные на одном вероятностном пространстве.
+Вектор $X = (X_{1}, \dots, X_{n})^{T}$ называется ***случайным***, если $X_{1}, \dots, X_{n}$ 
+--- *случайные величины* (далее **с.в**), определенные на одном вероятностном пространстве.
 
-Через $M[X] = m_{X}$ обозначим ***вектор математического ожидания***:
+Через $M[X] = m_{X}$ обозначим *вектор математического ожидания*:
 
 \begin{align*}
 M[X] = m_{X} = 
@@ -119,7 +120,7 @@ K_Y = AK_XA^{T}.
 
 Пусть $X \sim N(m_{X}, K_{X})$.
 
-Тогда компоненты вектора $X$ ***независимы*** тогда и только тогда, когда они *некоррелированы*.
+Тогда компоненты вектора $X$ *независимы* тогда и только тогда, когда они *некоррелированы*.
 
 ## Замечание {-}
 
@@ -1277,8 +1278,8 @@ plotter <- function(data) {
     }
     last <- last + 1
     p <- ggplot(data.frame(x = c(data[first, 1], dash_data[1, 1]), f = c(data[first,
-        2], dash_data[1, 2])), mapping = aes(x = x, y = f)) + geom_hline(size = 1, yintercept = 0) +
-        geom_line(line_widht = 3) + geom_point(data.frame(x = c(dash_data[1, 1]), f = c(dash_data[1,
+        2], dash_data[1, 2])), mapping = aes(x = x, y = f)) + geom_hline(linewidth= 1, yintercept = 0) +
+        geom_line() + geom_point(data.frame(x = c(dash_data[1, 1]), f = c(dash_data[1,
         2])), mapping = aes(x = x, y = f), shape = 21, size = 3, fill = "white")
     j <- 1
     m <- 2
