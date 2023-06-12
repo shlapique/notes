@@ -12,6 +12,8 @@ sudo zypper in pandoc texlive-xelatex-dev-bin R tcl libpng libpng-devel texlive-
 sudo apt install pandoc texlive-xetex r-base tcl libpng-dev texlive-lang-cyrillic fonts-cmu
 ```
 
+## Fedora 36
+
 ```bash
 sudo dnf install pandoc texlive-xetex R tcl libpng-devel texlive-cyrillic texlive-cm-unicode
 ```
