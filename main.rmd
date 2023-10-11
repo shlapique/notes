@@ -1061,7 +1061,7 @@ n(- \frac{\lambda^{2}}{2n} + o(\frac{\lambda^{2}}{2n})) = - \frac{\lambda^{2}}{2
 
 $$\psi_{S_{n}}(\lambda) \overset{n \to \infty}{\longrightarrow} e^{- \frac{\lambda^{2}}{2}}$$
 
-где $\psi_{Y}(\lambda) = e^{- \frac{\lambda^{2}}{2}}$ по определению является *характеристической функцией 
+где $\psi_{Y}(\lambda) = e^{- \frac{\lambda^{2}}{2}}$ по определению является *характеристической функцией*
 $Y \sim N(0; 1)$
 
 Тогда $S_{n} \overset{d}{\longrightarrow} Y \sim N(0; 1)$. $\blacksquare$
