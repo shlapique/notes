@@ -4,7 +4,7 @@ output:
     latex_engine: xelatex
     number_sections: true
   html_document:
-    theme: united
+    theme: darkly 
     highlight: tango
 linkcolor: blue
 
