@@ -3,6 +3,9 @@ output:
   pdf_document:
     latex_engine: xelatex
     number_sections: true
+  html_document:
+    theme: united
+    highlight: tango
 linkcolor: blue
 
 # mainfont: Linux Libertine O
@@ -36,6 +39,18 @@ header-includes:
 \underline{Last build:} \today
 
 \clearpage
+
+<!-- for '\cancel' MathJax package in html version of this document -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+  MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+    cancel: ["Extension","cancel"],
+    bcancel: ["Extension","cancel"],
+    xcancel: ["Extension","cancel"],
+    cancelto: ["Extension","cancel"]
+  });
+});
+</script>
 
 # Источники {-}
 
